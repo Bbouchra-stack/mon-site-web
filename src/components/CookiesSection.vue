@@ -6,22 +6,22 @@ const familles = [
     id: 'essentiels',
     titre: 'Cookies essentiels',
     description:
-      "Indispensables au fonctionnement du site : mémorisation de votre choix de consentement et sécurité des formulaires. Ils ne peuvent pas être désactivés et ne servent à aucun suivi publicitaire.",
+      'Mémorisation de votre choix et sécurité des formulaires. Aucun suivi publicitaire.',
     statut: 'Toujours actifs',
   },
   {
     id: 'mesure',
     titre: "Mesure d'audience",
     description:
-      "Statistiques anonymes de fréquentation : pages consultées, durée de visite, type d'appareil. Elles nous aident à améliorer le site. Déposées uniquement après votre accord.",
+      "Statistiques anonymes de fréquentation, déposées uniquement après votre accord.",
     statut: 'Soumis à votre accord',
   },
   {
     id: 'choix',
     titre: 'Vos choix, à tout moment',
     description:
-      "Vous pouvez accepter, refuser ou changer d'avis quand vous le souhaitez. Aucun cookie publicitaire ni revente de données à des tiers : ce n'est pas notre façon de travailler.",
-    statut: 'Modifiable à tout moment',
+      'Ni cookie publicitaire, ni revente de données. Vous pouvez changer d’avis quand vous voulez.',
+    statut: 'Modifiable',
   },
 ]
 
@@ -32,43 +32,70 @@ const libelleChoix = {
 </script>
 
 <template>
-  <section id="cookies" class="section section--surface">
+  <!-- Bandeau volontairement discret : l'attention doit rester sur les services. -->
+  <section id="cookies" class="cookies">
     <div class="container">
-      <div class="section__head">
-        <span class="eyebrow" v-reveal>Cookies &amp; confidentialité</span>
-        <h2 class="section__title" v-reveal="60">Transparence sur vos données</h2>
-        <p class="section__subtitle" v-reveal="120">
-          Nous utilisons le strict nécessaire, et rien ne se fait sans votre
-          accord.
-        </p>
+      <div class="cookies__inner" v-reveal>
+        <div class="cookies__intro">
+          <h2 class="cookies__titre">Cookies &amp; confidentialité</h2>
+          <p class="cookies__chapeau">
+            Nous utilisons le strict nécessaire, et rien ne se fait sans votre
+            accord.
+          </p>
+        </div>
+
+        <ul class="familles">
+          <li v-for="famille in familles" :key="famille.id" class="famille">
+            <span class="famille__statut">{{ famille.statut }}</span>
+            <h3 class="famille__titre">{{ famille.titre }}</h3>
+            <p class="famille__description">{{ famille.description }}</p>
+          </li>
+        </ul>
       </div>
 
-      <ul class="familles">
-        <li
-          v-for="(famille, index) in familles"
-          :key="famille.id"
-          class="famille"
-          v-reveal="index * 140"
-        >
-          <span class="famille__statut">{{ famille.statut }}</span>
-          <h3 class="famille__titre">{{ famille.titre }}</h3>
-          <p class="famille__description">{{ famille.description }}</p>
-        </li>
-      </ul>
-
-      <div class="cookies__pied" v-reveal="120">
+      <div class="cookies__pied" v-reveal="80">
         <p v-if="choixCookies" class="cookies__choix">
           {{ libelleChoix[choixCookies] }}
         </p>
-        <button type="button" class="btn btn--ghost" @click="rouvrirBanniere">
+        <button type="button" class="cookies__bouton" @click="rouvrirBanniere">
           Gérer mes cookies
         </button>
+        <a class="cookies__lien" href="/politique-de-confidentialite.html">
+          Politique de confidentialité
+        </a>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+.cookies {
+  padding: 44px 0 48px;
+  background-color: var(--c-cream-soft);
+  border-top: 1px solid var(--c-border);
+  scroll-margin-top: var(--header-h);
+}
+
+.cookies__inner {
+  display: grid;
+  grid-template-columns: 0.8fr 2.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.cookies__titre {
+  font-size: 1.12rem;
+  margin-bottom: 6px;
+}
+
+.cookies__chapeau {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--c-muted);
+  max-width: 34ch;
+}
+
 .familles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -79,42 +106,31 @@ const libelleChoix = {
 }
 
 .famille {
-  padding: 34px 28px 32px;
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius);
-  background-color: var(--c-cream);
-  transition: border-color 0.3s ease, transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.famille:hover {
-  border-color: var(--c-gold);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
+  padding-left: 16px;
+  border-left: 1px solid var(--c-border);
 }
 
 .famille__statut {
-  display: inline-block;
-  margin-bottom: 16px;
-  padding: 5px 12px;
-  border: 1px solid #eddfb6;
-  border-radius: 2px;
-  background-color: #fdf6e3;
-  color: #8f6417;
-  font-size: 0.68rem;
+  display: block;
+  margin-bottom: 7px;
+  color: #a8801d;
+  font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .famille__titre {
-  font-size: 1.16rem;
-  margin-bottom: 10px;
+  font-family: var(--font-texte);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .famille__description {
   margin: 0;
-  font-size: 0.93rem;
+  font-size: 0.8rem;
+  line-height: 1.55;
   color: var(--c-muted);
 }
 
@@ -122,23 +138,53 @@ const libelleChoix = {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 18px 26px;
-  margin-top: 48px;
-  text-align: center;
+  gap: 10px 22px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--c-border);
+  font-size: 0.8rem;
 }
 
 .cookies__choix {
   margin: 0;
-  font-size: 0.92rem;
   color: var(--c-muted);
 }
 
+.cookies__bouton {
+  padding: 7px 16px;
+  border: 1px solid var(--c-border);
+  border-radius: 3px;
+  background-color: transparent;
+  color: var(--c-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.cookies__bouton:hover {
+  border-color: var(--c-navy);
+  color: var(--c-navy);
+}
+
+.cookies__lien {
+  color: var(--c-muted);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.cookies__lien:hover {
+  color: var(--c-navy);
+  border-bottom-color: var(--c-gold);
+}
+
 @media (max-width: 900px) {
+  .cookies__inner {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
   .familles {
     grid-template-columns: 1fr;
-    max-width: 560px;
-    margin-inline: auto;
+    gap: 18px;
   }
 }
 </style>

@@ -2,8 +2,15 @@ import { ref } from 'vue'
 
 /**
  * État partagé du consentement aux cookies.
- * Stocké dans le navigateur (localStorage) pour ne plus réafficher
- * le bandeau une fois le choix effectué.
+ *
+ * Le bandeau se présente en trois temps :
+ *  1. carte compacte affichée à l'arrivée sur le site ;
+ *  2. après quelques secondes sans réponse, elle s'efface au profit
+ *     d'une simple pastille discrète (« mise de côté ») ;
+ *  3. une fois le choix fait, tout disparaît — il reste rappelable
+ *     depuis le pied de page.
+ *
+ * Le choix est mémorisé dans le navigateur (localStorage).
  */
 
 const CLE = 'belweb-consentement-cookies'
@@ -26,7 +33,12 @@ function ecrireChoix(valeur) {
 }
 
 export const choixCookies = ref(lireChoix())
+
+/** Le composant cookies est-il présent à l'écran (carte ou pastille) ? */
 export const banniereVisible = ref(choixCookies.value === null)
+
+/** Est-il replié en pastille discrète ? */
+export const banniereReduite = ref(false)
 
 /**
  * Horodatage du dernier choix effectué pendant cette visite.
@@ -40,6 +52,7 @@ function enregistrer(valeur) {
   ecrireChoix(valeur)
   momentDuChoix.value = Date.now()
   banniereVisible.value = false
+  banniereReduite.value = false
 }
 
 export function accepterCookies() {
@@ -50,6 +63,18 @@ export function refuserCookies() {
   enregistrer('refuse')
 }
 
+/** Passe la carte en pastille discrète, sans enregistrer de choix. */
+export function reduireBanniere() {
+  banniereReduite.value = true
+}
+
+/** Redéploie la carte depuis la pastille. */
+export function deplierBanniere() {
+  banniereReduite.value = false
+}
+
+/** Rappelle le bandeau (lien « Gérer mes cookies » du pied de page). */
 export function rouvrirBanniere() {
+  banniereReduite.value = false
   banniereVisible.value = true
 }

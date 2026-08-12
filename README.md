@@ -36,8 +36,21 @@ npm run preview  # prévisualisation du build
 | Pied de page | `TheFooter.vue` | — |
 
 Éléments flottants : `WhatsAppButton.vue` (bouton vert permanent),
-`CookieBanner.vue` (bandeau de consentement), `ProjectModal.vue` (invitation à
-décrire son projet).
+`CookieBanner.vue` (consentement), `ProjectModal.vue` (invitation à décrire son
+projet).
+
+### Bandeau cookies
+
+Il se présente en trois temps, pour rester discret :
+
+1. une **carte compacte** (330 px) en bas à gauche à l'arrivée sur le site ;
+2. sans réponse au bout de **12 secondes**, elle s'efface au profit d'une
+   simple **pastille « Cookies »** — cliquable pour la redéployer ;
+3. une fois le choix fait, tout disparaît définitivement (mémorisé dans le
+   navigateur), rappelable via « Gérer mes cookies » en pied de page.
+
+Le compte à rebours est suspendu tant que la souris survole la carte. Les
+délais se règlent dans `DELAI_AVANT_REDUCTION` (`CookieBanner.vue`).
 
 ## Où modifier quoi
 

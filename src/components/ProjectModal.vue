@@ -1,7 +1,11 @@
 <script setup>
 import { onBeforeUnmount, onMounted, nextTick, ref, watch } from 'vue'
 import { lienWhatsapp } from '../composables/coordonnees.js'
-import { banniereVisible, momentDuChoix } from '../composables/consentement.js'
+import {
+  banniereReduite,
+  banniereVisible,
+  momentDuChoix,
+} from '../composables/consentement.js'
 
 /**
  * Invitation à décrire son projet.
@@ -11,7 +15,7 @@ import { banniereVisible, momentDuChoix } from '../composables/consentement.js'
  *   se déclenche après un temps de lecture, à mi-page, ou lorsque la souris
  *   quitte la fenêtre par le haut (intention de départ) ;
  * - une seule fois par visiteur, mémorisé 7 jours ;
- * - jamais par-dessus le bandeau cookies : une interruption à la fois ;
+ * - jamais par-dessus la carte cookies déployée : une interruption à la fois ;
  * - fermeture par la croix, la touche Échap ou un clic sur le fond.
  */
 
@@ -44,7 +48,8 @@ function memoriser() {
 }
 
 function ouvrir() {
-  if (ouverte.value || dejaVue() || banniereVisible.value) return
+  const banniereDeployee = banniereVisible.value && !banniereReduite.value
+  if (ouverte.value || dejaVue() || banniereDeployee) return
 
   // Le visiteur vient de répondre au bandeau cookies : on le laisse respirer.
   const depuisLeChoix = Date.now() - momentDuChoix.value
@@ -107,8 +112,8 @@ onBeforeUnmount(() => {
 })
 
 // Le bandeau cookies est prioritaire : on ne superpose jamais les deux.
-watch(banniereVisible, (visible) => {
-  if (visible) fermer()
+watch([banniereVisible, banniereReduite], ([visible, reduite]) => {
+  if (visible && !reduite) fermer()
 })
 </script>
 

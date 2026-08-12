@@ -1,12 +1,12 @@
 <script setup>
 import { lienWhatsapp } from '../composables/coordonnees.js'
-import { banniereVisible } from '../composables/consentement.js'
+import { banniereReduite, banniereVisible } from '../composables/consentement.js'
 </script>
 
 <template>
   <a
     class="whatsapp"
-    :class="{ 'whatsapp--releve': banniereVisible }"
+    :class="{ 'whatsapp--releve': banniereVisible && !banniereReduite }"
     :href="lienWhatsapp"
     target="_blank"
     rel="noopener noreferrer"
@@ -98,11 +98,6 @@ import { banniereVisible } from '../composables/consentement.js'
   transform: translateX(0);
 }
 
-/* Remonté tant que le bandeau cookies occupe le bas de l'écran */
-.whatsapp--releve {
-  bottom: 130px;
-}
-
 @media (max-width: 640px) {
   .whatsapp {
     right: 16px;
@@ -120,8 +115,10 @@ import { banniereVisible } from '../composables/consentement.js'
     display: none;
   }
 
+  /* Sur mobile seulement, la carte cookies occupe toute la largeur du bas :
+     on remonte le bouton pour ne pas la recouvrir. */
   .whatsapp--releve {
-    bottom: 220px;
+    bottom: 150px;
   }
 }
 
