@@ -72,11 +72,29 @@ Le dossier `.claude/skills/` contient les skills disponibles quand on travaille
 sur ce projet avec Claude Code. Ils sont versionnés avec le site : toute
 personne qui clone le dépôt en dispose automatiquement.
 
-| Skill | Rôle |
-| --- | --- |
-| `frontend-design` | Direction artistique : palette, typographie, mise en page et copie, pour éviter les rendus « gabarit ». Source : [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/frontend-design), licence Apache 2.0. |
+| Skill | Rôle | Source |
+| --- | --- | --- |
+| `frontend-design` | Direction artistique : palette, typographie, mise en page et copie, pour éviter les rendus « gabarit ». | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/frontend-design) — Apache 2.0 |
+| `ui-ux-pro-max` | Base de données consultable : 84 styles, 192 palettes, 74 associations de polices, 25 types de graphiques, consignes par techno (dont Vue). | [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| `design`, `design-system`, `brand`, `ui-styling`, `banner-design`, `slides` | Installés en même temps que `ui-ux-pro-max` par son CLI. | idem |
 
-Pour l'invoquer explicitement dans une session : `/frontend-design`.
+Pour en invoquer un explicitement : `/frontend-design`, `/ui-ux-pro-max`…
+
+Les skills `ui-ux-pro-max` et suivants s'interrogent avec des scripts Python
+(Python 3 requis) :
+
+```bash
+cd .claude/skills/ui-ux-pro-max
+python3 scripts/search.py "luxury elegant" --domain style --max-results 3
+python3 scripts/search.py "form validation" --stack vue
+```
+
+Réinstallation ou mise à jour depuis la racine du projet :
+
+```bash
+npm install -g ui-ux-pro-max-cli
+uipro init --ai claude
+```
 
 ## Charte graphique
 
