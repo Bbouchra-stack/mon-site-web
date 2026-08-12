@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, ref } from 'vue'
+import { coordonnees, lienWhatsapp } from '../composables/coordonnees.js'
 
 const champsVides = () => ({
   prenom: '',
@@ -16,8 +17,8 @@ const envoye = ref(false)
 const envoiEnCours = ref(false)
 
 const regexEmail = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i
-// Numéros français : 06 12 34 56 78, +33 6 12 34 56 78, 0612345678…
-const regexTelephone = /^(?:\+33|0033|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/
+// Numéros marocains (06/07…, +212…) et internationaux courants.
+const regexTelephone = /^(?:\+|00)?[1-9](?:[\s.-]?\d){7,14}$|^0[5-7](?:[\s.-]?\d){8}$/
 
 function valider(champ) {
   const valeur = formulaire[champ].trim()
@@ -37,7 +38,8 @@ function valider(champ) {
       return ''
     case 'telephone':
       if (!valeur) return 'Merci d’indiquer un numéro de téléphone.'
-      if (!regexTelephone.test(valeur)) return 'Numéro invalide (ex. : 06 12 34 56 78).'
+      if (!regexTelephone.test(valeur))
+        return 'Numéro invalide (ex. : 06 12 34 56 78 ou +212 782 934 874).'
       return ''
     case 'projet':
       if (!valeur) return 'Décrivez-nous votre projet en quelques mots.'
@@ -89,37 +91,62 @@ function nouveauMessage() {
 </script>
 
 <template>
-  <section id="contact" class="section contact">
+  <section id="contact" class="section section--navy contact">
     <div class="container contact__inner">
       <div class="contact__intro">
-        <span class="eyebrow">Contact</span>
-        <h2 class="section__title">Parlons de votre projet</h2>
-        <p>
+        <span class="eyebrow" v-reveal>Contact</span>
+        <h2 class="section__title" v-reveal="60">Parlons de votre projet</h2>
+        <p v-reveal="120">
           Décrivez-nous votre activité et vos besoins en quelques lignes. Nous
           revenons vers vous sous 24&nbsp;h ouvrées avec une première
           proposition et un devis gratuit.
         </p>
 
-        <ul class="contact__points">
+        <ul class="contact__points" v-reveal="180">
           <li>Premier échange gratuit et sans engagement</li>
           <li>Devis détaillé sous 48&nbsp;h</li>
           <li>Un interlocuteur unique du début à la fin</li>
         </ul>
 
-        <div class="contact__coordonnees">
-          <p><strong>Téléphone</strong><br /><a href="tel:+33612345678">06 12 34 56 78</a></p>
+        <div class="contact__coordonnees" v-reveal="240">
           <p>
-            <strong>E-mail</strong><br />
-            <a href="mailto:contact@bouchrawebstudio.fr">contact@bouchrawebstudio.fr</a>
+            <strong>Téléphone</strong>
+            <a :href="`tel:${coordonnees.telephoneLien}`">{{ coordonnees.telephoneAffiche }}</a>
+          </p>
+          <p>
+            <strong>E-mail</strong>
+            <a :href="`mailto:${coordonnees.email}`">{{ coordonnees.email }}</a>
+          </p>
+          <p>
+            <strong>Adresse</strong>
+            <span>
+              {{ coordonnees.adresseLigne1 }}<br />
+              {{ coordonnees.adresseLigne2 }}
+            </span>
           </p>
         </div>
+
+        <a
+          class="contact__whatsapp"
+          :href="lienWhatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+          v-reveal="280"
+        >
+          <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <path
+              d="M16.04 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.73 6.42L3.2 28.8l6.55-1.71a12.75 12.75 0 0 0 6.29 1.64h.01c7.05 0 12.79-5.74 12.79-12.8 0-3.42-1.33-6.63-3.75-9.05a12.7 12.7 0 0 0-9.05-3.68zm0 23.34h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.02 1.05 1.07-3.92-.25-.4a10.57 10.57 0 0 1-1.62-5.66c0-5.86 4.77-10.63 10.63-10.63 2.84 0 5.5 1.11 7.51 3.12a10.56 10.56 0 0 1 3.11 7.52c0 5.86-4.77 10.63-10.63 10.63zm5.83-7.96c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.89-1.78-2.21-.19-.32-.02-.5.14-.66.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.54-.71-.55l-.61-.01c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.07 1.3 3.28c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.89-.77 2.15-1.52.27-.75.27-1.38.19-1.52-.08-.13-.29-.21-.61-.37z"
+            />
+          </svg>
+          Discuter sur WhatsApp
+        </a>
       </div>
 
-      <div class="contact__carte">
+      <div class="contact__carte" v-reveal="140">
         <Transition name="fondu" mode="out-in">
           <div v-if="envoye" key="confirmation" class="confirmation" role="status">
             <span class="confirmation__icone" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m5 12.5 4.5 4.5L19 7.5" />
               </svg>
             </span>
@@ -143,7 +170,7 @@ function nouveauMessage() {
                   type="text"
                   name="prenom"
                   autocomplete="given-name"
-                  placeholder="Bouchra"
+                  placeholder="Votre prénom"
                   :class="{ 'champ--erreur': erreurs.prenom }"
                   :aria-invalid="Boolean(erreurs.prenom)"
                   :aria-describedby="erreurs.prenom ? 'erreur-prenom' : undefined"
@@ -163,7 +190,7 @@ function nouveauMessage() {
                   type="text"
                   name="nom"
                   autocomplete="family-name"
-                  placeholder="Dupont"
+                  placeholder="Votre nom"
                   :class="{ 'champ--erreur': erreurs.nom }"
                   :aria-invalid="Boolean(erreurs.nom)"
                   :aria-describedby="erreurs.nom ? 'erreur-nom' : undefined"
@@ -185,7 +212,7 @@ function nouveauMessage() {
                   type="email"
                   name="email"
                   autocomplete="email"
-                  placeholder="vous@exemple.fr"
+                  placeholder="vous@exemple.ma"
                   :class="{ 'champ--erreur': erreurs.email }"
                   :aria-invalid="Boolean(erreurs.email)"
                   :aria-describedby="erreurs.email ? 'erreur-email' : undefined"
@@ -259,24 +286,20 @@ function nouveauMessage() {
 </template>
 
 <style scoped>
-.contact {
-  background: linear-gradient(180deg, var(--c-bg) 0%, #eef2ff 100%);
-}
-
 .contact__inner {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
-  gap: 52px;
+  gap: 60px;
   align-items: start;
 }
 
-.contact__intro p {
-  color: var(--c-muted);
+.contact__intro > p {
+  color: rgba(255, 255, 255, 0.66);
   max-width: 46ch;
 }
 
 .contact__points {
-  margin: 26px 0;
+  margin: 30px 0;
   padding: 0;
   list-style: none;
 }
@@ -284,50 +307,87 @@ function nouveauMessage() {
 .contact__points li {
   position: relative;
   padding-left: 30px;
-  margin-bottom: 12px;
-  color: var(--c-text);
+  margin-bottom: 13px;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .contact__points li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 8px;
-  width: 18px;
-  height: 10px;
-  border-left: 2.5px solid var(--c-accent);
-  border-bottom: 2.5px solid var(--c-accent);
+  top: 9px;
+  width: 16px;
+  height: 9px;
+  border-left: 2px solid var(--c-gold);
+  border-bottom: 2px solid var(--c-gold);
   transform: rotate(-45deg);
-  border-radius: 2px;
 }
 
 .contact__coordonnees {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 40px;
-  padding-top: 24px;
-  border-top: 1px solid var(--c-border);
+  display: grid;
+  gap: 20px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .contact__coordonnees p {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   margin: 0;
-  color: var(--c-muted);
-  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.97rem;
 }
 
 .contact__coordonnees strong {
-  color: var(--c-ink);
-  font-size: 0.85rem;
+  color: var(--c-gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+}
+
+.contact__coordonnees a {
+  color: #fff;
+}
+
+.contact__coordonnees a:hover {
+  color: var(--c-gold);
+}
+
+.contact__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 12px 24px;
+  border: 1px solid rgba(37, 211, 102, 0.5);
+  border-radius: 2px;
+  color: #4ae086;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.contact__whatsapp svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contact__whatsapp:hover {
+  background-color: #25d366;
+  border-color: #25d366;
+  color: #fff;
 }
 
 /* Carte formulaire */
 .contact__carte {
-  padding: 34px;
+  padding: 40px;
   background-color: var(--c-surface);
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-lg);
+  border-top: 3px solid var(--c-gold);
+  border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
 }
 
@@ -340,32 +400,34 @@ function nouveauMessage() {
 .champ {
   display: flex;
   flex-direction: column;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .champ label {
-  margin-bottom: 7px;
-  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   color: var(--c-ink);
 }
 
 .champ label span {
-  color: var(--c-primary);
+  color: var(--c-gold);
 }
 
 .champ input,
 .champ textarea {
   width: 100%;
-  padding: 13px 15px;
+  padding: 14px 16px;
   font: inherit;
-  font-size: 0.98rem;
+  font-size: 0.97rem;
   color: var(--c-ink);
-  background-color: var(--c-bg);
+  background-color: var(--c-cream);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-sm);
-  transition: border-color 0.18s ease, box-shadow 0.18s ease,
-    background-color 0.18s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .champ textarea {
@@ -375,44 +437,44 @@ function nouveauMessage() {
 
 .champ input::placeholder,
 .champ textarea::placeholder {
-  color: #94a3b8;
+  color: #a8aec2;
 }
 
 .champ input:focus,
 .champ textarea:focus {
   outline: none;
   background-color: var(--c-surface);
-  border-color: var(--c-primary);
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.14);
+  border-color: var(--c-gold);
+  box-shadow: 0 0 0 3px rgba(227, 185, 63, 0.18);
 }
 
 .champ--erreur {
   border-color: var(--c-error) !important;
-  background-color: #fef2f2;
+  background-color: #fdf3f2;
 }
 
 .champ--erreur:focus {
-  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.14) !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15) !important;
 }
 
 .champ__erreur {
-  margin: 7px 0 0;
+  margin: 8px 0 0;
   color: var(--c-error);
   font-size: 0.85rem;
 }
 
 .formulaire__mention {
-  margin: 4px 0 20px;
-  font-size: 0.85rem;
+  margin: 4px 0 22px;
+  font-size: 0.84rem;
   color: var(--c-muted);
 }
 
 .formulaire__mention span {
-  color: var(--c-primary);
+  color: var(--c-gold);
 }
 
 .btn[disabled] {
-  opacity: 0.65;
+  opacity: 0.6;
   cursor: not-allowed;
   transform: none;
 }
@@ -420,17 +482,17 @@ function nouveauMessage() {
 /* Confirmation */
 .confirmation {
   text-align: center;
-  padding: 26px 8px 12px;
+  padding: 28px 8px 14px;
 }
 
 .confirmation__icone {
   display: grid;
   place-items: center;
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 22px;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 24px;
   border-radius: 50%;
-  background-color: var(--c-accent-light);
+  background-color: var(--c-teal-soft);
   color: var(--c-success);
 }
 
@@ -440,18 +502,18 @@ function nouveauMessage() {
 }
 
 .confirmation h3 {
-  font-size: 1.35rem;
+  font-size: 1.42rem;
 }
 
 .confirmation p {
   color: var(--c-muted);
   max-width: 42ch;
-  margin: 0 auto 26px;
+  margin: 0 auto 28px;
 }
 
 .fondu-enter-active,
 .fondu-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
 .fondu-enter-from,
@@ -460,16 +522,16 @@ function nouveauMessage() {
   transform: translateY(8px);
 }
 
-@media (max-width: 960px) {
+@media (max-width: 980px) {
   .contact__inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 44px;
   }
 }
 
 @media (max-width: 620px) {
   .contact__carte {
-    padding: 24px 20px 26px;
+    padding: 28px 20px 30px;
   }
 
   .formulaire__ligne {

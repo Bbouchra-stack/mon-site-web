@@ -1,12 +1,23 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import LogoMark from './LogoMark.vue'
 
-const links = [
-  { href: '#methode', label: 'Notre méthode' },
-  { href: '#avantages', label: 'Nos avantages' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#faq', label: 'FAQ' },
-]
+// Sur les pages légales, les ancres doivent repartir vers l'accueil ("/#methode").
+const props = defineProps({
+  prefixeAncres: { type: String, default: '' },
+})
+
+const links = computed(() =>
+  [
+    { ancre: '#methode', label: 'Notre méthode' },
+    { ancre: '#avantages', label: 'Nos avantages' },
+    { ancre: '#portfolio', label: 'Portfolio' },
+    { ancre: '#faq', label: 'FAQ' },
+  ].map((lien) => ({ ...lien, href: `${props.prefixeAncres}${lien.ancre}` })),
+)
+
+const lienAccueil = computed(() => `${props.prefixeAncres}#accueil`)
+const lienContact = computed(() => `${props.prefixeAncres}#contact`)
 
 const menuOuvert = ref(false)
 const estDefile = ref(false)
@@ -38,20 +49,26 @@ onBeforeUnmount(() => {
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <div class="container entete__inner">
-      <a href="#accueil" class="logo" @click="fermerMenu">
-        <span class="logo__mark" aria-hidden="true">B</span>
+      <a :href="lienAccueil" class="logo" @click="fermerMenu">
+        <LogoMark :taille="38" />
         <span class="logo__texte">
-          Bouchra <span class="logo__accent">Web Studio</span>
+          <span class="logo__nom">BELWEB</span>
+          <span class="logo__studio">Studio</span>
         </span>
       </a>
 
-      <nav class="nav" :class="{ 'nav--ouvert': menuOuvert }" aria-label="Navigation principale">
+      <nav
+        id="menu-principal"
+        class="nav"
+        :class="{ 'nav--ouvert': menuOuvert }"
+        aria-label="Navigation principale"
+      >
         <ul class="nav__liste">
-          <li v-for="lien in links" :key="lien.href">
+          <li v-for="lien in links" :key="lien.ancre">
             <a :href="lien.href" class="nav__lien" @click="fermerMenu">{{ lien.label }}</a>
           </li>
           <li class="nav__cta">
-            <a href="#contact" class="btn btn--primary btn--sm" @click="fermerMenu">
+            <a :href="lienContact" class="btn btn--primary btn--sm" @click="fermerMenu">
               Nous contacter
             </a>
           </li>
@@ -79,15 +96,15 @@ onBeforeUnmount(() => {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid transparent;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  background-color: var(--c-navy);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .entete--defile {
-  border-bottom-color: var(--c-border);
-  box-shadow: var(--shadow-sm);
+  background-color: rgba(6, 12, 43, 0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(6, 12, 43, 0.35);
 }
 
 .entete__inner {
@@ -103,75 +120,82 @@ onBeforeUnmount(() => {
   left: 50%;
   transform: translate(-50%, -200%);
   padding: 10px 18px;
-  background: var(--c-primary);
-  color: #fff;
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  background: var(--c-gold);
+  color: var(--c-navy);
+  font-weight: 600;
   transition: transform 0.2s ease;
 }
 
 .skip-link:focus {
   transform: translate(-50%, 0);
-  color: #fff;
+  color: var(--c-navy);
 }
 
 /* Logo */
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--c-ink);
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
-}
-
-.logo__mark {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
+  gap: 12px;
   color: #fff;
-  font-size: 1.15rem;
-  font-weight: 800;
 }
 
-.logo__accent {
-  color: var(--c-primary);
+.logo:hover {
+  color: #fff;
+}
+
+.logo__texte {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.logo__nom {
+  font-family: var(--font-titre);
+  font-size: 1.24rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--c-gold);
+}
+
+.logo__studio {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 /* Navigation */
 .nav__liste {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 34px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .nav__lien {
-  color: var(--c-text);
-  font-weight: 500;
-  font-size: 0.98rem;
   position: relative;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .nav__lien::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -6px;
+  bottom: -7px;
   width: 0;
-  height: 2px;
-  border-radius: 2px;
-  background-color: var(--c-primary);
-  transition: width 0.22s ease;
+  height: 1px;
+  background-color: var(--c-gold);
+  transition: width 0.28s ease;
 }
 
 .nav__lien:hover {
-  color: var(--c-primary);
+  color: var(--c-gold);
 }
 
 .nav__lien:hover::after {
@@ -179,8 +203,8 @@ onBeforeUnmount(() => {
 }
 
 .btn--sm {
-  padding: 10px 20px;
-  font-size: 0.95rem;
+  padding: 11px 24px;
+  font-size: 0.76rem;
 }
 
 /* Burger */
@@ -192,22 +216,21 @@ onBeforeUnmount(() => {
   width: 44px;
   height: 44px;
   padding: 0 10px;
-  border: 1px solid var(--c-border);
-  border-radius: 12px;
-  background-color: var(--c-surface);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  background-color: transparent;
 }
 
 .burger__barre {
   display: block;
-  height: 2px;
+  height: 1.5px;
   width: 100%;
-  border-radius: 2px;
-  background-color: var(--c-ink);
+  background-color: #fff;
   transition: transform 0.22s ease, opacity 0.22s ease;
 }
 
 .burger__barre--1 {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(6.5px) rotate(45deg);
 }
 
 .burger__barre--2 {
@@ -215,10 +238,10 @@ onBeforeUnmount(() => {
 }
 
 .burger__barre--3 {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 940px) {
   .burger {
     display: flex;
   }
@@ -228,29 +251,28 @@ onBeforeUnmount(() => {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--c-surface);
-    border-bottom: 1px solid var(--c-border);
-    box-shadow: var(--shadow);
+    background-color: var(--c-navy-deep);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.28s ease;
+    transition: max-height 0.32s ease;
   }
 
   .nav--ouvert {
-    max-height: 420px;
+    max-height: 440px;
   }
 
   .nav__liste {
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;
-    padding: 14px 20px 22px;
+    gap: 0;
+    padding: 10px 24px 26px;
   }
 
   .nav__lien {
     display: block;
-    padding: 12px 4px;
-    border-bottom: 1px solid var(--c-bg-soft);
+    padding: 15px 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .nav__lien::after {
@@ -258,7 +280,7 @@ onBeforeUnmount(() => {
   }
 
   .nav__cta {
-    margin-top: 12px;
+    margin-top: 20px;
   }
 
   .nav__cta .btn {

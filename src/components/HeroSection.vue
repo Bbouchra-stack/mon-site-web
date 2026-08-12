@@ -9,27 +9,30 @@ const reperes = [
 <template>
   <section id="accueil" class="hero">
     <div class="hero__halo" aria-hidden="true"></div>
+    <div class="hero__grille" aria-hidden="true"></div>
 
     <div class="container hero__inner">
       <div class="hero__contenu">
-        <span class="eyebrow">Création de sites web</span>
-        <h1 class="hero__titre">
+        <span class="eyebrow" v-reveal>Création de sites web · Casablanca</span>
+
+        <h1 class="hero__titre" v-reveal="80">
           Votre activité mérite un site
-          <span class="hero__surligne">à la hauteur</span>
+          <em>à la hauteur</em>
         </h1>
-        <p class="hero__sous-titre">
-          Bouchra Web Studio conçoit des sites vitrines sur mesure pour les
-          artisans, indépendants et petites entreprises. Un site élégant,
-          rapide, visible sur Google — et pensé pour vous amener de vrais
-          clients.
+
+        <p class="hero__sous-titre" v-reveal="180">
+          BELWEB Studio conçoit des sites vitrines sur mesure pour les cabinets
+          médicaux, les indépendants et les petites entreprises. Une image
+          soignée, un site rapide et visible sur Google — pensé pour vous
+          amener de vrais patients et clients.
         </p>
 
-        <div class="hero__actions">
+        <div class="hero__actions" v-reveal="280">
           <a href="#contact" class="btn btn--primary">Nous contacter</a>
-          <a href="#portfolio" class="btn btn--ghost">Voir nos réalisations</a>
+          <a href="#portfolio" class="btn btn--ghost-clair">Voir nos réalisations</a>
         </div>
 
-        <ul class="hero__reperes">
+        <ul class="hero__reperes" v-reveal="380">
           <li v-for="repere in reperes" :key="repere.libelle">
             <strong>{{ repere.valeur }}</strong>
             <span>{{ repere.libelle }}</span>
@@ -37,7 +40,7 @@ const reperes = [
         </ul>
       </div>
 
-      <div class="hero__visuel" aria-hidden="true">
+      <div class="hero__visuel" aria-hidden="true" v-reveal="200">
         <div class="maquette">
           <div class="maquette__barre">
             <span></span><span></span><span></span>
@@ -67,24 +70,36 @@ const reperes = [
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 84px 0 92px;
-  background: linear-gradient(180deg, #ffffff 0%, var(--c-bg) 100%);
+  padding: 108px 0 116px;
+  background-color: var(--c-navy);
+  color: rgba(255, 255, 255, 0.74);
   scroll-margin-top: var(--header-h);
 }
 
 .hero__halo {
   position: absolute;
-  top: -220px;
-  right: -160px;
-  width: 620px;
-  height: 620px;
+  top: -280px;
+  right: -180px;
+  width: 760px;
+  height: 760px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(79, 70, 229, 0.16) 0%,
-    rgba(14, 165, 164, 0.1) 45%,
-    transparent 70%
+    rgba(227, 185, 63, 0.16) 0%,
+    rgba(47, 179, 168, 0.09) 42%,
+    transparent 68%
   );
+  pointer-events: none;
+}
+
+/* Fine trame décorative */
+.hero__grille {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 68px 68px;
+  mask-image: radial-gradient(circle at 60% 40%, #000 0%, transparent 72%);
   pointer-events: none;
 }
 
@@ -92,61 +107,45 @@ const reperes = [
   position: relative;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
+  gap: 64px;
   align-items: center;
 }
 
 .hero__titre {
-  font-size: clamp(2.1rem, 1.3rem + 3.4vw, 3.4rem);
-  margin-bottom: 20px;
+  font-size: clamp(2.3rem, 1.3rem + 3.6vw, 3.7rem);
+  color: #fff;
+  margin-bottom: 24px;
 }
 
-.hero__surligne {
-  position: relative;
-  display: inline-block;
-  isolation: isolate;
-  color: var(--c-primary);
-}
-
-.hero__surligne::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 4px;
-  height: 10px;
-  border-radius: 6px;
-  background: linear-gradient(
-    90deg,
-    rgba(79, 70, 229, 0.18),
-    rgba(14, 165, 164, 0.28)
-  );
-  z-index: -1;
+.hero__titre em {
+  display: block;
+  font-style: italic;
+  color: var(--c-gold);
 }
 
 .hero__sous-titre {
-  font-size: 1.1rem;
-  color: var(--c-muted);
+  font-size: 1.06rem;
+  color: rgba(255, 255, 255, 0.66);
   max-width: 52ch;
-  margin-bottom: 32px;
+  margin-bottom: 38px;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: 44px;
+  margin-bottom: 54px;
 }
 
 .hero__reperes {
   display: grid;
   grid-template-columns: repeat(3, auto);
   justify-content: start;
-  gap: 22px 38px;
+  gap: 22px 44px;
   margin: 0;
-  padding: 26px 0 0;
+  padding: 30px 0 0;
   list-style: none;
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .hero__reperes li {
@@ -155,14 +154,16 @@ const reperes = [
 }
 
 .hero__reperes strong {
-  font-size: 1.5rem;
-  color: var(--c-ink);
+  font-family: var(--font-titre);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--c-gold);
   line-height: 1.2;
 }
 
 .hero__reperes span {
-  font-size: 0.9rem;
-  color: var(--c-muted);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* Maquette décorative */
@@ -172,10 +173,9 @@ const reperes = [
 }
 
 .maquette {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   background-color: var(--c-surface);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--c-border);
+  box-shadow: 0 34px 70px rgba(0, 0, 0, 0.42);
   overflow: hidden;
   margin-right: 52px;
   transform: rotate(-1.2deg);
@@ -185,23 +185,19 @@ const reperes = [
   display: flex;
   gap: 7px;
   padding: 13px 16px;
-  background-color: var(--c-bg-soft);
+  background-color: var(--c-cream-soft);
   border-bottom: 1px solid var(--c-border);
 }
 
 .maquette__barre span {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background-color: #cbd5e1;
+  background-color: #cfc9ba;
 }
 
 .maquette__barre span:first-child {
-  background-color: #f9a8a8;
-}
-
-.maquette__barre span:nth-child(2) {
-  background-color: #fcd9a0;
+  background-color: var(--c-gold);
 }
 
 .maquette__ecran {
@@ -209,25 +205,24 @@ const reperes = [
 }
 
 .maquette__bloc {
-  border-radius: 8px;
-  background-color: var(--c-bg-soft);
+  border-radius: 4px;
+  background-color: var(--c-cream-soft);
   margin-bottom: 12px;
 }
 
 .maquette__bloc--titre {
-  height: 26px;
-  width: 65%;
-  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
-  opacity: 0.85;
+  height: 24px;
+  width: 62%;
+  background: linear-gradient(90deg, var(--c-navy), var(--c-navy-soft));
 }
 
 .maquette__bloc--texte {
-  height: 12px;
+  height: 10px;
   width: 100%;
 }
 
 .maquette__bloc--texte.court {
-  width: 72%;
+  width: 70%;
   margin-bottom: 26px;
 }
 
@@ -238,29 +233,33 @@ const reperes = [
 }
 
 .maquette__carte {
-  height: 78px;
-  border-radius: 12px;
-  background: linear-gradient(160deg, var(--c-primary-light), var(--c-accent-light));
+  height: 76px;
+  border-radius: 6px;
+  background-color: var(--c-cream);
   border: 1px solid var(--c-border);
+}
+
+.maquette__carte:first-child {
+  background: linear-gradient(160deg, var(--c-gold-soft), var(--c-cream));
+  border-color: var(--c-gold-soft);
 }
 
 .maquette-mobile {
   position: absolute;
   right: 0;
   bottom: -4px;
-  width: 122px;
+  width: 124px;
   padding: 16px 12px;
-  border-radius: 20px;
+  border-radius: 14px;
   background-color: var(--c-surface);
-  border: 1px solid var(--c-border);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 26px 50px rgba(0, 0, 0, 0.4);
   transform: rotate(3deg);
 }
 
 .maquette-mobile__bloc {
-  height: 10px;
-  border-radius: 6px;
-  background-color: var(--c-bg-soft);
+  height: 9px;
+  border-radius: 4px;
+  background-color: var(--c-cream-soft);
   margin-bottom: 8px;
 }
 
@@ -270,16 +269,15 @@ const reperes = [
 
 .maquette-mobile__carte {
   height: 62px;
-  border-radius: 12px;
-  background: linear-gradient(160deg, var(--c-primary), var(--c-accent));
-  opacity: 0.9;
+  border-radius: 8px;
+  background: linear-gradient(160deg, var(--c-gold), var(--c-teal));
   margin-top: 12px;
 }
 
 @media (max-width: 1024px) {
   .hero__inner {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 52px;
   }
 
   .hero__visuel {
@@ -289,7 +287,7 @@ const reperes = [
 
 @media (max-width: 640px) {
   .hero {
-    padding: 56px 0 64px;
+    padding: 68px 0 76px;
   }
 
   .hero__actions .btn {
@@ -298,7 +296,7 @@ const reperes = [
 
   .hero__reperes {
     grid-template-columns: repeat(2, auto);
-    gap: 20px 30px;
+    gap: 20px 32px;
   }
 
   .maquette-mobile {

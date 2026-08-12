@@ -3,11 +3,11 @@ const projets = [
   {
     id: 1,
     image: '/portfolio/projet-1.svg',
-    alt: "Aperçu du site vitrine d'un artisan (visuel d'illustration)",
-    categorie: 'Artisanat',
-    titre: 'Atelier Céramique — Site vitrine',
+    alt: "Aperçu du site d'un cabinet médical (visuel d'illustration)",
+    categorie: 'Cabinet médical',
+    titre: 'Cabinet Anfa — Site & rendez-vous',
     description:
-      "Une vitrine chaleureuse pour présenter les collections, les ateliers et les points de vente, avec une galerie photo et un formulaire de réservation.",
+      "Présentation de l'équipe et des spécialités, horaires, plan d'accès et prise de rendez-vous en ligne : le patient trouve tout avant même d'appeler.",
   },
   {
     id: 2,
@@ -31,19 +31,24 @@ const projets = [
 </script>
 
 <template>
-  <section id="portfolio" class="section">
+  <section id="portfolio" class="section section--surface">
     <div class="container">
       <div class="section__head">
-        <span class="eyebrow">Portfolio</span>
-        <h2 class="section__title">Quelques exemples de réalisations</h2>
-        <p class="section__subtitle">
+        <span class="eyebrow" v-reveal>Portfolio</span>
+        <h2 class="section__title" v-reveal="60">Quelques exemples de réalisations</h2>
+        <p class="section__subtitle" v-reveal="120">
           Des projets d'illustration qui donnent un aperçu de ce que nous
           pouvons créer pour votre activité.
         </p>
       </div>
 
       <ul class="projets">
-        <li v-for="projet in projets" :key="projet.id" class="projet">
+        <li
+          v-for="(projet, index) in projets"
+          :key="projet.id"
+          class="projet"
+          v-reveal="index * 150"
+        >
           <div class="projet__media">
             <img :src="projet.image" :alt="projet.alt" loading="lazy" width="800" height="560" />
             <span class="projet__categorie">{{ projet.categorie }}</span>
@@ -55,7 +60,7 @@ const projets = [
         </li>
       </ul>
 
-      <p class="projets__note">
+      <p class="projets__note" v-reveal="120">
         Un projet en tête&nbsp;?
         <a href="#contact">Parlons-en, le premier échange est gratuit.</a>
       </p>
@@ -67,7 +72,7 @@ const projets = [
 .projets {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 28px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -79,20 +84,19 @@ const projets = [
   overflow: hidden;
   background-color: var(--c-surface);
   border: 1px solid var(--c-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  border-radius: var(--radius);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .projet:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow);
 }
 
 .projet__media {
   position: relative;
   overflow: hidden;
-  background-color: var(--c-bg-soft);
+  background-color: var(--c-navy);
 }
 
 .projet__media img {
@@ -100,33 +104,34 @@ const projets = [
   height: auto;
   aspect-ratio: 10 / 7;
   object-fit: cover;
-  transition: transform 0.35s ease;
+  transition: transform 0.5s ease;
 }
 
 .projet:hover .projet__media img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .projet__categorie {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.94);
-  color: var(--c-primary-dark);
-  font-size: 0.78rem;
+  top: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  border-radius: 2px;
+  background-color: var(--c-gold);
+  color: var(--c-navy);
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .projet__corps {
-  padding: 24px 22px 26px;
+  padding: 28px 26px 30px;
 }
 
 .projet__titre {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .projet__description {
@@ -136,13 +141,14 @@ const projets = [
 }
 
 .projets__note {
-  margin: 36px 0 0;
+  margin: 46px 0 0;
   text-align: center;
   color: var(--c-muted);
 }
 
 .projets__note a {
   font-weight: 600;
+  border-bottom: 1px solid var(--c-gold);
 }
 
 @media (max-width: 900px) {

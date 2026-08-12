@@ -2,18 +2,21 @@
 const avantages = [
   {
     id: 'personnalise',
+    ton: 'or',
     titre: 'Site 100 % personnalisé',
     description:
       "Pas de template revendu à des centaines d'entreprises : chaque site est dessiné à partir de votre univers, de vos couleurs et de vos besoins réels.",
   },
   {
     id: 'accompagnement',
+    ton: 'turquoise',
     titre: 'Accompagnement et formation',
     description:
       'Nous vous formons à la prise en main de votre site pour que vous puissiez modifier vos textes, vos photos et vos horaires en toute autonomie.',
   },
   {
     id: 'maintenance',
+    ton: 'navy',
     titre: 'Suivi et maintenance',
     description:
       'Mises à jour, sauvegardes, sécurité et corrections : votre site reste rapide et fiable dans la durée, avec un interlocuteur unique et réactif.',
@@ -22,19 +25,25 @@ const avantages = [
 </script>
 
 <template>
-  <section id="avantages" class="section section--alt">
+  <section id="avantages" class="section section--surface">
     <div class="container">
       <div class="section__head">
-        <span class="eyebrow">Nos avantages</span>
-        <h2 class="section__title">Pourquoi nous confier votre site&nbsp;?</h2>
-        <p class="section__subtitle">
+        <span class="eyebrow" v-reveal>Nos avantages</span>
+        <h2 class="section__title" v-reveal="60">Pourquoi nous confier votre site&nbsp;?</h2>
+        <p class="section__subtitle" v-reveal="120">
           Un studio à taille humaine, disponible avant, pendant et après la mise
           en ligne.
         </p>
       </div>
 
       <ul class="avantages">
-        <li v-for="avantage in avantages" :key="avantage.id" class="avantage">
+        <li
+          v-for="(avantage, index) in avantages"
+          :key="avantage.id"
+          class="avantage"
+          :class="`avantage--${avantage.ton}`"
+          v-reveal="index * 150"
+        >
           <span class="avantage__icone" aria-hidden="true">
             <!-- Site 100 % personnalisé -->
             <svg
@@ -42,7 +51,7 @@ const avantages = [
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="1.8"
+              stroke-width="1.5"
               stroke-linecap="round"
               stroke-linejoin="round"
             >
@@ -57,7 +66,7 @@ const avantages = [
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="1.8"
+              stroke-width="1.5"
               stroke-linecap="round"
               stroke-linejoin="round"
             >
@@ -72,7 +81,7 @@ const avantages = [
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="1.8"
+              stroke-width="1.5"
               stroke-linecap="round"
               stroke-linejoin="round"
             >
@@ -93,55 +102,71 @@ const avantages = [
 .avantages {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 28px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .avantage {
-  padding: 34px 28px;
+  position: relative;
+  padding: 42px 32px 38px;
   border: 1px solid var(--c-border);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, #ffffff 0%, var(--c-bg) 100%);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  border-radius: var(--radius);
+  background-color: var(--c-cream);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .avantage:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  border-color: var(--teinte-bordure);
   box-shadow: var(--shadow);
+}
+
+.avantage--or {
+  --teinte-fond: #fdf6e3;
+  --teinte-bordure: #eddfb6;
+  --teinte-texte: #a8801d;
+}
+
+.avantage--turquoise {
+  --teinte-fond: #e6f6f3;
+  --teinte-bordure: #c2e6df;
+  --teinte-texte: #1c8578;
+}
+
+.avantage--navy {
+  --teinte-fond: #ebedf6;
+  --teinte-bordure: #d2d7ea;
+  --teinte-texte: #16225c;
 }
 
 .avantage__icone {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
-  margin-bottom: 20px;
-  border-radius: 18px;
-  background-color: var(--c-primary-light);
-  color: var(--c-primary);
+  width: 58px;
+  height: 58px;
+  margin-bottom: 26px;
+  border-radius: 50%;
+  background-color: var(--teinte-fond);
+  border: 1px solid var(--teinte-bordure);
+  color: var(--teinte-texte);
 }
 
 .avantage__icone svg {
-  width: 28px;
-  height: 28px;
-}
-
-.avantage:nth-child(2) .avantage__icone {
-  background-color: var(--c-accent-light);
-  color: var(--c-accent);
+  width: 26px;
+  height: 26px;
 }
 
 .avantage__titre {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.24rem;
+  margin-bottom: 12px;
 }
 
 .avantage__description {
   margin: 0;
   color: var(--c-muted);
-  font-size: 0.98rem;
+  font-size: 0.97rem;
 }
 
 @media (max-width: 900px) {
