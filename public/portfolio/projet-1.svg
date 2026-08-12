@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="Aperçu de projet - placeholder">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#0ea5a4" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="560" fill="url(#g1)" />
+  <circle cx="660" cy="90" r="150" fill="#ffffff" opacity="0.08" />
+  <circle cx="120" cy="500" r="110" fill="#ffffff" opacity="0.08" />
+  <g transform="translate(90 110)">
+    <rect width="620" height="340" rx="20" fill="#ffffff" opacity="0.95" />
+    <rect x="0" y="0" width="620" height="42" rx="20" fill="#e2e8f0" />
+    <rect x="0" y="26" width="620" height="16" fill="#e2e8f0" />
+    <circle cx="28" cy="21" r="6" fill="#f9a8a8" />
+    <circle cx="48" cy="21" r="6" fill="#fcd9a0" />
+    <circle cx="68" cy="21" r="6" fill="#cbd5e1" />
+    <rect x="36" y="78" width="240" height="22" rx="8" fill="#4f46e5" />
+    <rect x="36" y="116" width="380" height="12" rx="6" fill="#e2e8f0" />
+    <rect x="36" y="140" width="300" height="12" rx="6" fill="#e2e8f0" />
+    <rect x="36" y="180" width="140" height="34" rx="17" fill="#0ea5a4" />
+    <rect x="36" y="246" width="168" height="62" rx="12" fill="#eef2ff" />
+    <rect x="226" y="246" width="168" height="62" rx="12" fill="#eef2ff" />
+    <rect x="416" y="246" width="168" height="62" rx="12" fill="#eef2ff" />
+  </g>
+  <text x="400" y="510" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="24" fill="#ffffff" opacity="0.85">
+    Aperçu à venir
+  </text>
+</svg>
