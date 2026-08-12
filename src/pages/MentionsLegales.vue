@@ -1,6 +1,6 @@
 <script setup>
 import LegalLayout from '../components/LegalLayout.vue'
-import { coordonnees } from '../composables/coordonnees.js'
+import { coordonnees, hebergeur } from '../composables/coordonnees.js'
 </script>
 
 <template>
@@ -11,70 +11,39 @@ import { coordonnees } from '../composables/coordonnees.js'
   >
     <div class="encadre">
       <p>
-        <strong>À compléter avant la mise en ligne.</strong> Les champs signalés
-        en jaune doivent être renseignés avec les informations officielles du
-        studio (registre du commerce, ICE, identifiant fiscal, hébergeur,
-        déclaration CNDP). Nous vous recommandons de faire relire ces pages par
-        un juriste avant publication.
+        <strong>Reste à compléter avant la mise en ligne :</strong> le numéro de
+        récépissé de déclaration à la CNDP (section 4). Nous vous recommandons
+        également de faire relire ces pages par un juriste avant publication.
       </p>
     </div>
 
     <h2>1. Éditeur du site</h2>
-    <p>
-      Le présent site est édité par&nbsp;:
-    </p>
+    <p>Le présent site est édité par&nbsp;:</p>
     <ul>
       <li><strong>Dénomination sociale&nbsp;:</strong> {{ coordonnees.nom }}</li>
-      <li>
-        <strong>Forme juridique&nbsp;:</strong>
-        <span class="a-completer">SARL / SARL AU / auto-entrepreneur — à préciser</span>
-      </li>
-      <li>
-        <strong>Capital social&nbsp;:</strong>
-        <span class="a-completer">montant en dirhams</span>
-      </li>
+      <li><strong>Forme juridique&nbsp;:</strong> {{ coordonnees.formeJuridique }}</li>
       <li>
         <strong>Siège social&nbsp;:</strong> {{ coordonnees.adresseLigne1 }},
         {{ coordonnees.adresseLigne2 }}, Maroc
       </li>
       <li>
-        <strong>Registre du commerce (RC)&nbsp;:</strong>
-        <span class="a-completer">n° RC — Tribunal de commerce de Casablanca</span>
-      </li>
-      <li>
         <strong>Identifiant Commun de l'Entreprise (ICE)&nbsp;:</strong>
-        <span class="a-completer">n° ICE</span>
-      </li>
-      <li>
-        <strong>Identifiant fiscal (IF)&nbsp;:</strong>
-        <span class="a-completer">n° IF</span>
-      </li>
-      <li>
-        <strong>Taxe professionnelle&nbsp;:</strong>
-        <span class="a-completer">n° TP</span>
+        n° {{ coordonnees.ice }}
       </li>
       <li><strong>Téléphone&nbsp;:</strong> {{ coordonnees.telephoneAffiche }}</li>
       <li><strong>E-mail&nbsp;:</strong> {{ coordonnees.email }}</li>
-      <li>
-        <strong>Directeur de la publication&nbsp;:</strong>
-        <span class="a-completer">nom et prénom du représentant légal</span>
-      </li>
     </ul>
 
     <h2>2. Hébergement du site</h2>
     <p>Le site est hébergé par&nbsp;:</p>
     <ul>
+      <li><strong>Hébergeur&nbsp;:</strong> {{ hebergeur.nom }}</li>
+      <li><strong>Adresse&nbsp;:</strong> {{ hebergeur.adresse }}</li>
       <li>
-        <strong>Hébergeur&nbsp;:</strong>
-        <span class="a-completer">raison sociale de l'hébergeur</span>
-      </li>
-      <li>
-        <strong>Adresse&nbsp;:</strong>
-        <span class="a-completer">adresse postale complète</span>
-      </li>
-      <li>
-        <strong>Téléphone / site web&nbsp;:</strong>
-        <span class="a-completer">coordonnées de l'hébergeur</span>
+        <strong>Site web&nbsp;:</strong>
+        <a :href="hebergeur.siteLien" target="_blank" rel="noopener noreferrer">
+          {{ hebergeur.siteAffiche }}
+        </a>
       </li>
     </ul>
 

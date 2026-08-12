@@ -1,6 +1,6 @@
 <script setup>
 import LegalLayout from '../components/LegalLayout.vue'
-import { coordonnees } from '../composables/coordonnees.js'
+import { coordonnees, hebergeur } from '../composables/coordonnees.js'
 </script>
 
 <template>
@@ -11,11 +11,10 @@ import { coordonnees } from '../composables/coordonnees.js'
   >
     <div class="encadre">
       <p>
-        <strong>À compléter avant la mise en ligne.</strong> Renseignez le
-        numéro de déclaration CNDP et les coordonnées de votre hébergeur, puis
-        faites relire cette page par un juriste. Toute modification du
-        formulaire ou ajout d'un outil de mesure d'audience doit être reportée
-        ici.
+        <strong>Reste à compléter avant la mise en ligne :</strong> le numéro de
+        déclaration CNDP. Faites ensuite relire cette page par un juriste. Toute
+        modification du formulaire ou ajout d'un outil de mesure d'audience doit
+        être reportée ici.
       </p>
     </div>
 
@@ -95,10 +94,9 @@ import { coordonnees } from '../composables/coordonnees.js'
 
     <p>
       Nous ne collectons <strong>aucune donnée sensible</strong> au sens de
-      l'article 1er de la loi 09-08 (santé, origine, opinions politiques ou
-      religieuses, vie sexuelle). Merci de ne pas faire figurer d'informations
-      de cette nature dans le champ « description du projet », en particulier
-      s'agissant de données concernant des patients.
+      l'article 1er de la loi 09-08. Merci de ne pas faire figurer
+      d'informations de cette nature dans le champ « description du projet », en
+      particulier s'agissant de données concernant vos clients.
     </p>
 
     <h2>3. Sur quel fondement&nbsp;?</h2>
@@ -114,8 +112,8 @@ import { coordonnees } from '../composables/coordonnees.js'
       Vos données sont destinées aux seules personnes habilitées de
       {{ coordonnees.nom }} chargées du suivi commercial. Elles peuvent être
       hébergées par notre prestataire technique
-      (<span class="a-completer">hébergeur</span>), agissant en qualité de
-      sous-traitant et tenu à une obligation de confidentialité.
+      <strong>{{ hebergeur.nom }}</strong> ({{ hebergeur.adresse }}), agissant
+      en qualité de sous-traitant et tenu à une obligation de confidentialité.
     </p>
     <p>
       <strong>Vos données ne sont ni vendues, ni louées, ni échangées</strong>

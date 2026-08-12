@@ -56,7 +56,7 @@ délais se règlent dans `DELAI_AVANT_REDUCTION` (`CookieBanner.vue`).
 
 | Ce que vous voulez changer | Fichier |
 | --- | --- |
-| **Téléphone, e-mail, adresse, WhatsApp** | `src/composables/coordonnees.js` — un seul endroit pour tout le site |
+| **Téléphone, e-mail, adresse, WhatsApp, ICE, hébergeur** | `src/composables/coordonnees.js` — un seul endroit pour tout le site |
 | Couleurs, typographie, espacements | `src/style.css` (bloc `:root` en haut) |
 | Les 4 étapes de la méthode | `src/components/MethodSection.vue` (tableau `etapes`) |
 | Les 3 avantages | `src/components/AdvantagesSection.vue` (tableau `avantages`) |
@@ -97,11 +97,14 @@ Les animations sont automatiquement désactivées si le visiteur a activé
   placeholders, à remplacer par les vraies captures de projets.
 - **Logo définitif** : `src/components/LogoMark.vue` et `public/favicon.svg`
   reprennent l'esprit du logo, à remplacer par le fichier officiel.
-- **Mentions légales** : renseigner RC, ICE, IF, forme juridique, directeur de
-  publication et hébergeur (champs signalés en jaune sur la page).
-- **Politique de confidentialité** : renseigner le numéro de déclaration CNDP.
-  Les textes citent la **loi n° 09-08** et son décret d'application n° 2-09-165.
-  Une relecture par un juriste est recommandée avant publication.
+- **Déclaration CNDP** : renseigner le numéro de récépissé dans
+  `src/pages/MentionsLegales.vue` (section 4) et
+  `src/pages/PolitiqueConfidentialite.vue` (section 1) — seuls champs encore en
+  attente, signalés en jaune sur les pages. Les textes citent la **loi n° 09-08**
+  et son décret d'application n° 2-09-165 ; une relecture par un juriste reste
+  recommandée avant publication.
+- **Directeur de publication** : absent du document fourni par le studio, donc
+  absent des mentions légales. À confirmer avec un juriste.
 - **Réseaux sociaux** : remplacer les URL génériques par les vrais comptes.
 - **Formulaire de contact** : la validation est faite côté navigateur, puis un
   message de confirmation s'affiche. **Aucun backend n'est branché** — voir la
