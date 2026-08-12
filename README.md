@@ -66,6 +66,18 @@ délais se règlent dans `DELAI_AVANT_REDUCTION` (`CookieBanner.vue`).
 | Liens réseaux sociaux | `src/components/TheFooter.vue` (tableau `reseaux`) |
 | Textes légaux | `src/pages/MentionsLegales.vue`, `src/pages/PolitiqueConfidentialite.vue` |
 
+## Skills Claude Code
+
+Le dossier `.claude/skills/` contient les skills disponibles quand on travaille
+sur ce projet avec Claude Code. Ils sont versionnés avec le site : toute
+personne qui clone le dépôt en dispose automatiquement.
+
+| Skill | Rôle |
+| --- | --- |
+| `frontend-design` | Direction artistique : palette, typographie, mise en page et copie, pour éviter les rendus « gabarit ». Source : [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/frontend-design), licence Apache 2.0. |
+
+Pour l'invoquer explicitement dans une session : `/frontend-design`.
+
 ## Charte graphique
 
 Définie en variables CSS dans `src/style.css`, d'après le logo :
