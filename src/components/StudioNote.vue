@@ -17,7 +17,7 @@
 
 const paragraphes = [
   "J'ai créé BELWEB Studio avec une conviction simple : un site web n'est pas un produit qu'on prend sur une étagère, c'est une vitrine qu'on dessine pour une activité précise.",
-  "Trop de praticiens, d'indépendants et de petites entreprises se retrouvent avec un modèle recyclé qu'ils n'osent montrer à personne. Ici, chaque projet commence par une conversation, et vous parlez à la même personne du premier échange jusqu'à la mise en ligne.",
+  "Trop de professionnels et de petites entreprises se retrouvent avec un modèle recyclé qu'ils n'osent montrer à personne. Ici, chaque projet commence par une conversation, et vous parlez à la même personne du premier échange jusqu'à la mise en ligne.",
   "C'est plus lent qu'un site en trois clics. C'est aussi la seule façon d'obtenir quelque chose qui vous ressemble vraiment.",
 ]
 

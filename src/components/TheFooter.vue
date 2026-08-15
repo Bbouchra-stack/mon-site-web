@@ -42,8 +42,8 @@ const reseaux = [
           </span>
         </a>
         <p class="pied__baseline">
-          Création de sites web sur mesure pour les cabinets médicaux, les
-          indépendants et les petites entreprises.
+          Création de sites web sur mesure pour les professionnels et les
+          entreprises de Casablanca.
         </p>
 
         <ul class="reseaux">

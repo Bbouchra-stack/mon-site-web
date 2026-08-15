@@ -5,7 +5,7 @@ const etapes = [
     ton: 'or',
     titre: 'Premier échange',
     description:
-      "On prend le temps de discuter de votre activité, de votre patientèle ou de vos clients, et de vos objectifs. À l'issue de cet échange gratuit, vous recevez un devis clair et sans engagement.",
+      "On prend le temps de discuter de votre activité, de celles et ceux que vous recevez, et de vos objectifs. À l'issue de cet échange gratuit, vous recevez un devis clair et sans engagement.",
   },
   {
     numero: '02',

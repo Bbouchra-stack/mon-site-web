@@ -12,15 +12,15 @@ import PerformancePanel from './PerformancePanel.vue'
         <span class="eyebrow" v-reveal>Création de sites web · Casablanca</span>
 
         <h1 class="hero__titre" v-reveal="80">
-          Un site qui donne
-          <em>envie de vous confier</em>
-          un projet
+          On vous choisit
+          <em>avant</em>
+          de vous rencontrer
         </h1>
 
         <p class="hero__sous-titre" v-reveal="180">
           BELWEB Studio dessine et développe des sites sur mesure pour les
-          cabinets médicaux, les indépendants et les petites entreprises de
-          Casablanca. Élégants, rapides, trouvables sur Google.
+          professionnels et les entreprises de Casablanca. Élégants, rapides,
+          et pensés pour que celles et ceux qui vous cherchent vous trouvent.
         </p>
 
         <div class="hero__actions" v-reveal="280">
