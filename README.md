@@ -25,7 +25,7 @@ npm run preview  # prévisualisation du build
 
 | Section | Composant | Ancre |
 | --- | --- | --- |
-| Héro | `HeroSection.vue` | `#accueil` |
+| Héro (+ console de performance en direct) | `HeroSection.vue`, `PerformancePanel.vue` | `#accueil` |
 | Notre méthode (4 étapes colorées) | `MethodSection.vue` | `#methode` |
 | Nos avantages (3 points forts) | `AdvantagesSection.vue` | `#avantages` |
 | Ce que comprend votre site | `IncludedSection.vue` | `#inclus` |
@@ -102,11 +102,29 @@ Définie en variables CSS dans `src/style.css`, d'après le logo :
 
 - Navy : `#0a1440` — fonds sombres, textes
 - Navy profond : `#060c2b` — pied de page
-- Or : `#e3b93f` (`#f5d24e` en version claire) — accents, boutons, filets
+- Or : `#e3b93f` (`#f5d24e` en version claire) — **réservé aux fonds sombres**,
+  où il atteint 9,5:1
+- Or de texte : `#8f6417` (`--c-gold-texte`) — **à utiliser dès que le fond est
+  clair** : l'or de marque n'y atteint que 1,8:1, très en dessous du seuil WCAG
+  de 4,5:1
 - Turquoise : `#2fb3a8` — accent secondaire
 - Ivoire : `#fbf9f4` — fond général
-- Titres en *Playfair Display*, textes en *Inter* (chargés depuis Google Fonts,
-  avec repli sur Georgia / système si indisponibles)
+- Gris de texte : `#626a86` — 5,1:1 sur ivoire
+- Titres en *Playfair Display*, textes en *Inter*
+
+### Contraste
+
+Tous les textes des trois pages respectent le niveau WCAG AA (4,5:1 pour le
+texte courant, 3:1 pour les grands titres), vérifié automatiquement. Avant toute
+nouvelle couleur de texte, mesurer son contraste sur le fond réel.
+
+### Chargement des polices
+
+Les deux familles sont chargées en **polices variables**
+(`wght@500..700` et `wght@400..600`) : deux fichiers au lieu de sept graisses
+séparées. La feuille est demandée en `media="print"` puis basculée en `all` une
+fois chargée, pour ne pas retarder le premier affichage — avec un repli
+`<noscript>` pour les navigateurs sans JavaScript.
 
 ## Animations
 

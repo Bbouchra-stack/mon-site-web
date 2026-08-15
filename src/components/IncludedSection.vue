@@ -1,4 +1,10 @@
 <script setup>
+const reperes = [
+  { valeur: '3 sem.', libelle: 'Délai moyen de livraison' },
+  { valeur: '100 %', libelle: 'Sites responsives' },
+  { valeur: '6 mois', libelle: "D'accompagnement inclus" },
+]
+
 const prestations = [
   {
     titre: 'Un site impeccable sur tous les écrans',
@@ -48,6 +54,13 @@ const prestations = [
         </p>
       </div>
 
+      <ul class="reperes" v-reveal>
+        <li v-for="repere in reperes" :key="repere.libelle">
+          <strong>{{ repere.valeur }}</strong>
+          <span>{{ repere.libelle }}</span>
+        </li>
+      </ul>
+
       <ul class="prestations">
         <li
           v-for="(prestation, index) in prestations"
@@ -79,6 +92,37 @@ const prestations = [
 </template>
 
 <style scoped>
+.reperes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 56px;
+  margin: 0 0 56px;
+  padding: 0 0 44px;
+  border-bottom: 1px solid var(--c-border);
+  list-style: none;
+  text-align: center;
+}
+
+.reperes li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reperes strong {
+  font-family: var(--font-titre);
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--c-ink);
+}
+
+.reperes span {
+  font-size: 0.84rem;
+  color: var(--c-muted);
+}
+
 .prestations {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

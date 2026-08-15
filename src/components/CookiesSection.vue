@@ -113,7 +113,7 @@ const libelleChoix = {
 .famille__statut {
   display: block;
   margin-bottom: 7px;
-  color: #a8801d;
+  color: var(--c-gold-texte);
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.14em;

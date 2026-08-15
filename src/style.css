@@ -11,13 +11,16 @@
   --c-gold: #e3b93f;
   --c-gold-bright: #f5d24e;
   --c-gold-soft: #f7e9be;
+  /* Or lisible en texte sur fond clair : l'or de marque n'y atteint que
+     1,8:1 alors que le seuil WCAG AA est de 4,5:1. */
+  --c-gold-texte: #8f6417;
   --c-teal: #2fb3a8;
   --c-teal-soft: #dff4f1;
 
   /* Neutres chauds */
   --c-ink: #0a1440;
   --c-text: #4c5470;
-  --c-muted: #838ba5;
+  --c-muted: #626a86;   /* assombri : 3,2:1 → 5,1:1 (4,7:1 sur ivoire soutenu) */
   --c-border: #e7e2d6;
   --c-border-light: #f0ece2;
   --c-surface: #ffffff;
@@ -172,7 +175,7 @@ button {
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
-  color: var(--c-gold);
+  color: var(--c-gold-texte);
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.22em;
@@ -184,8 +187,14 @@ button {
   content: '';
   width: 26px;
   height: 1px;
-  background-color: var(--c-gold);
-  opacity: 0.55;
+  background-color: currentColor;
+  opacity: 0.45;
+}
+
+/* Sur fond sombre, l'or de marque redevient lisible (9,5:1). */
+.section--navy .eyebrow,
+.hero .eyebrow {
+  color: var(--c-gold);
 }
 
 .section__head .eyebrow {
@@ -381,6 +390,17 @@ button {
 }
 
 @media (max-width: 640px) {
+  /* Les filets du surtitre restent suspendus quand le texte passe à la
+     ligne : purement décoratifs, on les retire sur petit écran. */
+  .eyebrow {
+    letter-spacing: 0.18em;
+  }
+
+  .eyebrow::before,
+  .eyebrow::after {
+    display: none;
+  }
+
   .section {
     padding: 72px 0;
   }
