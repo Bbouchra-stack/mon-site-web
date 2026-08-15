@@ -12,9 +12,9 @@ import PerformancePanel from './PerformancePanel.vue'
         <span class="eyebrow" v-reveal>Création de sites web · Casablanca</span>
 
         <h1 class="hero__titre" v-reveal="80">
-          On vous choisit
-          <em>avant</em>
-          de vous rencontrer
+          Un site qui inspire
+          <em>confiance</em>
+          dès la première seconde
         </h1>
 
         <p class="hero__sous-titre" v-reveal="180">
@@ -80,13 +80,13 @@ import PerformancePanel from './PerformancePanel.vue'
 .hero__inner {
   position: relative;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 72px;
   align-items: center;
 }
 
 .hero__titre {
-  font-size: clamp(2.4rem, 1.2rem + 4.2vw, 4rem);
+  font-size: clamp(1.95rem, 1rem + 3.4vw, 3.35rem);
   line-height: 1.08;
   color: #fff;
   margin-bottom: 26px;
