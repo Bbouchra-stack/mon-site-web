@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const questions = [
   {
@@ -36,6 +36,13 @@ const questions = [
 
 const ouverte = ref(questions[0].id)
 
+// Répartition en deux colonnes sur grand écran (3 + 2).
+const milieu = Math.ceil(questions.length / 2)
+const colonnes = computed(() => [
+  questions.slice(0, milieu),
+  questions.slice(milieu),
+])
+
 function basculer(id) {
   ouverte.value = ouverte.value === id ? null : id
 }
@@ -54,11 +61,12 @@ function basculer(id) {
       </div>
 
       <div class="faq">
+        <div v-for="(colonne, iCol) in colonnes" :key="iCol" class="faq__colonne">
         <div
-          v-for="(item, index) in questions"
+          v-for="(item, index) in colonne"
           :key="item.id"
           class="faq__item"
-          v-reveal="index * 100"
+          v-reveal="(iCol * colonnes[0].length + index) * 90"
         >
           <h3 class="faq__titre">
             <button
@@ -94,6 +102,7 @@ function basculer(id) {
             </div>
           </Transition>
         </div>
+        </div>
       </div>
     </div>
   </section>
@@ -101,8 +110,13 @@ function basculer(id) {
 
 <style scoped>
 .faq {
-  max-width: 820px;
-  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 56px;
+  align-items: start;
+}
+
+.faq__colonne {
   border-top: 1px solid var(--c-border);
 }
 
@@ -187,6 +201,20 @@ function basculer(id) {
 .repli-leave-to {
   opacity: 0;
   transform: translateY(-6px);
+}
+
+@media (max-width: 900px) {
+  .faq {
+    grid-template-columns: 1fr;
+    max-width: 780px;
+    margin-inline: auto;
+    gap: 0;
+  }
+
+  /* Une seule bordure haute quand les colonnes s'empilent. */
+  .faq__colonne + .faq__colonne {
+    border-top: 0;
+  }
 }
 
 @media (max-width: 640px) {

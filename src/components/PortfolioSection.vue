@@ -1,31 +1,41 @@
 <script setup>
+/**
+ * Statuts affichés sur chaque carte. Le studio démarre : deux projets sont
+ * des concepts de démonstration, un seul est un chantier réel en cours.
+ * Le statut est visible sur la vignette pour ne jamais laisser croire à une
+ * réalisation livrée — un portfolio inventé se retourne toujours contre son
+ * auteur, et la loi 31-08 sanctionne la publicité trompeuse.
+ */
 const projets = [
   {
     id: 1,
     image: '/portfolio/projet-1.svg',
-    alt: "Aperçu du site d'un cabinet médical (visuel d'illustration)",
+    alt: "Aperçu du concept de site pour un cabinet dentaire",
     categorie: 'Cabinet médical',
-    titre: 'Cabinet Anfa — Site & rendez-vous',
+    statut: 'Concept',
+    titre: 'Cabinet Dentaire Sérénité',
     description:
       "Présentation de l'équipe et des spécialités, horaires, plan d'accès et prise de rendez-vous en ligne : le patient trouve tout avant même d'appeler.",
   },
   {
     id: 2,
-    image: '/portfolio/projet-2.svg',
-    alt: "Aperçu du site d'une coach indépendante (visuel d'illustration)",
-    categorie: 'Indépendant',
-    titre: 'Coach Bien-être — Prise de rendez-vous',
+    image: '/portfolio/projet-3.svg',
+    alt: "Aperçu du site d'un restaurant méditerranéen à Casablanca",
+    categorie: 'Restauration',
+    statut: 'En cours',
+    titre: 'Table méditerranéenne · Casablanca',
     description:
-      "Un site pensé mobile d'abord, avec présentation des accompagnements, témoignages clients et prise de rendez-vous en deux clics.",
+      "Carte du jour actualisable en autonomie, horaires, plan d'accès et réservations. Projet en cours de création — le site sera mis en ligne prochainement.",
   },
   {
     id: 3,
-    image: '/portfolio/projet-3.svg',
-    alt: "Aperçu du site d'un restaurant (visuel d'illustration)",
-    categorie: 'Restauration',
-    titre: 'Restaurant Le Cèdre — Carte en ligne',
+    image: '/portfolio/projet-2.svg',
+    alt: "Aperçu du concept de site pour un cabinet d'avocats",
+    categorie: 'Profession libérale',
+    statut: 'Concept',
+    titre: "Cabinet d'avocats — Droit des affaires",
     description:
-      'Carte du jour actualisable en autonomie, horaires, plan d’accès et réservations : tout ce qu’un client cherche avant de pousser la porte.',
+      "Domaines d'intervention, parcours des associés et prise de contact confidentielle. Une image sobre et rassurante, adaptée à une clientèle d'entreprise.",
   },
 ]
 </script>
@@ -35,10 +45,11 @@ const projets = [
     <div class="container">
       <div class="section__head">
         <span class="eyebrow" v-reveal>Portfolio</span>
-        <h2 class="section__title" v-reveal="60">Quelques exemples de réalisations</h2>
+        <h2 class="section__title" v-reveal="60">Un aperçu de ce que nous créons</h2>
         <p class="section__subtitle" v-reveal="120">
-          Des projets d'illustration qui donnent un aperçu de ce que nous
-          pouvons créer pour votre activité.
+          Le studio démarre : voici deux concepts de démonstration et un
+          chantier en cours. Nos premières réalisations livrées seront publiées
+          ici.
         </p>
       </div>
 
@@ -52,6 +63,12 @@ const projets = [
           <div class="projet__media">
             <img :src="projet.image" :alt="projet.alt" loading="lazy" width="800" height="560" />
             <span class="projet__categorie">{{ projet.categorie }}</span>
+            <span
+              class="projet__statut"
+              :class="`projet__statut--${projet.statut === 'En cours' ? 'cours' : 'concept'}`"
+            >
+              {{ projet.statut }}
+            </span>
           </div>
           <div class="projet__corps">
             <h3 class="projet__titre">{{ projet.titre }}</h3>
@@ -123,6 +140,28 @@ const projets = [
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.projet__statut {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 5px 12px;
+  border-radius: 2px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.projet__statut--concept {
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--c-navy-soft);
+}
+
+.projet__statut--cours {
+  background-color: var(--c-teal);
+  color: #04302c;
 }
 
 .projet__corps {
