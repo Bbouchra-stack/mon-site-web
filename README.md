@@ -30,7 +30,8 @@ npm run preview  # prévisualisation du build
 | Nos avantages (3 points forts) | `AdvantagesSection.vue` | `#avantages` |
 | Ce que comprend votre site | `IncludedSection.vue` | `#inclus` |
 | Portfolio (3 projets) | `PortfolioSection.vue` | `#portfolio` |
-| FAQ (accordéon, 5 questions) | `FaqSection.vue` | `#faq` |
+| FAQ (accordéon 2 colonnes, 5 questions) | `FaqSection.vue` | `#faq` |
+| Le mot du studio | `StudioNote.vue` | `#studio` |
 | Formulaire de contact | `ContactSection.vue` | `#contact` |
 | Cookies & confidentialité | `CookiesSection.vue` | `#cookies` |
 | Pied de page | `TheFooter.vue` | — |
@@ -63,6 +64,7 @@ délais se règlent dans `DELAI_AVANT_REDUCTION` (`CookieBanner.vue`).
 | La liste « tout inclus » | `src/components/IncludedSection.vue` (tableau `prestations`) |
 | Les projets du portfolio | `src/components/PortfolioSection.vue` (tableau `projets`) |
 | Les questions/réponses | `src/components/FaqSection.vue` (tableau `questions`) |
+| **Le mot du studio** (texte de départ à personnaliser) | `src/components/StudioNote.vue` (tableau `paragraphes`, plus `signature` et `lieu`) |
 | Liens réseaux sociaux | `src/components/TheFooter.vue` (tableau `reseaux`) |
 | Textes légaux | `src/pages/MentionsLegales.vue`, `src/pages/PolitiqueConfidentialite.vue` |
 
@@ -141,8 +143,12 @@ Les animations sont automatiquement désactivées si le visiteur a activé
 
 ## À compléter avant la mise en ligne
 
+- **Le mot du studio** : le texte livré est une **proposition de départ**, à
+  réécrire avec vos propres mots (`StudioNote.vue`). Attention à la cohérence
+  entre la première personne du texte et la signature.
 - **Photos du portfolio** : les visuels de `public/portfolio/*.svg` sont des
-  placeholders, à remplacer par les vraies captures de projets.
+  maquettes. Deux projets portent le badge « Concept », un seul « En cours » —
+  mettre à jour ces statuts au fur et à mesure des livraisons.
 - **Logo définitif** : `src/components/LogoMark.vue` et `public/favicon.svg`
   reprennent l'esprit du logo, à remplacer par le fichier officiel.
 - **Déclaration CNDP** : renseigner le numéro de récépissé dans
