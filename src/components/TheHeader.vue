@@ -9,9 +9,9 @@ const props = defineProps({
 
 const links = computed(() =>
   [
-    { ancre: '#methode', label: 'Notre méthode' },
-    { ancre: '#avantages', label: 'Nos avantages' },
-    { ancre: '#portfolio', label: 'Portfolio' },
+    { ancre: '#methode', label: 'Méthode' },
+    { ancre: '#avantages', label: 'Avantages' },
+    { ancre: '#portfolio', label: 'Réalisations' },
     { ancre: '#faq', label: 'FAQ' },
   ].map((lien) => ({ ...lien, href: `${props.prefixeAncres}${lien.ancre}` })),
 )
@@ -45,246 +45,342 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="entete" :class="{ 'entete--defile': estDefile }">
-    <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <div class="container entete__inner">
-      <a :href="lienAccueil" class="logo" @click="fermerMenu">
-        <LogoMark :taille="38" />
-        <span class="logo__texte">
-          <span class="logo__nom">BELWEB</span>
-          <span class="logo__studio">Studio</span>
+  <header class="bw-shell" v-reveal:fade>
+    <div class="bw-pill" :class="{ 'bw-pill--defile': estDefile }">
+      <a :href="lienAccueil" class="bw-logo" @click="fermerMenu">
+        <LogoMark :taille="32" />
+        <span class="bw-logo__texte">
+          <span class="bw-logo__nom">BELWEB</span>
+          <span class="bw-logo__studio">Studio</span>
         </span>
       </a>
 
       <nav
         id="menu-principal"
-        class="nav"
-        :class="{ 'nav--ouvert': menuOuvert }"
+        class="bw-nav"
+        :class="{ 'bw-nav--ouvert': menuOuvert }"
         aria-label="Navigation principale"
       >
-        <ul class="nav__liste">
+        <ul class="bw-nav__liste">
           <li v-for="lien in links" :key="lien.ancre">
-            <a :href="lien.href" class="nav__lien" @click="fermerMenu">{{ lien.label }}</a>
-          </li>
-          <li class="nav__cta">
-            <a :href="lienContact" class="btn btn--primary btn--sm" @click="fermerMenu">
-              Nous contacter
-            </a>
+            <a :href="lien.href" class="bw-nav__lien" @click="fermerMenu">{{ lien.label }}</a>
           </li>
         </ul>
+
+        <a :href="lienContact" class="bw-cta bw-nav__cta" @click="fermerMenu">
+          <span>Parlons de votre projet</span>
+          <span class="bw-cta__fleche" aria-hidden="true">→</span>
+        </a>
       </nav>
 
-      <button
-        class="burger"
-        type="button"
-        :aria-expanded="menuOuvert"
-        aria-controls="menu-principal"
-        @click="basculerMenu"
-      >
-        <span class="sr-only">{{ menuOuvert ? 'Fermer le menu' : 'Ouvrir le menu' }}</span>
-        <span class="burger__barre" :class="{ 'burger__barre--1': menuOuvert }"></span>
-        <span class="burger__barre" :class="{ 'burger__barre--2': menuOuvert }"></span>
-        <span class="burger__barre" :class="{ 'burger__barre--3': menuOuvert }"></span>
-      </button>
+      <div class="bw-pill__droite">
+        <a :href="lienContact" class="bw-cta bw-cta--desktop" @click="fermerMenu">
+          <span>Parlons de votre projet</span>
+          <span class="bw-cta__fleche" aria-hidden="true">→</span>
+        </a>
+
+        <button
+          class="bw-burger"
+          type="button"
+          :aria-expanded="menuOuvert"
+          aria-controls="menu-principal"
+          @click="basculerMenu"
+        >
+          <span class="sr-only">{{ menuOuvert ? 'Fermer le menu' : 'Ouvrir le menu' }}</span>
+          <span class="bw-burger__barre" :class="{ 'bw-burger__barre--1': menuOuvert }"></span>
+          <span class="bw-burger__barre" :class="{ 'bw-burger__barre--2': menuOuvert }"></span>
+          <span class="bw-burger__barre" :class="{ 'bw-burger__barre--3': menuOuvert }"></span>
+        </button>
+      </div>
     </div>
   </header>
 </template>
 
 <style scoped>
-.entete {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background-color: var(--c-navy);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-.entete--defile {
-  background-color: rgba(6, 12, 43, 0.96);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(6, 12, 43, 0.35);
-}
-
-.entete__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: var(--header-h);
-}
-
 .skip-link {
-  position: absolute;
+  position: fixed;
+  z-index: 100;
+  top: 12px;
   left: 50%;
   transform: translate(-50%, -200%);
   padding: 10px 18px;
-  background: var(--c-gold);
-  color: var(--c-navy);
+  border-radius: var(--bw-radius-sm);
+  background: var(--bw-text);
+  color: var(--bw-bg);
   font-weight: 600;
   transition: transform 0.2s ease;
 }
 
 .skip-link:focus {
   transform: translate(-50%, 0);
-  color: var(--c-navy);
 }
 
-/* Logo */
-.logo {
+/* ---------- Coquille flottante ---------- */
+
+.bw-shell {
+  position: fixed;
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  padding-inline: 16px;
+  pointer-events: none;
+}
+
+.bw-pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  width: 100%;
+  max-width: 1080px;
+  padding: 10px 12px 10px 20px;
+  border-radius: var(--bw-radius-pill);
+  border: 1px solid var(--bw-border);
+  background: rgba(13, 13, 18, 0.62);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  transition: background-color var(--bw-duration) var(--bw-ease),
+    border-color var(--bw-duration) var(--bw-ease),
+    box-shadow var(--bw-duration) var(--bw-ease),
+    padding var(--bw-duration) var(--bw-ease);
+}
+
+.bw-pill--defile {
+  padding-block: 8px;
+  background: rgba(9, 9, 13, 0.86);
+  border-color: var(--bw-border-strong);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+/* ---------- Logo ---------- */
+
+.bw-logo {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  color: #fff;
+  gap: 11px;
+  flex: none;
+  color: var(--bw-text);
 }
 
-.logo:hover {
-  color: #fff;
+.bw-logo:hover {
+  color: var(--bw-text);
 }
 
-.logo__texte {
+.bw-logo__texte {
   display: flex;
   flex-direction: column;
   line-height: 1.05;
 }
 
-.logo__nom {
-  font-family: var(--font-titre);
-  font-size: 1.24rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--c-gold);
+.bw-logo__nom {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--bw-text);
 }
 
-.logo__studio {
-  font-size: 0.68rem;
+.bw-logo__studio {
+  font-size: 0.6rem;
   font-weight: 500;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--bw-text-muted);
 }
 
-/* Navigation */
-.nav__liste {
+/* ---------- Navigation ---------- */
+
+.bw-nav {
   display: flex;
   align-items: center;
-  gap: 34px;
+  flex: 1;
+  justify-content: center;
+}
+
+.bw-nav__liste {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.nav__lien {
-  position: relative;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.92rem;
+.bw-nav__lien {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: var(--bw-radius-pill);
+  color: var(--bw-text-muted);
+  font-size: 0.89rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  transition: color var(--bw-duration-fast) var(--bw-ease),
+    background-color var(--bw-duration-fast) var(--bw-ease);
 }
 
-.nav__lien::after {
+.bw-nav__lien:hover {
+  color: var(--bw-text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- CTA dégradé (rim light plutôt qu'aplat, pour rester lisible) ---------- */
+
+.bw-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 20px;
+  border-radius: var(--bw-radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--bw-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color var(--bw-duration-fast) var(--bw-ease),
+    box-shadow var(--bw-duration) var(--bw-ease);
+}
+
+.bw-cta::before {
   content: '';
   position: absolute;
-  left: 0;
-  bottom: -7px;
-  width: 0;
-  height: 1px;
-  background-color: var(--c-gold);
-  transition: width 0.28s ease;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--bw-gradient);
+  opacity: 0.55;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity var(--bw-duration) var(--bw-ease);
 }
 
-.nav__lien:hover {
-  color: var(--c-gold);
+.bw-cta:hover {
+  color: var(--bw-text);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 6px 24px rgba(139, 92, 246, 0.28), 0 6px 24px rgba(255, 122, 69, 0.14);
 }
 
-.nav__lien:hover::after {
-  width: 100%;
+.bw-cta:hover::before {
+  opacity: 1;
 }
 
-.btn--sm {
-  padding: 11px 24px;
-  font-size: 0.76rem;
+.bw-cta__fleche {
+  display: inline-block;
+  transition: transform var(--bw-duration-fast) var(--bw-ease);
 }
 
-/* Burger */
-.burger {
+.bw-cta:hover .bw-cta__fleche {
+  transform: translateX(3px);
+}
+
+.bw-pill__droite {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+/* Doit venir après .bw-cta dans la feuille de styles : même spécificité,
+   c'est l'ordre qui tranche le "display" en cas d'égalité. */
+.bw-nav__cta {
+  display: none;
+}
+
+/* ---------- Burger ---------- */
+
+.bw-burger {
   display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 44px;
-  height: 44px;
-  padding: 0 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 4px;
-  background-color: transparent;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--bw-border);
+  border-radius: var(--bw-radius-pill);
+  background: transparent;
 }
 
-.burger__barre {
+.bw-burger__barre {
   display: block;
   height: 1.5px;
-  width: 100%;
-  background-color: #fff;
-  transition: transform 0.22s ease, opacity 0.22s ease;
+  width: 16px;
+  margin-inline: auto;
+  background-color: var(--bw-text);
+  transition: transform var(--bw-duration-fast) var(--bw-ease),
+    opacity var(--bw-duration-fast) var(--bw-ease);
 }
 
-.burger__barre--1 {
+.bw-burger__barre--1 {
   transform: translateY(6.5px) rotate(45deg);
 }
 
-.burger__barre--2 {
+.bw-burger__barre--2 {
   opacity: 0;
 }
 
-.burger__barre--3 {
+.bw-burger__barre--3 {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
 @media (max-width: 940px) {
-  .burger {
-    display: flex;
-  }
-
-  .nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--c-navy-deep);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.32s ease;
-  }
-
-  .nav--ouvert {
-    max-height: 440px;
-  }
-
-  .nav__liste {
+  .bw-nav {
+    position: fixed;
+    top: 82px;
+    left: 16px;
+    right: 16px;
     flex-direction: column;
     align-items: stretch;
-    gap: 0;
-    padding: 10px 24px 26px;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 14px;
+    border-radius: var(--bw-radius-lg);
+    border: 1px solid var(--bw-border);
+    background: rgba(9, 9, 13, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--bw-duration) var(--bw-ease),
+      opacity var(--bw-duration-fast) var(--bw-ease);
   }
 
-  .nav__lien {
-    display: block;
-    padding: 15px 2px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  .bw-nav--ouvert {
+    max-height: 420px;
+    opacity: 1;
   }
 
-  .nav__lien::after {
+  .bw-nav__liste {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .bw-nav__lien {
+    padding: 13px 14px;
+    border-radius: var(--bw-radius-sm);
+  }
+
+  .bw-nav__cta {
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .bw-cta--desktop {
     display: none;
   }
 
-  .nav__cta {
-    margin-top: 20px;
-  }
-
-  .nav__cta .btn {
-    width: 100%;
+  .bw-burger {
+    display: flex;
   }
 }
 </style>

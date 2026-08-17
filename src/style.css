@@ -45,8 +45,10 @@
   --font-texte: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue',
     Arial, sans-serif;
 
-  /* Structure */
-  --header-h: 80px;
+  /* Structure — la nav est désormais flottante (position: fixed), donc
+     hors du flux normal : cet espace est réservé manuellement en haut de
+     page pour qu'elle ne recouvre jamais le contenu. */
+  --header-h: 104px;
   --container: 1180px;
 
   font-family: var(--font-texte);
@@ -55,6 +57,55 @@
   background-color: var(--c-cream);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   Système premium sombre — nouvelle direction artistique
+   Introduit progressivement, section par section. Ces jetons
+   cohabitent avec ceux ci-dessus sans les remplacer : les
+   sections non encore migrées continuent de fonctionner à
+   l'identique tant que la nouvelle direction n'est pas validée.
+   ========================================================= */
+:root {
+  /* Fonds */
+  --bw-bg: #07070a;
+  --bw-bg-alt: #0d0d12;
+  --bw-bg-purple: #151024;
+  --bw-bg-violet: #24113d;
+
+  /* Accents — utilisés avec parcimonie, jamais en aplat large */
+  --bw-purple: #8b5cf6;
+  --bw-magenta: #c84edc;
+  --bw-pink: #ec4899;
+  --bw-coral: #ff5b6e;
+  --bw-orange: #ff7a45;
+
+  /* Texte sur fond sombre */
+  --bw-text: #f5f5f7;
+  --bw-text-muted: #a5a5b3;
+  --bw-border: rgba(245, 245, 247, 0.1);
+  --bw-border-strong: rgba(245, 245, 247, 0.18);
+
+  /* Dégradé de marque : sobre, jamais saturé sur de grandes surfaces */
+  --bw-gradient: linear-gradient(
+    92deg,
+    var(--bw-purple) 0%,
+    var(--bw-magenta) 42%,
+    var(--bw-coral) 74%,
+    var(--bw-orange) 100%
+  );
+
+  /* Rayons */
+  --bw-radius-sm: 10px;
+  --bw-radius: 18px;
+  --bw-radius-lg: 28px;
+  --bw-radius-pill: 999px;
+
+  /* Rythme d'animation : cinématique, jamais rebondissant */
+  --bw-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --bw-duration-fast: 240ms;
+  --bw-duration: 560ms;
+  --bw-duration-slow: 900ms;
 }
 
 *,
@@ -70,7 +121,16 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background-color: var(--c-cream);
+  /* Fond de page en noir profond : la nav flotte au-dessus du héro sombre,
+     ce même noir doit donc apparaître dans l'espace réservé au-dessus de
+     lui (avant migration complète des autres sections). */
+  background-color: var(--bw-bg);
+}
+
+/* La nav flottante ne pousse plus le contenu (position: fixed) :
+   on réserve donc l'espace ici, une fois pour toutes. */
+#contenu {
+  padding-top: var(--header-h);
 }
 
 h1,
@@ -132,6 +192,10 @@ button {
 .section {
   padding: 104px 0;
   scroll-margin-top: var(--header-h);
+  /* Fond ivoire par défaut, explicite : ne dépend plus de body (devenu
+     noir profond pour la nav flottante). --surface et --navy priment
+     toujours, à égale spécificité, en venant après dans la feuille. */
+  background-color: var(--c-cream);
 }
 
 .section--surface {
@@ -387,6 +451,32 @@ button {
 .reveal--visible {
   opacity: 1;
   transform: none;
+}
+
+/* Variantes (v-reveal:fade, v-reveal:scale) */
+.reveal--fade {
+  transform: none;
+  transition-property: opacity;
+}
+
+.reveal--scale {
+  transform: scale(0.94);
+  transition-property: opacity, transform;
+}
+
+.reveal--scale.reveal--visible {
+  transform: scale(1);
+}
+
+/* Flottement ambiant très lent, pour les halos lumineux du système sombre */
+@keyframes bw-flotter {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, -4%, 0) scale(1.08);
+  }
 }
 
 @media (max-width: 640px) {

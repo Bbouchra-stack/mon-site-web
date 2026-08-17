@@ -139,17 +139,38 @@ onBeforeUnmount(() => {
   position: relative;
   margin: 0;
   padding: 30px 34px 26px;
-  border: 1px solid rgba(227, 185, 63, 0.28);
-  border-radius: var(--radius);
+  border-radius: var(--bw-radius-lg);
   background: linear-gradient(
     160deg,
     rgba(255, 255, 255, 0.055) 0%,
-    rgba(255, 255, 255, 0.015) 100%
+    rgba(255, 255, 255, 0.02) 100%
   );
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
   /* Hauteur réservée : les chiffres arrivent après le chargement,
      la page ne doit pas sauter pour autant. */
   min-height: 340px;
+}
+
+/* Liseré en dégradé plutôt qu'une bordure pleine : plus proche de
+   l'esprit « verre + lumière » que d'un simple cadre. */
+.console::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    155deg,
+    rgba(139, 92, 246, 0.55),
+    rgba(255, 122, 69, 0.18) 55%,
+    rgba(255, 255, 255, 0.06)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .console__entete {
@@ -169,20 +190,20 @@ onBeforeUnmount(() => {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--c-teal);
-  box-shadow: 0 0 0 0 rgba(47, 179, 168, 0.6);
+  background: var(--bw-gradient);
+  box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.6);
   animation: battement 2.4s ease-out infinite;
 }
 
 @keyframes battement {
   0% {
-    box-shadow: 0 0 0 0 rgba(47, 179, 168, 0.55);
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 9px rgba(47, 179, 168, 0);
+    box-shadow: 0 0 0 9px rgba(139, 92, 246, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(47, 179, 168, 0);
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
   }
 }
 
@@ -213,11 +234,12 @@ onBeforeUnmount(() => {
 }
 
 .mesure__valeur {
-  font-family: var(--font-titre);
+  font-family: var(--font-texte);
   font-size: 2.1rem;
-  font-weight: 600;
+  font-weight: 800;
   line-height: 1;
-  color: var(--c-gold);
+  color: var(--bw-text);
+  letter-spacing: -0.01em;
   /* Chiffres à chasse fixe : la largeur ne bouge pas pendant le décompte. */
   font-variant-numeric: tabular-nums;
   font-feature-settings: 'tnum';

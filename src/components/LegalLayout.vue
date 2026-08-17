@@ -78,6 +78,9 @@ defineProps({
 
 .legal-corps {
   padding-block: 68px 96px;
+  /* Explicite plutôt qu'hérité de body (devenu noir profond pour la nav
+     flottante) : ce texte reste conçu pour un fond clair. */
+  background-color: var(--c-surface);
 }
 
 .prose {

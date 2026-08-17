@@ -3,37 +3,41 @@ import PerformancePanel from './PerformancePanel.vue'
 </script>
 
 <template>
-  <section id="accueil" class="hero">
-    <div class="hero__halo" aria-hidden="true"></div>
-    <div class="hero__grille" aria-hidden="true"></div>
+  <section id="accueil" class="bw-hero">
+    <div class="bw-hero__lueur bw-hero__lueur--violette" aria-hidden="true"></div>
+    <div class="bw-hero__lueur bw-hero__lueur--corail" aria-hidden="true"></div>
+    <div class="bw-hero__grain" aria-hidden="true"></div>
 
-    <div class="container hero__inner">
-      <div class="hero__contenu">
-        <span class="eyebrow" v-reveal>Création de sites web · Casablanca</span>
+    <div class="container bw-hero__inner">
+      <div class="bw-hero__contenu">
+        <span class="bw-eyebrow" v-reveal:fade>
+          <span class="bw-eyebrow__point" aria-hidden="true"></span>
+          Studio digital · Casablanca
+        </span>
 
-        <h1 class="hero__titre" v-reveal="80">
-          Un site qui inspire
-          <em>confiance</em>
-          dès la première seconde
+        <h1 class="bw-hero__titre">
+          <span class="bw-hero__ligne" v-reveal="0">Un site qui inspire</span>
+          <span class="bw-hero__ligne bw-hero__ligne--degrade" v-reveal="110">confiance</span>
+          <span class="bw-hero__ligne" v-reveal="220">dès la première seconde</span>
         </h1>
 
-        <p class="hero__sous-titre" v-reveal="180">
+        <p class="bw-hero__sous-titre" v-reveal="340">
           BELWEB Studio dessine et développe des sites sur mesure pour les
           professionnels et les entreprises de Casablanca. Élégants, rapides,
           et pensés pour que celles et ceux qui vous cherchent vous trouvent.
         </p>
 
-        <div class="hero__actions" v-reveal="280">
-          <a href="#contact" class="btn btn--primary">Nous contacter</a>
-          <a href="#portfolio" class="btn btn--ghost-clair">Voir nos réalisations</a>
+        <div class="bw-hero__actions" v-reveal="440">
+          <a href="#contact" class="bw-btn-primaire">Nous contacter</a>
+          <a href="#portfolio" class="bw-btn-ghost">Voir nos réalisations</a>
         </div>
 
-        <p class="hero__signature" v-reveal="360">
+        <p class="bw-hero__signature" v-reveal="520">
           Premier échange gratuit · Devis sous 48&nbsp;h · Sans engagement
         </p>
       </div>
 
-      <div class="hero__preuve" v-reveal="200">
+      <div class="bw-hero__preuve" v-reveal:scale="260">
         <PerformancePanel />
       </div>
     </div>
@@ -41,43 +45,65 @@ import PerformancePanel from './PerformancePanel.vue'
 </template>
 
 <style scoped>
-.hero {
+.bw-hero {
   position: relative;
   overflow: hidden;
-  padding: 116px 0 124px;
-  background-color: var(--c-navy);
-  color: rgba(255, 255, 255, 0.74);
+  padding: 56px 0 120px;
+  background: var(--bw-bg);
+  color: var(--bw-text-muted);
   scroll-margin-top: var(--header-h);
 }
 
-.hero__halo {
+/* ---------- Lumière ambiante : deux halos flous, mouvement très lent ---------- */
+
+.bw-hero__lueur {
   position: absolute;
-  top: -300px;
-  right: -200px;
-  width: 820px;
-  height: 820px;
   border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform;
+  animation: bw-flotter 26s ease-in-out infinite;
+}
+
+.bw-hero__lueur--violette {
+  top: -260px;
+  left: -160px;
+  width: 620px;
+  height: 620px;
   background: radial-gradient(
     circle,
-    rgba(227, 185, 63, 0.15) 0%,
-    rgba(47, 179, 168, 0.08) 44%,
-    transparent 68%
+    rgba(139, 92, 246, 0.32) 0%,
+    rgba(200, 78, 220, 0.14) 48%,
+    transparent 72%
   );
-  pointer-events: none;
 }
 
-/* Fine trame décorative */
-.hero__grille {
+.bw-hero__lueur--corail {
+  bottom: -300px;
+  right: -200px;
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 122, 69, 0.2) 0%,
+    rgba(255, 91, 110, 0.1) 48%,
+    transparent 72%
+  );
+  animation-duration: 32s;
+  animation-delay: -6s;
+}
+
+/* Grain très discret, pour éviter l'aplat trop propre du noir profond */
+.bw-hero__grain {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(circle at 62% 42%, #000 0%, transparent 70%);
+  opacity: 0.05;
+  mix-blend-mode: overlay;
   pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.hero__inner {
+.bw-hero__inner {
   position: relative;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -85,67 +111,163 @@ import PerformancePanel from './PerformancePanel.vue'
   align-items: center;
 }
 
-.hero__titre {
-  font-size: clamp(1.95rem, 1rem + 3.4vw, 3.35rem);
-  line-height: 1.08;
-  color: #fff;
-  margin-bottom: 26px;
-  text-wrap: balance;
+/* ---------- Surtitre ---------- */
+
+.bw-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  color: var(--bw-text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
 }
 
-.hero__titre em {
+.bw-eyebrow__point {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bw-gradient);
+}
+
+/* ---------- Titre ---------- */
+
+.bw-hero__titre {
+  margin: 0 0 28px;
+  font-family: var(--font-texte);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 1.1rem + 3.6vw, 3.7rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--bw-text);
+}
+
+.bw-hero__ligne {
   display: block;
-  font-style: italic;
-  color: var(--c-gold);
 }
 
-.hero__sous-titre {
+.bw-hero__ligne--degrade {
+  background: var(--bw-gradient);
+  background-size: 200% auto;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: bw-degrade-vivant 9s ease-in-out infinite;
+}
+
+@keyframes bw-degrade-vivant {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.bw-hero__sous-titre {
   font-size: 1.08rem;
-  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.65;
+  color: var(--bw-text-muted);
   max-width: 46ch;
-  margin-bottom: 38px;
+  margin: 0 0 38px;
 }
 
-.hero__actions {
+/* ---------- Actions ---------- */
+
+.bw-hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-bottom: 28px;
 }
 
-.hero__signature {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.42);
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
+.bw-btn-primaire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  border-radius: var(--bw-radius-pill);
+  background: var(--bw-text);
+  color: var(--bw-bg);
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: transform var(--bw-duration-fast) var(--bw-ease),
+    box-shadow var(--bw-duration) var(--bw-ease), background-color var(--bw-duration-fast) var(--bw-ease);
 }
 
-.hero__preuve {
+.bw-btn-primaire:hover {
+  color: var(--bw-bg);
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(139, 92, 246, 0.28), 0 10px 24px rgba(255, 122, 69, 0.16);
+}
+
+.bw-btn-ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 28px;
+  border-radius: var(--bw-radius-pill);
+  border: 1px solid var(--bw-border-strong);
+  color: var(--bw-text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: border-color var(--bw-duration-fast) var(--bw-ease),
+    background-color var(--bw-duration-fast) var(--bw-ease);
+}
+
+.bw-btn-ghost:hover {
+  color: var(--bw-text);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.bw-hero__signature {
+  margin: 0;
+  color: rgba(245, 245, 247, 0.4);
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+}
+
+.bw-hero__preuve {
   position: relative;
 }
 
 @media (max-width: 1024px) {
-  .hero__inner {
+  .bw-hero__inner {
     grid-template-columns: 1fr;
     gap: 56px;
   }
 
-  .hero__preuve {
+  .bw-hero__preuve {
     max-width: 460px;
   }
 }
 
 @media (max-width: 640px) {
-  .hero {
-    padding: 70px 0 80px;
+  .bw-hero {
+    padding: 32px 0 76px;
   }
 
-  .hero__actions .btn {
+  .bw-hero__actions .bw-btn-primaire,
+  .bw-hero__actions .bw-btn-ghost {
     width: 100%;
   }
 
-  .hero__signature {
+  .bw-hero__signature {
     font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-hero__lueur,
+  .bw-hero__ligne--degrade {
+    animation: none;
   }
 }
 </style>
