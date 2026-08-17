@@ -1,7 +1,7 @@
 <script setup>
 /**
- * Statuts affichés sur chaque carte. Le studio démarre : deux projets sont
- * des concepts de démonstration, un seul est un chantier réel en cours.
+ * Statuts affichés sur chaque carte. Le studio démarre : un projet est un
+ * concept de démonstration, deux sont des chantiers réels en cours.
  * Le statut est visible sur la vignette pour ne jamais laisser croire à une
  * réalisation livrée — un portfolio inventé se retourne toujours contre son
  * auteur, et la loi 31-08 sanctionne la publicité trompeuse.
@@ -29,13 +29,13 @@ const projets = [
   },
   {
     id: 3,
-    image: '/portfolio/projet-2.svg',
-    alt: "Aperçu du concept de site pour un cabinet d'avocats",
-    categorie: 'Profession libérale',
-    statut: 'Concept',
-    titre: "Cabinet d'avocats — Droit des affaires",
+    image: '/portfolio/projet-4.svg',
+    alt: "Aperçu du site en cours de création pour Vision Line Auto, garage automobile à Casablanca",
+    categorie: 'Automobile',
+    statut: 'En cours',
+    titre: 'Vision Line Auto',
     description:
-      "Domaines d'intervention, parcours des associés et prise de contact confidentielle. Une image sobre et rassurante, adaptée à une clientèle d'entreprise.",
+      "Présentation des prestations d'entretien et de réparation, galerie des interventions et prise de rendez-vous en ligne. Projet en cours de création — le site sera mis en ligne prochainement.",
   },
 ]
 </script>
@@ -47,9 +47,9 @@ const projets = [
         <span class="eyebrow" v-reveal>Portfolio</span>
         <h2 class="section__title" v-reveal="60">Un aperçu de ce que nous créons</h2>
         <p class="section__subtitle" v-reveal="120">
-          Le studio démarre : voici deux concepts de démonstration et un
-          chantier en cours. Nos premières réalisations livrées seront publiées
-          ici.
+          Le studio démarre : voici un concept de démonstration et deux
+          chantiers en cours. Nos premières réalisations livrées seront
+          publiées ici.
         </p>
       </div>
 
