@@ -103,11 +103,11 @@ function surSortie() {
   z-index: 70;
   width: min(330px, calc(100vw - 44px));
   padding: 18px 20px 16px;
-  border: 1px solid var(--c-border);
-  border-left: 3px solid var(--c-gold);
-  border-radius: var(--radius-sm);
-  background-color: var(--c-surface);
-  box-shadow: 0 16px 40px rgba(10, 20, 64, 0.18);
+  border: 1px solid var(--bw-border);
+  border-left: 3px solid var(--bw-purple);
+  border-radius: var(--bw-radius-sm);
+  background-color: var(--bw-bg-alt);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
 }
 
 .carte__reduire {
@@ -121,13 +121,13 @@ function surSortie() {
   border: 0;
   border-radius: 50%;
   background: none;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .carte__reduire:hover {
-  color: var(--c-navy);
-  background-color: var(--c-cream-soft);
+  color: var(--bw-text);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .carte__reduire svg {
@@ -139,13 +139,17 @@ function surSortie() {
   margin: 0 20px 14px 0;
   font-size: 0.82rem;
   line-height: 1.5;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 .carte__texte a {
-  color: var(--c-navy-soft);
-  border-bottom: 1px solid var(--c-gold);
+  color: var(--bw-text);
+  border-bottom: 1px solid var(--bw-coral);
   white-space: nowrap;
+}
+
+.carte__texte a:hover {
+  color: var(--bw-coral);
 }
 
 .carte__actions {
@@ -157,8 +161,8 @@ function surSortie() {
 .carte__accepter {
   flex: 1;
   padding: 8px 14px;
-  border-radius: 3px;
-  border: 1px solid var(--c-border);
+  border-radius: var(--bw-radius-pill);
+  border: 1px solid var(--bw-border-strong);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -168,23 +172,23 @@ function surSortie() {
 
 .carte__refuser {
   background-color: transparent;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 .carte__refuser:hover {
-  border-color: var(--c-navy);
-  color: var(--c-navy);
+  border-color: var(--bw-border-strong);
+  color: var(--bw-text);
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
 .carte__accepter {
-  background-color: var(--c-gold);
-  border-color: var(--c-gold);
-  color: var(--c-navy);
+  background: var(--bw-gradient);
+  border-color: transparent;
+  color: #050301;
 }
 
 .carte__accepter:hover {
-  background-color: var(--c-gold-bright);
-  border-color: var(--c-gold-bright);
+  filter: brightness(1.08);
 }
 
 /* ---------- Pastille discrète ---------- */
@@ -198,15 +202,15 @@ function surSortie() {
   align-items: center;
   gap: 7px;
   padding: 8px 14px 8px 11px;
-  border: 1px solid var(--c-border);
+  border: 1px solid var(--bw-border-strong);
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.94);
+  background-color: rgba(13, 13, 18, 0.9);
   backdrop-filter: blur(6px);
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
   font-size: 0.76rem;
   font-weight: 500;
-  box-shadow: var(--shadow-sm);
-  opacity: 0.75;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  opacity: 0.85;
   transition: opacity 0.25s ease, color 0.25s ease, border-color 0.25s ease,
     transform 0.25s ease;
 }
@@ -214,15 +218,15 @@ function surSortie() {
 .pastille:hover,
 .pastille:focus-visible {
   opacity: 1;
-  color: var(--c-navy);
-  border-color: var(--c-gold);
+  color: var(--bw-text);
+  border-color: var(--bw-purple);
   transform: translateY(-2px);
 }
 
 .pastille svg {
   width: 16px;
   height: 16px;
-  color: var(--c-gold);
+  color: var(--bw-purple);
 }
 
 /* ---------- Transitions ---------- */

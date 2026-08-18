@@ -228,7 +228,9 @@ onBeforeUnmount(() => {
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* ---------- CTA dégradé (rim light plutôt qu'aplat, pour rester lisible) ---------- */
+/* ---------- CTA dégradé plein (texte foncé pour rester lisible sur
+   toutes les teintes du dégradé — même principe que les badges
+   « En cours » du portfolio) ---------- */
 
 .bw-cta {
   position: relative;
@@ -237,13 +239,15 @@ onBeforeUnmount(() => {
   gap: 9px;
   padding: 11px 20px;
   border-radius: var(--bw-radius-pill);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--bw-text);
+  background: var(--bw-gradient);
+  background-size: 160% auto;
+  background-position: 0% 50%;
+  color: #050301;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
-  transition: background-color var(--bw-duration-fast) var(--bw-ease),
-    box-shadow var(--bw-duration) var(--bw-ease);
+  transition: background-position var(--bw-duration) var(--bw-ease),
+    box-shadow var(--bw-duration) var(--bw-ease), transform var(--bw-duration-fast) var(--bw-ease);
   /* Pulsation continue pour attirer l'œil vers le seul point de contact
      visible dans l'en-tête (pas de numéro affiché ici). Anneau à étalement
      pur (sans flou) et de faible rayon : reste contenu dans le
@@ -267,32 +271,14 @@ onBeforeUnmount(() => {
   }
 }
 
-.bw-cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: var(--bw-gradient);
-  opacity: 0.55;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  transition: opacity var(--bw-duration) var(--bw-ease);
-}
-
 .bw-cta:hover {
-  color: var(--bw-text);
-  background: rgba(255, 255, 255, 0.09);
+  color: #050301;
+  background-position: 100% 50%;
+  transform: translateY(-1px);
   /* Étalement réduit (pas de flou large) : la pastille de nav est
      compacte, un halo trop grand débordait visuellement de son contour. */
   box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.22), 0 0 0 7px rgba(255, 122, 69, 0.12);
   animation-play-state: paused;
-}
-
-.bw-cta:hover::before {
-  opacity: 1;
 }
 
 .bw-cta__fleche {

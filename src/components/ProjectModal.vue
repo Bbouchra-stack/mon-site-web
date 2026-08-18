@@ -177,20 +177,31 @@ watch([banniereVisible, banniereReduite], ([visible, reduite]) => {
   display: grid;
   place-items: center;
   padding: 24px;
-  background-color: rgba(6, 12, 43, 0.62);
+  background-color: rgba(4, 4, 7, 0.72);
   backdrop-filter: blur(3px);
 }
 
 .modale__boite {
   position: relative;
+  overflow: hidden;
   width: 100%;
   max-width: 520px;
   padding: 46px 44px 40px;
-  border-top: 3px solid var(--c-gold);
-  border-radius: var(--radius);
-  background-color: var(--c-surface);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--bw-border);
+  border-radius: var(--bw-radius);
+  background-color: var(--bw-bg-alt);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
   text-align: center;
+}
+
+.modale__boite::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bw-gradient);
 }
 
 .modale__fermer {
@@ -201,16 +212,16 @@ watch([banniereVisible, banniereReduite], ([visible, reduite]) => {
   place-items: center;
   width: 38px;
   height: 38px;
-  border: 1px solid var(--c-border);
+  border: 1px solid var(--bw-border);
   border-radius: 50%;
   background-color: transparent;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .modale__fermer:hover {
-  color: var(--c-navy);
-  border-color: var(--c-navy);
+  color: var(--bw-text);
+  border-color: var(--bw-border-strong);
 }
 
 .modale__fermer svg {
@@ -220,16 +231,26 @@ watch([banniereVisible, banniereReduite], ([visible, reduite]) => {
 
 .modale__boite .eyebrow {
   justify-content: center;
+  color: var(--bw-text-muted);
+}
+
+.modale__boite .eyebrow::before,
+.modale__boite .eyebrow::after {
+  background: var(--bw-gradient);
+  opacity: 1;
 }
 
 .modale__titre {
-  font-size: 1.72rem;
+  font-family: var(--font-display);
+  font-weight: 560;
+  color: var(--bw-text);
+  font-size: 1.6rem;
   margin-bottom: 14px;
 }
 
 .modale__texte {
-  color: var(--c-muted);
-  font-size: 0.97rem;
+  color: var(--bw-text-muted);
+  font-size: 0.94rem;
   margin-bottom: 30px;
 }
 
@@ -242,6 +263,31 @@ watch([banniereVisible, banniereReduite], ([visible, reduite]) => {
 
 .modale__actions .btn {
   flex: 1 1 190px;
+  border-radius: var(--bw-radius-pill);
+}
+
+.modale__actions .btn--primary {
+  background-color: var(--bw-text);
+  border-color: var(--bw-text);
+  color: var(--bw-bg);
+}
+
+.modale__actions .btn--primary:hover {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--bw-bg);
+  box-shadow: 0 16px 40px rgba(139, 92, 246, 0.28), 0 10px 24px rgba(255, 122, 69, 0.16);
+}
+
+.modale__actions .btn--ghost {
+  border-color: var(--bw-border-strong);
+  color: var(--bw-text);
+}
+
+.modale__actions .btn--ghost:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: var(--bw-text);
 }
 
 .modale__reperes {
@@ -251,10 +297,10 @@ watch([banniereVisible, banniereReduite], ([visible, reduite]) => {
   gap: 8px 20px;
   margin: 30px 0 0;
   padding: 22px 0 0;
-  border-top: 1px solid var(--c-border-light);
+  border-top: 1px solid var(--bw-border);
   list-style: none;
-  font-size: 0.82rem;
-  color: var(--c-muted);
+  font-size: 0.8rem;
+  color: var(--bw-text-muted);
 }
 
 .modale__reperes li {
@@ -269,8 +315,8 @@ watch([banniereVisible, banniereReduite], ([visible, reduite]) => {
   top: 7px;
   width: 9px;
   height: 5px;
-  border-left: 1.5px solid var(--c-gold);
-  border-bottom: 1.5px solid var(--c-gold);
+  border-left: 1.5px solid var(--bw-coral);
+  border-bottom: 1.5px solid var(--bw-coral);
   transform: rotate(-45deg);
 }
 

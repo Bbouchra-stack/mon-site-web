@@ -1,6 +1,7 @@
 <script setup>
 import PerformancePanel from './PerformancePanel.vue'
 import AmbientFlow from './AmbientFlow.vue'
+import { coordonnees } from '../composables/coordonnees.js'
 </script>
 
 <template>
@@ -32,6 +33,12 @@ import AmbientFlow from './AmbientFlow.vue'
         <div class="bw-hero__actions" v-reveal="440">
           <a href="#contact" class="bw-btn-primaire">Nous contacter</a>
           <a href="#portfolio" class="bw-btn-ghost">Voir nos réalisations</a>
+          <a :href="`tel:${coordonnees.telephoneLien}`" class="bw-btn-tel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.36 2.3.56 3.5.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.7 21 3 13.3 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.2.2 2.4.56 3.5a1 1 0 0 1-.25 1z" />
+            </svg>
+            {{ coordonnees.telephoneAffiche }}
+          </a>
         </div>
 
         <p class="bw-hero__signature" v-reveal="520">
@@ -226,6 +233,35 @@ import AmbientFlow from './AmbientFlow.vue'
 }
 
 .bw-btn-ghost:hover {
+  color: var(--bw-text);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.bw-btn-tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: var(--bw-radius-pill);
+  border: 1px solid var(--bw-border);
+  color: var(--bw-text-muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color var(--bw-duration-fast) var(--bw-ease),
+    border-color var(--bw-duration-fast) var(--bw-ease),
+    background-color var(--bw-duration-fast) var(--bw-ease);
+}
+
+.bw-btn-tel svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--bw-coral);
+}
+
+.bw-btn-tel:hover {
   color: var(--bw-text);
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.32);

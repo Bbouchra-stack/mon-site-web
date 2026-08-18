@@ -179,7 +179,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--c-gold);
+  outline: 2px solid var(--bw-purple);
   outline-offset: 3px;
   border-radius: 3px;
 }
@@ -416,10 +416,13 @@ button {
 /* ---------- Pages de texte (mentions légales, confidentialité) ---------- */
 
 .prose h2 {
-  font-size: 1.5rem;
-  margin-top: 52px;
-  padding-top: 26px;
-  border-top: 1px solid var(--c-border);
+  font-family: var(--font-display);
+  font-weight: 560;
+  color: var(--bw-text);
+  font-size: 1.28rem;
+  margin-top: 46px;
+  padding-top: 24px;
+  border-top: 1px solid var(--bw-border);
 }
 
 .prose h2:first-child {
@@ -429,15 +432,17 @@ button {
 }
 
 .prose h3 {
-  font-size: 1.14rem;
-  margin-top: 32px;
-  margin-bottom: 10px;
+  font-family: var(--font-texte);
+  color: var(--bw-text);
+  font-size: 1.02rem;
+  margin-top: 28px;
+  margin-bottom: 9px;
 }
 
 .prose p,
 .prose li {
-  color: var(--c-text);
-  font-size: 0.99rem;
+  color: var(--bw-text-muted);
+  font-size: 0.92rem;
 }
 
 .prose ul,
@@ -451,24 +456,29 @@ button {
 }
 
 .prose li::marker {
-  color: var(--c-gold);
+  color: var(--bw-purple);
 }
 
 .prose a {
-  border-bottom: 1px solid var(--c-gold);
+  color: var(--bw-text);
+  border-bottom: 1px solid var(--bw-coral);
+}
+
+.prose a:hover {
+  color: var(--bw-coral);
 }
 
 .prose strong {
-  color: var(--c-ink);
+  color: var(--bw-text);
 }
 
 /* Encadré d'information */
 .prose .encadre {
-  margin: 26px 0;
-  padding: 22px 26px;
-  border-left: 3px solid var(--c-gold);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  background-color: #fdf6e3;
+  margin: 24px 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--bw-purple);
+  border-radius: 0 var(--bw-radius-sm) var(--bw-radius-sm) 0;
+  background-color: var(--bw-bg-alt);
 }
 
 .prose .encadre p:last-child {
@@ -479,32 +489,32 @@ button {
 .prose .a-completer {
   display: inline-block;
   padding: 1px 9px;
-  border: 1px dashed #c99a2e;
+  border: 1px dashed var(--bw-orange);
   border-radius: 3px;
-  background-color: #fdf6e3;
-  color: #8f6417;
-  font-size: 0.88em;
+  background-color: rgba(255, 122, 69, 0.12);
+  color: var(--bw-orange);
+  font-size: 0.85em;
   font-weight: 600;
 }
 
 .prose .tableau {
   width: 100%;
-  margin: 20px 0 28px;
+  margin: 18px 0 26px;
   border-collapse: collapse;
-  font-size: 0.94rem;
+  font-size: 0.86rem;
 }
 
 .prose .tableau th,
 .prose .tableau td {
-  padding: 13px 16px;
-  border: 1px solid var(--c-border);
+  padding: 12px 15px;
+  border: 1px solid var(--bw-border);
   text-align: left;
   vertical-align: top;
 }
 
 .prose .tableau th {
-  background-color: var(--c-cream-soft);
-  color: var(--c-ink);
+  background-color: var(--bw-bg-alt);
+  color: var(--bw-text);
   font-weight: 600;
 }
 

@@ -75,7 +75,10 @@ const etapes = [
   padding: 36px 26px 32px;
   border: 1px solid var(--bw-border);
   border-radius: var(--bw-radius);
-  background: var(--bw-bg-alt);
+  /* Lueur colorée concentrée en haut, qui s'éteint avant la zone de
+     texte — coloré et vivant, sans jamais menacer la lisibilité. */
+  background: radial-gradient(130% 110% at 18% -12%, var(--teinte-lueur), transparent 60%),
+    var(--bw-bg-alt);
   overflow: hidden;
   transition: transform var(--bw-duration) var(--bw-ease),
     border-color var(--bw-duration-fast) var(--bw-ease),
@@ -101,18 +104,22 @@ const etapes = [
 
 .etape--violet {
   --teinte: var(--bw-purple);
+  --teinte-lueur: rgba(139, 92, 246, 0.45);
 }
 
 .etape--magenta {
   --teinte: var(--bw-magenta);
+  --teinte-lueur: rgba(200, 78, 220, 0.42);
 }
 
 .etape--corail {
   --teinte: var(--bw-coral);
+  --teinte-lueur: rgba(255, 91, 110, 0.4);
 }
 
 .etape--orange {
   --teinte: var(--bw-orange);
+  --teinte-lueur: rgba(255, 122, 69, 0.4);
 }
 
 .etape__numero {
