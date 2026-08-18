@@ -44,6 +44,10 @@
     'Times New Roman', serif;
   --font-texte: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue',
     Arial, sans-serif;
+  /* Grands titres de la direction premium sombre : serif éditorial à axe
+     optique variable (net en très grand corps), plus contemporain que
+     Playfair Display pour ce registre agence. */
+  --font-display: 'Fraunces', 'Playfair Display', Georgia, serif;
 
   /* Structure — la nav est désormais flottante (position: fixed), donc
      hors du flux normal : cet espace est réservé manuellement en haut de
@@ -466,6 +470,19 @@ button {
 
 .reveal--scale.reveal--visible {
   transform: scale(1);
+}
+
+.reveal--gauche {
+  transform: translateX(-32px);
+}
+
+.reveal--droite {
+  transform: translateX(32px);
+}
+
+.reveal--gauche.reveal--visible,
+.reveal--droite.reveal--visible {
+  transform: none;
 }
 
 /* Flottement ambiant très lent, pour les halos lumineux du système sombre */

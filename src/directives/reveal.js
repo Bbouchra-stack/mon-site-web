@@ -7,6 +7,8 @@
  *   <div v-reveal="120">…</div>      même chose, retardée de 120 ms (cascade)
  *   <div v-reveal:fade>…</div>       fondu seul, sans mouvement
  *   <div v-reveal:scale="80">…</div> fondu + léger zoom avant, retardé de 80 ms
+ *   <div v-reveal:gauche>…</div>     fondu + glissement depuis la gauche
+ *   <div v-reveal:droite>…</div>     fondu + glissement depuis la droite
  *
  * L'animation est neutralisée si la personne a demandé à son système de
  * réduire les animations (prefers-reduced-motion).
@@ -16,7 +18,7 @@ const animationsReduites =
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-const VARIANTES = new Set(['fade', 'scale'])
+const VARIANTES = new Set(['fade', 'scale', 'gauche', 'droite'])
 
 let observateur = null
 

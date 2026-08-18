@@ -136,11 +136,11 @@ import PerformancePanel from './PerformancePanel.vue'
 
 .bw-hero__titre {
   margin: 0 0 28px;
-  font-family: var(--font-texte);
-  font-weight: 800;
-  font-size: clamp(2.1rem, 1.1rem + 3.6vw, 3.7rem);
-  line-height: 1.06;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: clamp(2.2rem, 1.1rem + 4vw, 3.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   color: var(--bw-text);
 }
 
@@ -149,6 +149,8 @@ import PerformancePanel from './PerformancePanel.vue'
 }
 
 .bw-hero__ligne--degrade {
+  font-style: italic;
+  font-weight: 500;
   background: var(--bw-gradient);
   background-size: 200% auto;
   background-position: 0% 50%;

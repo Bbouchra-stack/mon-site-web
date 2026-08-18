@@ -1,6 +1,7 @@
 <script setup>
 import TheHeader from './components/TheHeader.vue'
 import HeroSection from './components/HeroSection.vue'
+import ServicesMarquee from './components/ServicesMarquee.vue'
 import MethodSection from './components/MethodSection.vue'
 import AdvantagesSection from './components/AdvantagesSection.vue'
 import IncludedSection from './components/IncludedSection.vue'
@@ -19,6 +20,7 @@ import ProjectModal from './components/ProjectModal.vue'
   <TheHeader />
   <main id="contenu">
     <HeroSection />
+    <ServicesMarquee />
     <MethodSection />
     <AdvantagesSection />
     <IncludedSection />
