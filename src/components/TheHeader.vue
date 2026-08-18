@@ -142,7 +142,13 @@ onBeforeUnmount(() => {
   padding: 10px 12px 10px 20px;
   border-radius: var(--bw-radius-pill);
   border: 1px solid var(--bw-border);
-  background: rgba(13, 13, 18, 0.62);
+  /* Opaque à 96 % par défaut : le texte qui défile dessous ne doit
+     jamais rester lisible, même quand backdrop-filter n'est pas rendu
+     (GPU absente/désactivée — c'était le cas ici, le flou ne s'appliquait
+     pas et le contenu défilait de façon visible derrière la nav). Le
+     flou reste actif là où il fonctionne, en confort supplémentaire,
+     mais l'opacité seule doit déjà suffire à masquer le contenu. */
+  background: rgba(9, 9, 13, 0.96);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
@@ -154,7 +160,7 @@ onBeforeUnmount(() => {
 
 .bw-pill--defile {
   padding-block: 8px;
-  background: rgba(9, 9, 13, 0.86);
+  background: rgba(6, 6, 9, 0.98);
   border-color: var(--bw-border-strong);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
 }
@@ -352,7 +358,7 @@ onBeforeUnmount(() => {
     padding: 14px;
     border-radius: var(--bw-radius-lg);
     border: 1px solid var(--bw-border);
-    background: rgba(9, 9, 13, 0.92);
+    background: rgba(7, 7, 10, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);

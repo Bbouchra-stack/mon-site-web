@@ -325,20 +325,25 @@ const telephoneCaracteres = coordonnees.telephoneAffiche.split('')
 }
 
 /* Ne se joue qu'une fois la rangée de boutons révélée au défilement
-   (classe posée par la directive v-reveal), jamais avant. */
+   (classe posée par la directive v-reveal), jamais avant — et seulement
+   une fois cette rangée entièrement apparue (son propre fondu dure
+   750ms, avec 440ms de délai : elle est donc pleinement visible à
+   1190ms). En démarrant plus tôt, l'animation chiffre par chiffre se
+   jouait alors que le bouton lui-même était encore en train de
+   s'estomper depuis l'opacité 0 : invisible dans les faits. */
 .reveal--visible .bw-btn-tel__chiffre {
-  animation: bw-tel-ecrire 0.4s var(--bw-ease) forwards;
-  animation-delay: calc(var(--i) * 45ms + 500ms);
+  animation: bw-tel-ecrire 0.46s var(--bw-ease) forwards;
+  animation-delay: calc(var(--i) * 55ms + 1300ms);
 }
 
 @keyframes bw-tel-ecrire {
   0% {
     opacity: 0;
-    transform: scale(0.3);
+    transform: scale(0.25);
   }
   55% {
     opacity: 1;
-    transform: scale(1.3);
+    transform: scale(1.4);
   }
   100% {
     opacity: 1;
