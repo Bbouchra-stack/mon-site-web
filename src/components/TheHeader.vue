@@ -244,6 +244,27 @@ onBeforeUnmount(() => {
   white-space: nowrap;
   transition: background-color var(--bw-duration-fast) var(--bw-ease),
     box-shadow var(--bw-duration) var(--bw-ease);
+  /* Pulsation continue pour attirer l'œil vers le seul point de contact
+     visible dans l'en-tête (pas de numéro affiché ici). Anneau à étalement
+     pur (sans flou) et de faible rayon : reste contenu dans le
+     padding de la pastille, ne déborde jamais de son contour. */
+  animation: bw-cta-pulsation 2.2s ease-in-out infinite;
+}
+
+@keyframes bw-cta-pulsation {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(200, 78, 220, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(200, 78, 220, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-cta {
+    animation: none;
+  }
 }
 
 .bw-cta::before {
@@ -264,7 +285,10 @@ onBeforeUnmount(() => {
 .bw-cta:hover {
   color: var(--bw-text);
   background: rgba(255, 255, 255, 0.09);
-  box-shadow: 0 6px 24px rgba(139, 92, 246, 0.28), 0 6px 24px rgba(255, 122, 69, 0.14);
+  /* Étalement réduit (pas de flou large) : la pastille de nav est
+     compacte, un halo trop grand débordait visuellement de son contour. */
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.22), 0 0 0 7px rgba(255, 122, 69, 0.12);
+  animation-play-state: paused;
 }
 
 .bw-cta:hover::before {
