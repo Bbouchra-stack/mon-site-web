@@ -1,11 +1,13 @@
 <script setup>
 import PerformancePanel from './PerformancePanel.vue'
+import AmbientFlow from './AmbientFlow.vue'
 </script>
 
 <template>
   <section id="accueil" class="bw-hero">
     <div class="bw-hero__lueur bw-hero__lueur--violette" aria-hidden="true"></div>
     <div class="bw-hero__lueur bw-hero__lueur--corail" aria-hidden="true"></div>
+    <AmbientFlow />
     <div class="bw-hero__grain" aria-hidden="true"></div>
 
     <div class="container bw-hero__inner">
