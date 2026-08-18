@@ -33,16 +33,16 @@ import { banniereReduite, banniereVisible } from '../composables/consentement.js
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background-color: #25d366;
+  background: var(--bw-gradient);
   color: #fff;
-  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.42);
+  box-shadow: 0 12px 28px rgba(139, 92, 246, 0.32), 0 8px 20px rgba(255, 91, 110, 0.24);
   transition: transform 0.25s ease, box-shadow 0.25s ease, bottom 0.3s ease;
 }
 
 .whatsapp:hover {
   color: #fff;
   transform: scale(1.07);
-  box-shadow: 0 16px 34px rgba(37, 211, 102, 0.52);
+  box-shadow: 0 16px 34px rgba(139, 92, 246, 0.4), 0 10px 24px rgba(255, 91, 110, 0.3);
 }
 
 .whatsapp svg {
@@ -56,7 +56,7 @@ import { banniereReduite, banniereVisible } from '../composables/consentement.js
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background-color: #25d366;
+  background-color: var(--bw-coral);
   opacity: 0.55;
   animation: pulsation 2.6s ease-out infinite;
 }
@@ -82,7 +82,7 @@ import { banniereReduite, banniereVisible } from '../composables/consentement.js
   white-space: nowrap;
   padding: 9px 16px;
   border-radius: 4px;
-  background-color: var(--c-navy);
+  background-color: var(--bw-bg-alt);
   color: #fff;
   font-size: 0.82rem;
   font-weight: 500;
