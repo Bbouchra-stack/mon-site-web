@@ -247,21 +247,23 @@ onBeforeUnmount(() => {
   font-weight: 700;
   white-space: nowrap;
   transition: background-position var(--bw-duration) var(--bw-ease),
-    box-shadow var(--bw-duration) var(--bw-ease), transform var(--bw-duration-fast) var(--bw-ease);
+    filter var(--bw-duration) var(--bw-ease), transform var(--bw-duration-fast) var(--bw-ease);
   /* Pulsation continue pour attirer l'œil vers le seul point de contact
-     visible dans l'en-tête (pas de numéro affiché ici). Anneau à étalement
-     pur (sans flou) et de faible rayon : reste contenu dans le
-     padding de la pastille, ne déborde jamais de son contour. */
+     visible dans l'en-tête (pas de numéro affiché ici). Variation de
+     luminosité pure (filter), jamais un box-shadow à étalement : ce
+     dernier avait déjà débordé du contour de la pastille une fois
+     réduite (état « défilé », padding plus fin) — un filtre ne peut
+     géométriquement jamais dépasser la boîte du bouton. */
   animation: bw-cta-pulsation 2.2s ease-in-out infinite;
 }
 
 @keyframes bw-cta-pulsation {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(200, 78, 220, 0.5);
+    filter: brightness(1);
   }
   50% {
-    box-shadow: 0 0 0 6px rgba(200, 78, 220, 0);
+    filter: brightness(1.22);
   }
 }
 
@@ -275,9 +277,7 @@ onBeforeUnmount(() => {
   color: #050301;
   background-position: 100% 50%;
   transform: translateY(-1px);
-  /* Étalement réduit (pas de flou large) : la pastille de nav est
-     compacte, un halo trop grand débordait visuellement de son contour. */
-  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.22), 0 0 0 7px rgba(255, 122, 69, 0.12);
+  filter: brightness(1.1);
   animation-play-state: paused;
 }
 

@@ -1,7 +1,12 @@
 <script setup>
-import PerformancePanel from './PerformancePanel.vue'
+import SignatureVisual from './SignatureVisual.vue'
 import AmbientFlow from './AmbientFlow.vue'
 import { coordonnees } from '../composables/coordonnees.js'
+
+// Découpé en caractères pour l'animation « saisie » du numéro (chaque
+// chiffre apparaît l'un après l'autre). Les espaces sont conservés tels
+// quels pour ne pas casser la mise en forme du numéro.
+const telephoneCaracteres = coordonnees.telephoneAffiche.split('')
 </script>
 
 <template>
@@ -34,10 +39,19 @@ import { coordonnees } from '../composables/coordonnees.js'
           <a href="#contact" class="bw-btn-primaire">Nous contacter</a>
           <a href="#portfolio" class="bw-btn-ghost">Voir nos réalisations</a>
           <a :href="`tel:${coordonnees.telephoneLien}`" class="bw-btn-tel">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="bw-btn-tel__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.36 2.3.56 3.5.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.7 21 3 13.3 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.2.2 2.4.56 3.5a1 1 0 0 1-.25 1z" />
             </svg>
-            {{ coordonnees.telephoneAffiche }}
+            <span class="bw-btn-tel__numero" aria-hidden="true">
+              <span
+                v-for="(caractere, index) in telephoneCaracteres"
+                :key="index"
+                class="bw-btn-tel__chiffre"
+                :style="{ '--i': index }"
+                >{{ caractere }}</span
+              >
+            </span>
+            <span class="sr-only">{{ coordonnees.telephoneAffiche }}</span>
           </a>
         </div>
 
@@ -47,7 +61,7 @@ import { coordonnees } from '../composables/coordonnees.js'
       </div>
 
       <div class="bw-hero__preuve" v-reveal:scale="260">
-        <PerformancePanel />
+        <SignatureVisual />
       </div>
     </div>
   </section>
@@ -254,17 +268,94 @@ import { coordonnees } from '../composables/coordonnees.js'
     background-color var(--bw-duration-fast) var(--bw-ease);
 }
 
-.bw-btn-tel svg {
+.bw-btn-tel__icone {
   width: 18px;
   height: 18px;
   flex: none;
   color: var(--bw-coral);
+  transform-origin: 50% 15%;
+  /* Sonnerie : une salve de balancement au début de chaque cycle, puis
+     un long repos — comme une icône de téléphone qui vibre. */
+  animation: bw-tel-sonner 3.4s ease-in-out infinite;
+}
+
+@keyframes bw-tel-sonner {
+  0%,
+  62%,
+  100% {
+    transform: rotate(0deg);
+  }
+  64% {
+    transform: rotate(-16deg);
+  }
+  67% {
+    transform: rotate(14deg);
+  }
+  70% {
+    transform: rotate(-11deg);
+  }
+  73% {
+    transform: rotate(8deg);
+  }
+  76% {
+    transform: rotate(-4deg);
+  }
+  79% {
+    transform: rotate(0deg);
+  }
 }
 
 .bw-btn-tel:hover {
   color: var(--bw-text);
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.32);
+}
+
+/* ---------- Numéro qui « s'écrit » chiffre par chiffre ---------- */
+
+.bw-btn-tel__numero {
+  display: inline-flex;
+}
+
+.bw-btn-tel__chiffre {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.3);
+  white-space: pre;
+}
+
+/* Ne se joue qu'une fois la rangée de boutons révélée au défilement
+   (classe posée par la directive v-reveal), jamais avant. */
+.reveal--visible .bw-btn-tel__chiffre {
+  animation: bw-tel-ecrire 0.4s var(--bw-ease) forwards;
+  animation-delay: calc(var(--i) * 45ms + 500ms);
+}
+
+@keyframes bw-tel-ecrire {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-btn-tel__icone {
+    animation: none;
+  }
+
+  .bw-btn-tel__chiffre {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .bw-hero__signature {
