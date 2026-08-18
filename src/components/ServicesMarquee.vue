@@ -2,6 +2,7 @@
 const services = [
   'Sites vitrines',
   'Boutiques en ligne',
+  'Automatisation IA',
   'Refonte de site',
   'Référencement Google',
   'Maintenance & support',

@@ -15,6 +15,7 @@ const liensNav = computed(() =>
     { ancre: '#methode', label: 'Notre méthode' },
     { ancre: '#avantages', label: 'Nos avantages' },
     { ancre: '#portfolio', label: 'Portfolio' },
+    { ancre: '#automatisation', label: 'Automatisation IA' },
     { ancre: '#faq', label: 'FAQ' },
     { ancre: '#contact', label: 'Contact' },
   ].map((lien) => ({ ...lien, href: `${props.prefixeAncres}${lien.ancre}` })),

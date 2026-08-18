@@ -6,6 +6,7 @@ import MethodSection from './components/MethodSection.vue'
 import AdvantagesSection from './components/AdvantagesSection.vue'
 import IncludedSection from './components/IncludedSection.vue'
 import PortfolioSection from './components/PortfolioSection.vue'
+import AutomationSection from './components/AutomationSection.vue'
 import FaqSection from './components/FaqSection.vue'
 import StudioNote from './components/StudioNote.vue'
 import ContactSection from './components/ContactSection.vue'
@@ -25,6 +26,7 @@ import ProjectModal from './components/ProjectModal.vue'
     <AdvantagesSection />
     <IncludedSection />
     <PortfolioSection />
+    <AutomationSection />
     <FaqSection />
     <StudioNote />
     <ContactSection />

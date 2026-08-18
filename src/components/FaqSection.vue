@@ -49,7 +49,7 @@ function basculer(id) {
 </script>
 
 <template>
-  <section id="faq" class="section section--sombre section--sombre-alt">
+  <section id="faq" class="section section--sombre">
     <div class="container">
       <div class="section__head">
         <span class="eyebrow" v-reveal>FAQ</span>
