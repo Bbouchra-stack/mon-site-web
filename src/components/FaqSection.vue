@@ -49,7 +49,7 @@ function basculer(id) {
 </script>
 
 <template>
-  <section id="faq" class="section">
+  <section id="faq" class="section section--sombre section--sombre-alt">
     <div class="container">
       <div class="section__head">
         <span class="eyebrow" v-reveal>FAQ</span>
@@ -117,11 +117,11 @@ function basculer(id) {
 }
 
 .faq__colonne {
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--bw-border);
 }
 
 .faq__item {
-  border-bottom: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--bw-border);
 }
 
 .faq__titre {
@@ -140,15 +140,15 @@ function basculer(id) {
   border: 0;
   background: none;
   text-align: left;
-  color: var(--c-ink);
-  font-family: var(--font-titre);
+  color: var(--bw-text);
+  font-family: var(--font-display);
   font-size: 1.12rem;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color var(--bw-duration-fast) var(--bw-ease);
 }
 
 .faq__bouton:hover {
-  color: var(--c-navy-soft);
+  color: var(--bw-text);
 }
 
 .faq__chevron {
@@ -157,11 +157,12 @@ function basculer(id) {
   flex: 0 0 34px;
   width: 34px;
   height: 34px;
-  border: 1px solid var(--c-border);
+  border: 1px solid var(--bw-border);
   border-radius: 50%;
-  color: var(--c-gold);
-  transition: transform 0.3s ease, background-color 0.3s ease,
-    border-color 0.3s ease;
+  color: var(--bw-text);
+  transition: transform var(--bw-duration) var(--bw-ease),
+    background-color var(--bw-duration-fast) var(--bw-ease),
+    border-color var(--bw-duration-fast) var(--bw-ease);
 }
 
 .faq__chevron svg {
@@ -170,8 +171,8 @@ function basculer(id) {
 }
 
 .faq__bouton:hover .faq__chevron {
-  border-color: var(--c-gold);
-  background-color: #fdf6e3;
+  border-color: transparent;
+  background: var(--bw-gradient);
 }
 
 .faq__chevron--ouvert {
@@ -180,14 +181,14 @@ function basculer(id) {
 
 .faq__reponse {
   padding: 0 8px 28px;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
   overflow: hidden;
 }
 
 .faq__reponse p {
   margin: 0;
   max-width: 70ch;
-  border-left: 2px solid var(--c-gold-soft);
+  border-left: 2px solid var(--bw-purple);
   padding-left: 18px;
 }
 

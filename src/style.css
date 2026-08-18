@@ -265,6 +265,49 @@ button {
   color: var(--c-gold);
 }
 
+/* ---------- Variante sombre premium (mêmes classes que --surface/--navy,
+   pour les sections migrées vers la nouvelle direction artistique) ---------- */
+.section--sombre {
+  background-color: var(--bw-bg);
+  color: var(--bw-text-muted);
+}
+
+/* Alternance très discrète entre sections voisines, pour rythmer le
+   défilement sans jamais rompre l'unité du canevas sombre. */
+.section--sombre-alt {
+  background-color: var(--bw-bg-alt);
+}
+
+.section--sombre .section__title,
+.section--sombre h2,
+.section--sombre h3 {
+  font-family: var(--font-display);
+  font-weight: 560;
+  color: var(--bw-text);
+}
+
+.section--sombre .section__subtitle {
+  color: var(--bw-text-muted);
+}
+
+.section--sombre .eyebrow {
+  color: var(--bw-text-muted);
+}
+
+.section--sombre .eyebrow::before,
+.section--sombre .eyebrow::after {
+  background: var(--bw-gradient);
+  opacity: 1;
+}
+
+.section--sombre a:not(.btn) {
+  color: var(--bw-text);
+}
+
+.section--sombre a:not(.btn):hover {
+  color: var(--bw-coral);
+}
+
 .section__head .eyebrow {
   justify-content: center;
 }
@@ -327,6 +370,35 @@ button {
 
 .btn--block {
   width: 100%;
+}
+
+/* Boutons dans une section de la direction sombre premium */
+.section--sombre .btn {
+  border-radius: var(--bw-radius-pill);
+}
+
+.section--sombre .btn--primary {
+  background-color: var(--bw-text);
+  border-color: var(--bw-text);
+  color: var(--bw-bg);
+}
+
+.section--sombre .btn--primary:hover {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--bw-bg);
+  box-shadow: 0 16px 40px rgba(139, 92, 246, 0.28), 0 10px 24px rgba(255, 122, 69, 0.16);
+}
+
+.section--sombre .btn--ghost {
+  border-color: var(--bw-border-strong);
+  color: var(--bw-text);
+}
+
+.section--sombre .btn--ghost:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: var(--bw-text);
 }
 
 .sr-only {

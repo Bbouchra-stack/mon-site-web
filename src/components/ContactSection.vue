@@ -91,7 +91,7 @@ function nouveauMessage() {
 </script>
 
 <template>
-  <section id="contact" class="section section--navy contact">
+  <section id="contact" class="section section--sombre contact">
     <div class="container contact__inner">
       <div class="contact__intro">
         <span class="eyebrow" v-reveal>Contact</span>
@@ -294,7 +294,7 @@ function nouveauMessage() {
 }
 
 .contact__intro > p {
-  color: rgba(255, 255, 255, 0.66);
+  color: var(--bw-text-muted);
   max-width: 46ch;
 }
 
@@ -308,7 +308,7 @@ function nouveauMessage() {
   position: relative;
   padding-left: 30px;
   margin-bottom: 13px;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--bw-text-muted);
 }
 
 .contact__points li::before {
@@ -318,8 +318,8 @@ function nouveauMessage() {
   top: 9px;
   width: 16px;
   height: 9px;
-  border-left: 2px solid var(--c-gold);
-  border-bottom: 2px solid var(--c-gold);
+  border-left: 2px solid var(--bw-coral);
+  border-bottom: 2px solid var(--bw-coral);
   transform: rotate(-45deg);
 }
 
@@ -327,7 +327,7 @@ function nouveauMessage() {
   display: grid;
   gap: 20px;
   padding-top: 28px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid var(--bw-border);
 }
 
 .contact__coordonnees p {
@@ -335,12 +335,12 @@ function nouveauMessage() {
   flex-direction: column;
   gap: 4px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--bw-text-muted);
   font-size: 0.97rem;
 }
 
 .contact__coordonnees strong {
-  color: var(--c-gold);
+  color: var(--bw-purple);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -348,11 +348,11 @@ function nouveauMessage() {
 }
 
 .contact__coordonnees a {
-  color: #fff;
+  color: var(--bw-text);
 }
 
 .contact__coordonnees a:hover {
-  color: var(--c-gold);
+  color: var(--bw-coral);
 }
 
 .contact__whatsapp {
@@ -361,14 +361,15 @@ function nouveauMessage() {
   gap: 10px;
   margin-top: 30px;
   padding: 12px 24px;
-  border: 1px solid rgba(37, 211, 102, 0.5);
-  border-radius: 2px;
-  color: #4ae086;
+  border: 1px solid var(--bw-border-strong);
+  border-radius: var(--bw-radius-pill);
+  color: var(--bw-text);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  transition: background-color 0.25s ease, color 0.25s ease,
-    border-color 0.25s ease;
+  transition: background-color var(--bw-duration-fast) var(--bw-ease),
+    color var(--bw-duration-fast) var(--bw-ease),
+    border-color var(--bw-duration-fast) var(--bw-ease);
 }
 
 .contact__whatsapp svg {
@@ -377,18 +378,29 @@ function nouveauMessage() {
 }
 
 .contact__whatsapp:hover {
-  background-color: #25d366;
-  border-color: #25d366;
+  background: var(--bw-gradient);
+  border-color: transparent;
   color: #fff;
 }
 
 /* Carte formulaire */
 .contact__carte {
+  position: relative;
+  overflow: hidden;
   padding: 40px;
   background-color: var(--c-surface);
-  border-top: 3px solid var(--c-gold);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--bw-radius);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+.contact__carte::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bw-gradient);
 }
 
 .formulaire__ligne {
@@ -413,7 +425,7 @@ function nouveauMessage() {
 }
 
 .champ label span {
-  color: var(--c-gold);
+  color: var(--bw-purple);
 }
 
 .champ input,
@@ -444,8 +456,8 @@ function nouveauMessage() {
 .champ textarea:focus {
   outline: none;
   background-color: var(--c-surface);
-  border-color: var(--c-gold);
-  box-shadow: 0 0 0 3px rgba(227, 185, 63, 0.18);
+  border-color: var(--bw-purple);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18);
 }
 
 .champ--erreur {
@@ -470,7 +482,7 @@ function nouveauMessage() {
 }
 
 .formulaire__mention span {
-  color: var(--c-gold);
+  color: var(--bw-purple);
 }
 
 .btn[disabled] {
@@ -492,8 +504,8 @@ function nouveauMessage() {
   height: 68px;
   margin: 0 auto 24px;
   border-radius: 50%;
-  background-color: var(--c-teal-soft);
-  color: var(--c-success);
+  background: var(--bw-gradient);
+  color: #fff;
 }
 
 .confirmation__icone svg {
@@ -501,7 +513,11 @@ function nouveauMessage() {
   height: 32px;
 }
 
+/* La carte reste claire même dans une section sombre : on impose la
+   couleur du texte plutôt que d'hériter de .section--sombre h3. */
 .confirmation h3 {
+  color: var(--c-ink);
+  font-family: var(--font-titre);
   font-size: 1.42rem;
 }
 

@@ -71,8 +71,9 @@ const libelleChoix = {
 <style scoped>
 .cookies {
   padding: 44px 0 48px;
-  background-color: var(--c-cream-soft);
-  border-top: 1px solid var(--c-border);
+  background-color: var(--bw-bg-alt);
+  border-top: 1px solid var(--bw-border);
+  color: var(--bw-text-muted);
   scroll-margin-top: var(--header-h);
 }
 
@@ -84,6 +85,9 @@ const libelleChoix = {
 }
 
 .cookies__titre {
+  font-family: var(--font-display);
+  font-weight: 560;
+  color: var(--bw-text);
   font-size: 1.12rem;
   margin-bottom: 6px;
 }
@@ -92,7 +96,7 @@ const libelleChoix = {
   margin: 0;
   font-size: 0.84rem;
   line-height: 1.55;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
   max-width: 34ch;
 }
 
@@ -107,13 +111,13 @@ const libelleChoix = {
 
 .famille {
   padding-left: 16px;
-  border-left: 1px solid var(--c-border);
+  border-left: 1px solid var(--bw-border);
 }
 
 .famille__statut {
   display: block;
   margin-bottom: 7px;
-  color: var(--c-gold-texte);
+  color: var(--bw-purple);
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -124,6 +128,7 @@ const libelleChoix = {
   font-family: var(--font-texte);
   font-size: 0.88rem;
   font-weight: 600;
+  color: var(--bw-text);
   margin-bottom: 5px;
 }
 
@@ -131,7 +136,7 @@ const libelleChoix = {
   margin: 0;
   font-size: 0.8rem;
   line-height: 1.55;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 .cookies__pied {
@@ -141,39 +146,40 @@ const libelleChoix = {
   gap: 10px 22px;
   margin-top: 32px;
   padding-top: 20px;
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--bw-border);
   font-size: 0.8rem;
 }
 
 .cookies__choix {
   margin: 0;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 .cookies__bouton {
   padding: 7px 16px;
-  border: 1px solid var(--c-border);
-  border-radius: 3px;
+  border: 1px solid var(--bw-border-strong);
+  border-radius: var(--bw-radius-pill);
   background-color: transparent;
-  color: var(--c-text);
+  color: var(--bw-text);
   font-size: 0.78rem;
   font-weight: 600;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: border-color var(--bw-duration-fast) var(--bw-ease),
+    background-color var(--bw-duration-fast) var(--bw-ease);
 }
 
 .cookies__bouton:hover {
-  border-color: var(--c-navy);
-  color: var(--c-navy);
+  border-color: transparent;
+  background: var(--bw-gradient);
 }
 
 .cookies__lien {
-  color: var(--c-muted);
-  border-bottom: 1px solid var(--c-border);
+  color: var(--bw-text-muted);
+  border-bottom: 1px solid var(--bw-border-strong);
 }
 
 .cookies__lien:hover {
-  color: var(--c-navy);
-  border-bottom-color: var(--c-gold);
+  color: var(--bw-text);
+  border-bottom-color: var(--bw-coral);
 }
 
 @media (max-width: 900px) {

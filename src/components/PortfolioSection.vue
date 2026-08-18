@@ -41,7 +41,7 @@ const projets = [
 </script>
 
 <template>
-  <section id="portfolio" class="section section--surface">
+  <section id="portfolio" class="section section--sombre">
     <div class="container">
       <div class="section__head">
         <span class="eyebrow" v-reveal>Portfolio</span>
@@ -99,21 +99,24 @@ const projets = [
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: var(--c-surface);
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--bw-bg-alt);
+  border: 1px solid var(--bw-border);
+  border-radius: var(--bw-radius);
+  transition: transform var(--bw-duration) var(--bw-ease),
+    border-color var(--bw-duration-fast) var(--bw-ease),
+    box-shadow var(--bw-duration) var(--bw-ease);
 }
 
 .projet:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow);
+  border-color: var(--bw-border-strong);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
 }
 
 .projet__media {
   position: relative;
   overflow: hidden;
-  background-color: var(--c-navy);
+  background-color: var(--bw-bg);
 }
 
 .projet__media img {
@@ -133,9 +136,12 @@ const projets = [
   top: 16px;
   left: 16px;
   padding: 6px 14px;
-  border-radius: 2px;
-  background-color: var(--c-gold);
-  color: var(--c-navy);
+  border-radius: var(--bw-radius-pill);
+  background-color: rgba(7, 7, 10, 0.72);
+  border: 1px solid var(--bw-border);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -147,7 +153,7 @@ const projets = [
   top: 16px;
   right: 16px;
   padding: 5px 12px;
-  border-radius: 2px;
+  border-radius: var(--bw-radius-pill);
   font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -155,13 +161,13 @@ const projets = [
 }
 
 .projet__statut--concept {
-  background-color: rgba(255, 255, 255, 0.92);
-  color: var(--c-navy-soft);
+  background-color: rgba(255, 255, 255, 0.94);
+  color: var(--bw-bg);
 }
 
 .projet__statut--cours {
-  background-color: var(--c-teal);
-  color: #04302c;
+  background: linear-gradient(90deg, var(--bw-coral), var(--bw-orange));
+  color: #1a0906;
 }
 
 .projet__corps {
@@ -175,19 +181,19 @@ const projets = [
 
 .projet__description {
   margin: 0;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
   font-size: 0.95rem;
 }
 
 .projets__note {
   margin: 46px 0 0;
   text-align: center;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 .projets__note a {
   font-weight: 600;
-  border-bottom: 1px solid var(--c-gold);
+  border-bottom: 1px solid var(--bw-coral);
 }
 
 @media (max-width: 900px) {

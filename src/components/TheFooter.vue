@@ -129,8 +129,9 @@ const reseaux = [
 
 <style scoped>
 .pied {
-  background-color: var(--c-navy-deep);
-  color: rgba(255, 255, 255, 0.62);
+  background-color: var(--bw-bg);
+  border-top: 1px solid var(--bw-border);
+  color: var(--bw-text-muted);
   padding-top: 72px;
 }
 
@@ -160,11 +161,11 @@ const reseaux = [
 }
 
 .logo__nom {
-  font-family: var(--font-titre);
+  font-family: var(--font-display);
   font-size: 1.18rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--c-gold);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--bw-text);
 }
 
 .logo__studio {
@@ -172,12 +173,12 @@ const reseaux = [
   font-weight: 500;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--bw-text-muted);
 }
 
 .pied__baseline {
   max-width: 40ch;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--bw-text-muted);
   font-size: 0.94rem;
 }
 
@@ -194,24 +195,21 @@ const reseaux = [
   place-items: center;
   width: 42px;
   height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 4px;
-  color: rgba(255, 255, 255, 0.82);
-  transition: background-color 0.25s ease, color 0.25s ease,
-    border-color 0.25s ease, transform 0.25s ease;
+  border: 1px solid var(--bw-border-strong);
+  border-radius: var(--bw-radius-pill);
+  color: var(--bw-text);
+  transition: background-color var(--bw-duration-fast) var(--bw-ease),
+    color var(--bw-duration-fast) var(--bw-ease),
+    border-color var(--bw-duration-fast) var(--bw-ease),
+    transform var(--bw-duration-fast) var(--bw-ease);
 }
 
-.reseaux__lien:hover {
-  background-color: var(--c-gold);
-  border-color: var(--c-gold);
-  color: var(--c-navy);
-  transform: translateY(-2px);
-}
-
+.reseaux__lien:hover,
 .reseaux__lien--whatsapp:hover {
-  background-color: #25d366;
-  border-color: #25d366;
+  background: var(--bw-gradient);
+  border-color: transparent;
   color: #fff;
+  transform: translateY(-2px);
 }
 
 .reseaux__lien svg {
@@ -220,7 +218,7 @@ const reseaux = [
 }
 
 .pied__titre {
-  color: #fff;
+  color: var(--bw-text);
   font-family: var(--font-texte);
   font-size: 0.74rem;
   font-weight: 600;
@@ -238,15 +236,15 @@ const reseaux = [
 
 .pied__liste li {
   margin-bottom: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--bw-text-muted);
 }
 
 .pied__liste a {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--bw-text-muted);
 }
 
 .pied__liste a:hover {
-  color: var(--c-gold);
+  color: var(--bw-coral);
 }
 
 .pied__bas {
@@ -257,9 +255,9 @@ const reseaux = [
   gap: 10px 24px;
   padding-top: 24px;
   padding-bottom: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--bw-border);
   font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--bw-text-muted);
 }
 
 .pied__bas p {
@@ -274,12 +272,12 @@ const reseaux = [
 
 .pied__mentions a,
 .pied__bouton-lien {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--bw-text-muted);
 }
 
 .pied__mentions a:hover,
 .pied__bouton-lien:hover {
-  color: var(--c-gold);
+  color: var(--bw-coral);
 }
 
 .pied__bouton-lien {

@@ -2,21 +2,21 @@
 const avantages = [
   {
     id: 'personnalise',
-    ton: 'or',
+    ton: 'violet',
     titre: 'Site 100 % personnalisé',
     description:
       "Pas de template revendu à des centaines d'entreprises : chaque site est dessiné à partir de votre univers, de vos couleurs et de vos besoins réels.",
   },
   {
     id: 'accompagnement',
-    ton: 'turquoise',
+    ton: 'magenta',
     titre: 'Accompagnement et formation',
     description:
       'Nous vous formons à la prise en main de votre site pour que vous puissiez modifier vos textes, vos photos et vos horaires en toute autonomie.',
   },
   {
     id: 'maintenance',
-    ton: 'navy',
+    ton: 'corail',
     titre: 'Suivi et maintenance',
     description:
       'Mises à jour, sauvegardes, sécurité et corrections : votre site reste rapide et fiable dans la durée, avec un interlocuteur unique et réactif.',
@@ -25,7 +25,7 @@ const avantages = [
 </script>
 
 <template>
-  <section id="avantages" class="section section--surface">
+  <section id="avantages" class="section section--sombre">
     <div class="container">
       <div class="section__head">
         <span class="eyebrow" v-reveal>Nos avantages</span>
@@ -111,34 +111,36 @@ const avantages = [
 .avantage {
   position: relative;
   padding: 42px 32px 38px;
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius);
-  background-color: var(--c-cream);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid var(--bw-border);
+  border-radius: var(--bw-radius);
+  background-color: var(--bw-bg-alt);
+  transition: transform var(--bw-duration) var(--bw-ease),
+    box-shadow var(--bw-duration) var(--bw-ease),
+    border-color var(--bw-duration-fast) var(--bw-ease);
 }
 
 .avantage:hover {
   transform: translateY(-6px);
-  border-color: var(--teinte-bordure);
-  box-shadow: var(--shadow);
+  border-color: var(--bw-border-strong);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
 }
 
-.avantage--or {
-  --teinte-fond: #fdf6e3;
-  --teinte-bordure: #eddfb6;
-  --teinte-texte: #a8801d;
+.avantage--violet {
+  --teinte-fond: rgba(139, 92, 246, 0.14);
+  --teinte-bordure: rgba(139, 92, 246, 0.32);
+  --teinte-texte: var(--bw-purple);
 }
 
-.avantage--turquoise {
-  --teinte-fond: #e6f6f3;
-  --teinte-bordure: #c2e6df;
-  --teinte-texte: #1c8578;
+.avantage--magenta {
+  --teinte-fond: rgba(200, 78, 220, 0.14);
+  --teinte-bordure: rgba(200, 78, 220, 0.32);
+  --teinte-texte: var(--bw-magenta);
 }
 
-.avantage--navy {
-  --teinte-fond: #ebedf6;
-  --teinte-bordure: #d2d7ea;
-  --teinte-texte: #16225c;
+.avantage--corail {
+  --teinte-fond: rgba(255, 91, 110, 0.14);
+  --teinte-bordure: rgba(255, 91, 110, 0.32);
+  --teinte-texte: var(--bw-coral);
 }
 
 .avantage__icone {
@@ -165,7 +167,7 @@ const avantages = [
 
 .avantage__description {
   margin: 0;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
   font-size: 0.97rem;
 }
 

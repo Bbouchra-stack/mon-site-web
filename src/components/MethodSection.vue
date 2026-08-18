@@ -2,28 +2,28 @@
 const etapes = [
   {
     numero: '01',
-    ton: 'or',
+    ton: 'violet',
     titre: 'Premier échange',
     description:
       "On prend le temps de discuter de votre activité, de celles et ceux que vous recevez, et de vos objectifs. À l'issue de cet échange gratuit, vous recevez un devis clair et sans engagement.",
   },
   {
     numero: '02',
-    ton: 'turquoise',
+    ton: 'magenta',
     titre: 'Conception sur mesure',
     description:
       "Nous imaginons l'arborescence, les textes et la maquette graphique de votre site. Vous validez le design avant la moindre ligne de code.",
   },
   {
     numero: '03',
-    ton: 'navy',
+    ton: 'corail',
     titre: 'Développement',
     description:
       'Votre site prend vie : intégration responsive, optimisation des performances, référencement naturel et mise en place des formulaires de contact et de prise de rendez-vous.',
   },
   {
     numero: '04',
-    ton: 'bronze',
+    ton: 'orange',
     titre: 'Lancement et accompagnement',
     description:
       "Mise en ligne, nom de domaine, hébergement : on s'occupe de tout. Puis nous vous formons pour que vous restiez autonome au quotidien.",
@@ -32,7 +32,7 @@ const etapes = [
 </script>
 
 <template>
-  <section id="methode" class="section">
+  <section id="methode" class="section section--sombre">
     <div class="container">
       <div class="section__head">
         <span class="eyebrow" v-reveal>Notre méthode</span>
@@ -73,11 +73,13 @@ const etapes = [
 .etape {
   position: relative;
   padding: 36px 26px 32px;
-  border: 1px solid var(--teinte-bordure);
-  border-radius: var(--radius);
-  background: linear-gradient(170deg, var(--teinte-fond) 0%, var(--c-surface) 72%);
+  border: 1px solid var(--bw-border);
+  border-radius: var(--bw-radius);
+  background: var(--bw-bg-alt);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--bw-duration) var(--bw-ease),
+    border-color var(--bw-duration-fast) var(--bw-ease),
+    box-shadow var(--bw-duration) var(--bw-ease);
 }
 
 /* Filet coloré en haut de carte */
@@ -87,51 +89,41 @@ const etapes = [
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: var(--teinte);
 }
 
 .etape:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow);
+  border-color: var(--bw-border-strong);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--bw-border) inset;
 }
 
-.etape--or {
-  --teinte: linear-gradient(90deg, #f5d24e, #e3b93f);
-  --teinte-fond: #fdf6e3;
-  --teinte-bordure: #f0e3bd;
-  --teinte-texte: #a8801d;
+.etape--violet {
+  --teinte: var(--bw-purple);
 }
 
-.etape--turquoise {
-  --teinte: linear-gradient(90deg, #6bc9b4, #2fb3a8);
-  --teinte-fond: #e6f6f3;
-  --teinte-bordure: #c6e8e2;
-  --teinte-texte: #1c8578;
+.etape--magenta {
+  --teinte: var(--bw-magenta);
 }
 
-.etape--navy {
-  --teinte: linear-gradient(90deg, #2b3a7d, #16225c);
-  --teinte-fond: #ebedf6;
-  --teinte-bordure: #d2d7ea;
-  --teinte-texte: #16225c;
+.etape--corail {
+  --teinte: var(--bw-coral);
 }
 
-.etape--bronze {
-  --teinte: linear-gradient(90deg, #d9a54a, #b8822a);
-  --teinte-fond: #f8f0e2;
-  --teinte-bordure: #ecdcc0;
-  --teinte-texte: #8f6417;
+.etape--orange {
+  --teinte: var(--bw-orange);
 }
 
 .etape__numero {
   display: block;
-  font-family: var(--font-titre);
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.6rem;
+  font-weight: 500;
   line-height: 1;
-  color: var(--teinte-texte);
-  opacity: 0.85;
+  color: var(--teinte);
+  opacity: 0.9;
   margin-bottom: 20px;
 }
 
@@ -143,7 +135,7 @@ const etapes = [
 .etape__description {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 @media (max-width: 980px) {

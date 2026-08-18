@@ -42,7 +42,7 @@ const prestations = [
 </script>
 
 <template>
-  <section id="inclus" class="section">
+  <section id="inclus" class="section section--sombre">
     <div class="container">
       <div class="section__head">
         <span class="eyebrow" v-reveal>Prestation clé en main</span>
@@ -99,7 +99,7 @@ const prestations = [
   gap: 20px 56px;
   margin: 0 0 56px;
   padding: 0 0 44px;
-  border-bottom: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--bw-border);
   list-style: none;
   text-align: center;
 }
@@ -111,16 +111,20 @@ const prestations = [
 }
 
 .reperes strong {
-  font-family: var(--font-titre);
-  font-size: 1.9rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: 500;
   line-height: 1.1;
-  color: var(--c-ink);
+  background: var(--bw-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .reperes span {
   font-size: 0.84rem;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 .prestations {
@@ -137,7 +141,7 @@ const prestations = [
   align-items: flex-start;
   gap: 18px;
   padding: 22px 4px;
-  border-bottom: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--bw-border);
 }
 
 .prestation__coche {
@@ -148,17 +152,18 @@ const prestations = [
   height: 32px;
   margin-top: 2px;
   border-radius: 50%;
-  background-color: #fdf6e3;
-  border: 1px solid #eddfb6;
-  color: #a8801d;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
+  background-color: rgba(139, 92, 246, 0.14);
+  border: 1px solid rgba(139, 92, 246, 0.32);
+  color: var(--bw-purple);
+  transition: background-color var(--bw-duration-fast) var(--bw-ease),
+    color var(--bw-duration-fast) var(--bw-ease),
+    border-color var(--bw-duration-fast) var(--bw-ease);
 }
 
 .prestation:hover .prestation__coche {
-  background-color: var(--c-gold);
-  border-color: var(--c-gold);
-  color: var(--c-navy);
+  background: var(--bw-gradient);
+  border-color: transparent;
+  color: #fff;
 }
 
 .prestation__coche svg {
@@ -170,13 +175,14 @@ const prestations = [
   font-family: var(--font-texte);
   font-size: 1rem;
   font-weight: 600;
+  color: var(--bw-text);
   margin-bottom: 4px;
 }
 
 .prestation__detail {
   margin: 0;
   font-size: 0.92rem;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 .prestations__pied {
@@ -191,12 +197,12 @@ const prestations = [
 
 .prestations__pied p {
   margin: 0;
-  color: var(--c-muted);
+  color: var(--bw-text-muted);
 }
 
 .prestations__pied strong {
-  color: var(--c-ink);
-  font-family: var(--font-titre);
+  color: var(--bw-text);
+  font-family: var(--font-display);
   font-size: 1.16rem;
 }
 

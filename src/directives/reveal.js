@@ -33,7 +33,9 @@ function obtenirObservateur() {
         observateur.unobserve(entree.target)
       })
     },
-    { threshold: 0.12, rootMargin: '0px 0px -60px 0px' },
+    // Marge généreuse : un défilement rapide (molette, flick tactile) ne
+    // doit jamais faire « sauter » un élément sans qu'il soit révélé.
+    { threshold: 0.01, rootMargin: '0px 0px 0px 0px' },
   )
 
   return observateur
