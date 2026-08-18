@@ -120,6 +120,8 @@ const reseaux = [
         <span aria-hidden="true">·</span>
         <a href="/politique-de-confidentialite.html">Confidentialité</a>
         <span aria-hidden="true">·</span>
+        <a href="/cgv.html">CGV</a>
+        <span aria-hidden="true">·</span>
         <button type="button" class="pied__bouton-lien" @click="rouvrirBanniere">
           Gérer mes cookies
         </button>

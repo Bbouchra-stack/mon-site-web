@@ -96,7 +96,9 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
       électroniques) relèvent de la <strong>loi n° 53-05 relative à l'échange
       électronique de données juridiques</strong>. Les informations relatives
       aux prestations proposées sont fournies à titre indicatif&nbsp;; seul le
-      devis signé entre les parties a valeur contractuelle.
+      devis signé entre les parties a valeur contractuelle, dans les
+      conditions précisées par nos <a href="/cgv.html">conditions générales
+      de vente</a>.
     </p>
 
     <h2>6. Limitation de responsabilité</h2>

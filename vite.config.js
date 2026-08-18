@@ -2,9 +2,9 @@ import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// Site multi-pages : l'accueil plus les deux pages légales,
-// chacune avec sa propre URL (meilleur pour le référencement et
-// obligatoire pour pouvoir être liée depuis l'extérieur).
+// Site multi-pages : l'accueil plus les pages légales, chacune avec sa
+// propre URL (meilleur pour le référencement et obligatoire pour pouvoir
+// être liée depuis l'extérieur).
 export default defineConfig({
   plugins: [vue()],
   build: {
@@ -13,6 +13,7 @@ export default defineConfig({
         accueil: resolve(import.meta.dirname, 'index.html'),
         mentionsLegales: resolve(import.meta.dirname, 'mentions-legales.html'),
         confidentialite: resolve(import.meta.dirname, 'politique-de-confidentialite.html'),
+        cgv: resolve(import.meta.dirname, 'cgv.html'),
       },
     },
   },
