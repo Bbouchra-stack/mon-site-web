@@ -158,7 +158,7 @@ textarea:focus-visible {
   right: 0;
   z-index: 110;
   height: 34px;
-  background: var(--ink);
+  background: var(--hue-i);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -229,6 +229,14 @@ textarea:focus-visible {
   font-weight: 600;
   margin-top: 0.2rem;
 }
+
+.wordmark__name--rainbow .wm-i { color: var(--hue-i); }
+.wordmark__name--rainbow .wm-n { color: var(--hue-n); }
+.wordmark__name--rainbow .wm-t { color: var(--hue-t); }
+.wordmark__name--rainbow .wm-e { color: var(--hue-e); }
+.wordmark__name--rainbow .wm-g { color: var(--hue-g); }
+.wordmark__name--rainbow .wm-r { color: var(--hue-r); }
+.wordmark__name--rainbow .wm-a { color: var(--hue-a); }
 
 .nav__links {
   display: flex;
@@ -404,6 +412,20 @@ section > div {
   letter-spacing: 0.01em;
   margin-top: 0.3rem;
 }
+
+/* ==========================================================================
+   Traductions anglaises des titres de section
+   ========================================================================== */
+.h2-en {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--silver);
+  margin: -0.75rem 0 1.25rem;
+}
+.h2-en--light { color: rgba(247, 244, 238, 0.6); }
 
 /* ==========================================================================
    Founder
@@ -752,7 +774,7 @@ section > div {
    CTA final
    ========================================================================== */
 .cta-final {
-  background: linear-gradient(155deg, var(--hue-i) 0%, var(--ink) 100%);
+  background: linear-gradient(155deg, var(--hue-i) 0%, var(--hue-t) 100%);
   color: var(--paper);
 }
 .cta-final h2 { color: var(--paper); }
@@ -834,7 +856,7 @@ section > div {
 /* ==========================================================================
    Footer
    ========================================================================== */
-.footer { background: var(--ink); color: var(--paper); border-top: 1px solid rgba(247, 244, 238, 0.12); }
+.footer { background: var(--hue-i); color: var(--paper); border-top: 1px solid rgba(247, 244, 238, 0.12); }
 .footer__inner {
   max-width: var(--container);
   margin: 0 auto;
@@ -895,7 +917,7 @@ section > div {
   z-index: 300;
   max-width: 640px;
   margin: 0 auto;
-  background: var(--ink);
+  background: var(--hue-i);
   color: var(--paper);
   border-radius: 8px;
   padding: 1.25rem 1.5rem;
