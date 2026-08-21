@@ -424,6 +424,28 @@ section > div {
 .accordion__panel p { padding: 0 0.25rem 1.6rem; max-width: 60ch; }
 
 /* ==========================================================================
+   Audiences (publics accompagnés)
+   ========================================================================== */
+.audiences { background: var(--paper-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.audiences__list {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.audiences__list li {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
    Why
    ========================================================================== */
 .why__grid {
