@@ -149,11 +149,47 @@ textarea:focus-visible {
 .btn--wide { width: 100%; }
 
 /* ==========================================================================
+   Quote ticker
+   ========================================================================== */
+.quote-ticker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 110;
+  height: 34px;
+  background: var(--ink);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.quote-ticker__track {
+  display: flex;
+  gap: 4rem;
+  white-space: nowrap;
+  padding-left: 4rem;
+  animation: ticker-scroll 28s linear infinite;
+}
+.quote-ticker__item {
+  color: rgba(247, 244, 238, 0.85);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.82rem;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .quote-ticker__track { animation: none; }
+}
+
+/* ==========================================================================
    Navigation
    ========================================================================== */
 .nav {
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: 34px 0 auto 0;
   z-index: 100;
   background: transparent;
   transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
@@ -276,7 +312,7 @@ textarea:focus-visible {
   min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: 8rem var(--gutter) 5rem;
+  padding: calc(8rem + 34px) var(--gutter) 5rem;
   overflow: hidden;
 }
 .hero__inner {
@@ -570,6 +606,48 @@ section > div {
 }
 
 /* ==========================================================================
+   Actualités &amp; ressources
+   ========================================================================== */
+.news { border-top: 1px solid var(--line); }
+.news__grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.news__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 2rem;
+}
+.news__tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+  font-weight: 600;
+}
+.news__card h3 { font-size: 1.15rem; margin-bottom: 0; }
+.news__card p { font-size: 0.95rem; margin: 0; flex-grow: 1; }
+.news__source {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--steel);
+  align-self: flex-start;
+  border-bottom: 1px solid transparent;
+}
+.news__source:hover { border-bottom-color: var(--steel); }
+@media (max-width: 900px) {
+  .news__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .news__grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
    Why
    ========================================================================== */
 .why__grid {
@@ -832,3 +910,15 @@ section > div {
 .cookie-banner a { color: var(--paper); text-decoration: underline; text-underline-offset: 2px; }
 .cookie-banner .btn--primary { background: var(--paper); color: var(--ink); flex-shrink: 0; }
 .cookie-banner .btn--primary:hover { background: var(--steel-light); color: var(--white); }
+
+/* ==========================================================================
+   Texture de fond — trame géométrique discrète sur les sections gris clair
+   ========================================================================== */
+.founder,
+.method,
+.activities,
+.cookies-policy {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(31, 63, 82, 0.05) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(-45deg, rgba(31, 63, 82, 0.05) 0 1px, transparent 1px 56px);
+}
