@@ -158,7 +158,7 @@ textarea:focus-visible {
   right: 0;
   z-index: 110;
   height: 34px;
-  background: var(--hue-i);
+  background: var(--hue-t);
   overflow: hidden;
   display: flex;
   align-items: center;
