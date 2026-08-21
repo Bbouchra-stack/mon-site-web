@@ -20,11 +20,17 @@
 <header class="nav" id="nav">
   <div class="nav__inner">
     <a class="wordmark" href="#top" aria-label="INTEGRA Academy — Accueil">
-      <svg class="wordmark__mark" width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
-        <rect x="9" y="4" width="16" height="4" fill="currentColor"/>
-        <rect x="9" y="26" width="16" height="4" fill="currentColor"/>
-        <rect x="15" y="4" width="4" height="26" fill="currentColor"/>
-        <path d="M19 17L30 6" stroke="var(--steel)" stroke-width="3" stroke-linecap="round"/>
+      <svg class="wordmark__mark" width="36" height="36" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="logoGradNav" x1="4" y1="60" x2="60" y2="4" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#1F3F52"/>
+            <stop offset="1" stop-color="#1F6E68"/>
+          </linearGradient>
+        </defs>
+        <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#logoGradNav)"/>
+        <path d="M16 46L32 18L48 46" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="29" y="19" width="6" height="27" rx="1" fill="#FFFFFF"/>
+        <circle cx="32" cy="15.5" r="2.6" fill="#A1801F"/>
       </svg>
       <span class="wordmark__text">
         <span class="wordmark__name">INTEGRA</span>
@@ -167,7 +173,7 @@
       </p>
 
       <div class="poles__grid">
-        <article class="pole reveal">
+        <article class="pole pole--mentale reveal">
           <span class="pole__icon" aria-hidden="true">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
               <circle cx="15" cy="15" r="10.5" stroke="currentColor" stroke-width="1.4"/>
@@ -187,7 +193,7 @@
           </dl>
         </article>
 
-        <article class="pole reveal">
+        <article class="pole pole--scolaire reveal">
           <span class="pole__icon" aria-hidden="true">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
               <path d="M15 8L4 12l11 4 11-4-11-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
@@ -207,7 +213,7 @@
           </dl>
         </article>
 
-        <article class="pole reveal">
+        <article class="pole pole--dev reveal">
           <span class="pole__icon" aria-hidden="true">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
               <path d="M15 24V6M15 6l6 6M15 6l-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -227,7 +233,7 @@
           </dl>
         </article>
 
-        <article class="pole reveal">
+        <article class="pole pole--pro reveal">
           <span class="pole__icon" aria-hidden="true">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
               <circle cx="11" cy="11" r="3.2" stroke="currentColor" stroke-width="1.4"/>
@@ -327,20 +333,35 @@
     </div>
   </section>
 
-  <!-- 07 — SOCIAL PROOF (placeholder architecture) -->
-  <section class="proof">
+  <!-- 07 — NOS RÉFÉRENCES -->
+  <section class="proof" id="references">
     <div class="proof__inner">
-      <p class="eyebrow reveal">Ils nous font confiance</p>
-      <p class="proof__note reveal">
-        Témoignages et références clients à venir — emplacement réservé en
-        attendant le contenu réel.
-      </p>
-      <div class="proof__grid reveal" aria-hidden="true">
-        <div class="proof__slot"></div>
-        <div class="proof__slot"></div>
-        <div class="proof__slot"></div>
-        <div class="proof__slot"></div>
+      <p class="eyebrow reveal">Nos références</p>
+      <h2 class="reveal">Ils nous font confiance.</h2>
+
+      <div class="references__grid reveal">
+        <div class="reference">
+          <span class="reference__name">BS Technique</span>
+          <span class="reference__sector">Industrie</span>
+        </div>
+        <div class="reference">
+          <span class="reference__name">Seniors Maroc Care</span>
+          <span class="reference__sector">Accompagnement &amp; soins à domicile</span>
+        </div>
+        <div class="reference reference--empty">
+          <span class="reference__placeholder">Référence à venir</span>
+        </div>
+        <div class="reference reference--empty">
+          <span class="reference__placeholder">Référence à venir</span>
+        </div>
       </div>
+
+      <p class="proof__privacy reveal">
+        Par respect de la confidentialité, certains parents, particuliers et enfants
+        accompagnés choisissent de ne pas témoigner publiquement — un choix que nous
+        respectons pleinement. Nos références présentées ici sont celles des
+        organisations qui ont accepté d'être citées.
+      </p>
     </div>
   </section>
 
@@ -379,7 +400,7 @@
         <div class="contact-info reveal">
           <div class="contact-info__item">
             <span class="contact-info__label">Téléphone / WhatsApp</span>
-            <a href="tel:+212000000000">+212 0 00 00 00 00</a>
+            <a href="tel:+212669836153">+212 6 69 83 61 53</a>
           </div>
           <div class="contact-info__item">
             <span class="contact-info__label">Email</span>
@@ -389,8 +410,35 @@
             <span class="contact-info__label">Adresse</span>
             <p>Tanger, Maroc</p>
           </div>
-          <p class="contact-info__note">Coordonnées provisoires — à remplacer par les informations réelles.</p>
+          <div class="contact-info__item">
+            <span class="contact-info__label">Réseaux</span>
+            <div class="contact-info__social">
+              <a href="https://www.instagram.com/intergratedacademy" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.facebook.com/share/18uPLvi9WZ/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </div>
+          </div>
+          <p class="contact-info__note">Adresse et email à confirmer.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 — POLITIQUE DES COOKIES -->
+  <section class="cookies-policy" id="politique-cookies">
+    <div class="cookies-policy__inner">
+      <p class="eyebrow reveal">Politique des cookies</p>
+      <h2 class="reveal">Une navigation sans traçage superflu.</h2>
+      <div class="cookies-policy__content reveal">
+        <p>INTEGRA Academy respecte votre vie privée. Ce site n'utilise aucun cookie
+        publicitaire ni de suivi tiers.</p>
+        <p>Seuls des éléments techniques nécessaires au bon fonctionnement du site
+        (mémorisation ponctuelle de vos préférences d'affichage, stockées localement
+        dans votre navigateur) peuvent être utilisés. Aucune donnée n'est transmise
+        à des tiers à des fins commerciales.</p>
+        <p>Vous pouvez à tout moment effacer ces données via les paramètres de votre
+        navigateur.</p>
+        <p>Pour toute question relative à la confidentialité, contactez-nous à
+        <a href="mailto:contact@integra-academy.ma">contact@integra-academy.ma</a>.</p>
       </div>
     </div>
   </section>
@@ -400,8 +448,22 @@
 <footer class="footer">
   <div class="footer__inner">
     <a class="wordmark wordmark--footer" href="#top" aria-label="INTEGRA Academy — Accueil">
-      <span class="wordmark__name">INTEGRA</span>
-      <span class="wordmark__sub">ACADEMY</span>
+      <svg class="wordmark__mark" width="32" height="32" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="logoGradFooter" x1="4" y1="60" x2="60" y2="4" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#1F3F52"/>
+            <stop offset="1" stop-color="#1F6E68"/>
+          </linearGradient>
+        </defs>
+        <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#logoGradFooter)"/>
+        <path d="M16 46L32 18L48 46" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="29" y="19" width="6" height="27" rx="1" fill="#FFFFFF"/>
+        <circle cx="32" cy="15.5" r="2.6" fill="#A1801F"/>
+      </svg>
+      <span class="wordmark__text">
+        <span class="wordmark__name">INTEGRA</span>
+        <span class="wordmark__sub">ACADEMY</span>
+      </span>
     </a>
     <nav class="footer__links" aria-label="Navigation du pied de page">
       <a href="#academie">L'Académie</a>
@@ -410,10 +472,33 @@
       <a href="#programmes">Pôles</a>
       <a href="#methode">Méthode</a>
       <a href="#contact">Contact</a>
+      <a href="#politique-cookies">Cookies</a>
     </nav>
+    <div class="footer__social" aria-label="Réseaux sociaux">
+      <a href="https://www.instagram.com/intergratedacademy" target="_blank" rel="noopener noreferrer" aria-label="INTEGRA Academy sur Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/share/18uPLvi9WZ/" target="_blank" rel="noopener noreferrer" aria-label="INTEGRA Academy sur Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M14.5 21v-7.5h2.5l.4-3H14.5V8.4c0-.87.24-1.46 1.5-1.46H17.5V4.35C17.24 4.32 16.35 4.25 15.3 4.25c-2.19 0-3.7 1.34-3.7 3.79v2.46H9v3h2.6V21h2.9Z" fill="currentColor"/>
+        </svg>
+      </a>
+    </div>
     <p class="footer__meta">Tanger, Maroc — © <span id="year"></span> INTEGRA Academy. Tous droits réservés.</p>
   </div>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Consentement aux cookies" hidden>
+  <p>
+    Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement —
+    aucun cookie de suivi ni publicitaire. <a href="#politique-cookies">En savoir plus</a>.
+  </p>
+  <button type="button" class="btn btn--primary" id="cookieAccept">J'ai compris</button>
+</div>
 
 <script src="js/script.js"></script>
 </body>

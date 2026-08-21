@@ -55,6 +55,30 @@
     revealEls.forEach(function (el) { observer.observe(el); });
   }
 
+  // Cookie consent banner
+  var cookieBanner = document.getElementById("cookieBanner");
+  var cookieAccept = document.getElementById("cookieAccept");
+  if (cookieBanner && cookieAccept) {
+    var consentKey = "integra-cookie-consent";
+    var hasConsent = false;
+    try {
+      hasConsent = window.localStorage.getItem(consentKey) === "true";
+    } catch (err) {
+      hasConsent = false;
+    }
+    if (!hasConsent) {
+      cookieBanner.hidden = false;
+    }
+    cookieAccept.addEventListener("click", function () {
+      cookieBanner.hidden = true;
+      try {
+        window.localStorage.setItem(consentKey, "true");
+      } catch (err) {
+        // Stockage indisponible (navigation privée) — le bandeau réapparaîtra à la prochaine visite.
+      }
+    });
+  }
+
   // Contact form (front-end only — no backend wired yet)
   var form = document.getElementById("contactForm");
   var status = document.getElementById("formStatus");
