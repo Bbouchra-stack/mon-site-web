@@ -21,6 +21,15 @@
   --hue-r: #B3592C;
   --hue-a: #8C3A3F;
 
+  /* Teintes claires des 7 couleurs, lisibles sur fond marine (footer) */
+  --tint-i: #7C9DB0;
+  --tint-n: #7FB2D6;
+  --tint-t: #74C2BB;
+  --tint-e: #8FC79F;
+  --tint-g: #E3BE73;
+  --tint-r: #E4977A;
+  --tint-a: #CF8083;
+
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -237,6 +246,14 @@ textarea:focus-visible {
 .wordmark__name--rainbow .wm-g { color: var(--hue-g); }
 .wordmark__name--rainbow .wm-r { color: var(--hue-r); }
 .wordmark__name--rainbow .wm-a { color: var(--hue-a); }
+
+.wordmark__name--rainbow-dark .wm-i { color: var(--tint-i); }
+.wordmark__name--rainbow-dark .wm-n { color: var(--tint-n); }
+.wordmark__name--rainbow-dark .wm-t { color: var(--tint-t); }
+.wordmark__name--rainbow-dark .wm-e { color: var(--tint-e); }
+.wordmark__name--rainbow-dark .wm-g { color: var(--tint-g); }
+.wordmark__name--rainbow-dark .wm-r { color: var(--tint-r); }
+.wordmark__name--rainbow-dark .wm-a { color: var(--tint-a); }
 
 .nav__links {
   display: flex;
