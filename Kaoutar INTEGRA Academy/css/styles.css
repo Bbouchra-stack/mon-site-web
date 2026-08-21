@@ -411,31 +411,80 @@ section > div {
 }
 
 /* ==========================================================================
-   Pillars (Vision / Équilibre / Croissance)
+   Pillars — les 7 lettres d'INTEGRA (bandeau animé)
    ========================================================================== */
-.pillars { background: var(--paper-alt); }
-.pillars__list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  margin-top: 3rem;
-  border: 1px solid var(--line);
+.pillars { background: var(--paper); border-top: 1px solid var(--line); overflow: hidden; }
+.pillars__hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--silver);
 }
+
+.pillars__marquee {
+  margin-top: 2.5rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.pillars__track {
+  display: flex;
+  width: max-content;
+  animation: pillars-scroll 36s linear infinite;
+}
+.pillars__marquee:hover .pillars__track,
+.pillars__marquee:focus-within .pillars__track {
+  animation-play-state: paused;
+}
+@keyframes pillars-scroll {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.pillars__set {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.625rem;
+}
+
 .pillar {
-  background: var(--paper-alt);
-  padding: 2.5rem 2rem;
+  flex: 0 0 auto;
+  width: 260px;
+  padding: 2.25rem 1.75rem;
+  border-radius: 14px;
+  color: #FFFFFF;
+  box-shadow: 0 14px 30px -12px rgba(20, 23, 26, 0.35);
 }
-.pillar__num {
+.pillar__letter {
+  display: block;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.6rem;
-  color: var(--steel-light);
-  display: block;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.55);
   margin-bottom: 1.5rem;
 }
-@media (max-width: 760px) {
-  .pillars__list { grid-template-columns: 1fr; }
+.pillar h3 { color: #FFFFFF; margin-bottom: 0.6rem; }
+.pillar p { color: rgba(255, 255, 255, 0.88); margin: 0; }
+
+.pillar--i { background: #1F3F52; }
+.pillar--n { background: #235A78; }
+.pillar--t { background: #1F6E68; }
+.pillar--e { background: #3C7A57; }
+.pillar--g { background: #A1801F; }
+.pillar--r { background: #B3592C; }
+.pillar--a { background: #8C3A3F; }
+
+@media (max-width: 640px) {
+  .pillar { width: 220px; padding: 1.85rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillars__marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+  .pillars__track { animation: none; width: max-content; }
+  .pillars__set--dup { display: none; }
 }
 
 /* ==========================================================================
