@@ -143,9 +143,9 @@ textarea:focus-visible {
 .btn--ghost {
   background: transparent;
   color: var(--ink);
-  border-color: var(--ink);
+  border-color: var(--hue-i);
 }
-.btn--ghost:hover { background: var(--ink); color: var(--white); }
+.btn--ghost:hover { background: var(--hue-i); color: var(--white); }
 .btn--wide { width: 100%; }
 
 /* ==========================================================================
@@ -257,12 +257,12 @@ textarea:focus-visible {
 }
 .nav__links a:not(.nav__cta):hover::after { right: 0; }
 .nav__cta {
-  border: 1px solid var(--ink);
+  border: 1px solid var(--hue-i);
   padding: 0.6rem 1.2rem;
   border-radius: 2px;
   transition: background 0.25s var(--ease), color 0.25s var(--ease);
 }
-.nav__cta:hover { background: var(--ink); color: var(--white); }
+.nav__cta:hover { background: var(--hue-i); color: var(--white); }
 
 .nav__toggle {
   display: none;
@@ -303,7 +303,7 @@ textarea:focus-visible {
 .nav__mobile .nav__cta {
   margin-top: 1rem;
   text-align: center;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--hue-i);
 }
 
 @media (max-width: 860px) {
@@ -459,6 +459,14 @@ section > div {
   color: var(--steel);
   font-weight: 600;
   margin-bottom: 1.75rem;
+}
+.founder__story {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 56ch;
+  margin-bottom: 2rem;
 }
 .founder__credentials {
   list-style: none;
@@ -678,7 +686,7 @@ section > div {
   gap: 2.5rem;
   margin-top: 2.5rem;
 }
-.why__item { border-top: 2px solid var(--ink); padding-top: 1.25rem; }
+.why__item { border-top: 2px solid var(--hue-i); padding-top: 1.25rem; }
 .why__item:nth-child(1) { border-top-color: var(--hue-g); }
 .why__item:nth-child(2) { border-top-color: var(--hue-t); }
 .why__item:nth-child(3) { border-top-color: var(--hue-i); }
@@ -840,6 +848,12 @@ section > div {
   color: rgba(247, 244, 238, 0.85);
 }
 .field__optional { color: var(--silver); font-weight: 400; }
+.field__required { color: var(--hue-r); font-weight: 700; }
+.field__legend {
+  margin: -0.5rem 0 0;
+  font-size: 0.78rem;
+  color: rgba(247, 244, 238, 0.55);
+}
 .field input,
 .field textarea {
   background: rgba(247, 244, 238, 0.06);
