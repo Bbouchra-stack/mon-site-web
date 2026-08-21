@@ -55,27 +55,6 @@
     revealEls.forEach(function (el) { observer.observe(el); });
   }
 
-  // Accordion
-  var accordion = document.getElementById("accordion");
-  if (accordion) {
-    accordion.querySelectorAll(".accordion__trigger").forEach(function (trigger) {
-      trigger.addEventListener("click", function () {
-        var item = trigger.closest(".accordion__item");
-        var isOpen = item.classList.contains("is-open");
-
-        accordion.querySelectorAll(".accordion__item").forEach(function (other) {
-          other.classList.remove("is-open");
-          other.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
-        });
-
-        if (!isOpen) {
-          item.classList.add("is-open");
-          trigger.setAttribute("aria-expanded", "true");
-        }
-      });
-    });
-  }
-
   // Contact form (front-end only — no backend wired yet)
   var form = document.getElementById("contactForm");
   var status = document.getElementById("formStatus");

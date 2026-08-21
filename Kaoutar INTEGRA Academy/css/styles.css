@@ -343,6 +343,73 @@ section > div {
   .intro__grid { grid-template-columns: 1fr; }
 }
 
+.intro__name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.intro__name-en {
+  display: block;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--silver);
+  letter-spacing: 0.01em;
+  margin-top: 0.3rem;
+}
+
+/* ==========================================================================
+   Founder
+   ========================================================================== */
+.founder { background: var(--paper-alt); }
+.founder__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+.founder__portrait {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(155deg, var(--paper) 0%, var(--paper-alt) 75%);
+  border: 1px solid var(--line);
+  position: relative;
+}
+.founder__portrait::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid var(--steel-light);
+  opacity: 0.35;
+}
+.founder__content h2 { margin-bottom: 0.35rem; }
+.founder__role {
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--steel);
+  font-weight: 600;
+  margin-bottom: 1.75rem;
+}
+.founder__credentials {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.founder__credentials li {
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+.founder__credentials li:last-child { border-bottom: 1px solid var(--line); }
+@media (max-width: 760px) {
+  .founder__grid { grid-template-columns: 1fr; }
+  .founder__portrait { max-width: 280px; }
+}
+
 /* ==========================================================================
    Pillars (Vision / Équilibre / Croissance)
    ========================================================================== */
@@ -372,62 +439,57 @@ section > div {
 }
 
 /* ==========================================================================
-   Programs / Accordion
+   Pôles &amp; publics
    ========================================================================== */
 .programs__note {
   font-size: 0.9rem;
   font-style: italic;
   color: var(--silver);
 }
-.accordion {
-  margin-top: 2.5rem;
-  border-top: 1px solid var(--line);
+.poles__grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
 }
-.accordion__item { border-bottom: 1px solid var(--line); }
-.accordion__trigger {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.pole {
+  background: var(--paper);
+  padding: 2.5rem;
+}
+.pole__icon {
+  display: inline-flex;
+  color: var(--steel);
+  margin-bottom: 1.25rem;
+}
+.pole h3 { margin-bottom: 1.25rem; }
+.pole__meta {
+  margin: 0;
+  display: grid;
   gap: 1rem;
-  padding: 1.6rem 0.25rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: var(--ink);
 }
-.accordion__icon {
-  position: relative;
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
+.pole__meta dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 0.3rem;
 }
-.accordion__icon::before,
-.accordion__icon::after {
-  content: "";
-  position: absolute;
-  background: var(--ink);
-  transition: transform 0.3s var(--ease);
+.pole__meta dd {
+  margin: 0;
+  color: var(--ink-soft);
 }
-.accordion__icon::before { top: 50%; left: 0; width: 100%; height: 1px; }
-.accordion__icon::after { left: 50%; top: 0; width: 1px; height: 100%; }
-.accordion__item.is-open .accordion__icon::after { transform: rotate(90deg); opacity: 0; }
-.accordion__panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s var(--ease);
+@media (max-width: 760px) {
+  .poles__grid { grid-template-columns: 1fr; }
+  .pole { padding: 2rem; }
 }
-.accordion__item.is-open .accordion__panel { max-height: 220px; }
-.accordion__panel p { padding: 0 0.25rem 1.6rem; max-width: 60ch; }
 
 /* ==========================================================================
-   Audiences (publics accompagnés)
+   Nos activités
    ========================================================================== */
-.audiences { background: var(--paper-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.audiences__list {
+.activities { background: var(--paper-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.activities__list {
   list-style: none;
   margin: 2.5rem 0 0;
   padding: 0;
@@ -435,9 +497,9 @@ section > div {
   flex-wrap: wrap;
   gap: 0.75rem;
 }
-.audiences__list li {
+.activities__list li {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--ink);
   border: 1px solid var(--line);
   background: var(--paper);
