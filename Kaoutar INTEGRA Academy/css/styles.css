@@ -501,6 +501,30 @@ section > div {
   max-width: 56ch;
   margin-bottom: 2rem;
 }
+.founder__story p { margin: 0 0 1rem; color: var(--ink); }
+.founder__story p:last-child { margin-bottom: 0; }
+
+.founder__vision {
+  max-width: 56ch;
+  margin-bottom: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.founder__vision-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.founder__vision-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin: 0;
+}
 .founder__credentials {
   list-style: none;
   margin: 0;
