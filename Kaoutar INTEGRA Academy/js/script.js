@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  var isAr = document.documentElement.lang === "ar";
+
   // Footer year
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -23,7 +25,9 @@
     navToggle.addEventListener("click", function () {
       var isOpen = nav.classList.toggle("is-open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
-      navToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+      var openLabel = isAr ? "فتح القائمة" : "Ouvrir le menu";
+      var closeLabel = isAr ? "إغلاق القائمة" : "Fermer le menu";
+      navToggle.setAttribute("aria-label", isOpen ? closeLabel : openLabel);
     });
 
     document.querySelectorAll(".nav__mobile a").forEach(function (link) {
@@ -85,7 +89,9 @@
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      status.textContent = "Formulaire prêt côté design — connectez-le à votre service d'envoi d'emails pour l'activer.";
+      status.textContent = isAr
+        ? "النموذج جاهز من الناحية التصميمية — يرجى ربطه بخدمة إرسال البريد الإلكتروني لتفعيله."
+        : "Formulaire prêt côté design — connectez-le à votre service d'envoi d'emails pour l'activer.";
     });
   }
 })();

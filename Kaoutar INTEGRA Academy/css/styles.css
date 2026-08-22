@@ -281,6 +281,22 @@ textarea:focus-visible {
 }
 .nav__cta:hover { background: var(--hue-i); color: var(--white); }
 
+.nav__lang {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem !important;
+  color: var(--ink-soft) !important;
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+.nav__lang:hover { border-color: var(--hue-i); color: var(--hue-i) !important; }
+.nav__lang::after { content: none !important; }
+.footer__links .nav__lang { border-color: rgba(247, 244, 238, 0.3); color: rgba(247, 244, 238, 0.85) !important; }
+.footer__links .nav__lang:hover { border-color: var(--paper); color: var(--paper) !important; }
+
 .nav__toggle {
   display: none;
   flex-direction: column;
@@ -755,6 +771,7 @@ section > div {
   border: 1px solid var(--line);
 }
 .reference {
+  min-width: 0;
   background: var(--paper);
   aspect-ratio: 3 / 2;
   display: flex;
