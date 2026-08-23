@@ -476,13 +476,21 @@ section > div {
   background: linear-gradient(155deg, var(--paper) 0%, var(--paper-alt) 75%);
   border: 1px solid var(--line);
   position: relative;
+  overflow: hidden;
+}
+.founder__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 .founder__portrait::before {
   content: "";
   position: absolute;
   inset: 22px;
-  border: 1px solid var(--steel-light);
-  opacity: 0.35;
+  border: 1px solid var(--white);
+  opacity: 0.5;
+  pointer-events: none;
 }
 .founder__content h2 { margin-bottom: 0.35rem; }
 .founder__role {
