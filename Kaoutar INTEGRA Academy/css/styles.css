@@ -503,13 +503,13 @@ section > div {
 }
 .founder__story {
   font-family: var(--font-display);
-  font-size: 1.15rem;
-  line-height: 1.5;
+  font-size: 0.98rem;
+  line-height: 1.6;
   color: var(--ink);
   max-width: 56ch;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
-.founder__story p { margin: 0 0 1rem; color: var(--ink); }
+.founder__story p { margin: 0 0 0.85rem; color: var(--ink); }
 .founder__story p:last-child { margin-bottom: 0; }
 
 .founder__vision {
@@ -529,7 +529,7 @@ section > div {
 .founder__vision-text {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--ink);
   margin: 0;
 }
