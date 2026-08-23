@@ -145,10 +145,10 @@ textarea:focus-visible {
   min-height: 44px;
 }
 .btn--primary {
-  background: var(--ink);
+  background: var(--hue-i);
   color: var(--white);
 }
-.btn--primary:hover { background: var(--steel); }
+.btn--primary:hover { background: var(--hue-t); }
 .btn--ghost {
   background: transparent;
   color: var(--ink);
