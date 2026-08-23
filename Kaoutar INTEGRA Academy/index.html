@@ -597,12 +597,12 @@
             <input type="email" id="email" name="email" autocomplete="email" required aria-required="true">
           </div>
           <div class="field">
-            <label for="phone">Téléphone <span class="field__optional">(optionnel)</span></label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel">
+            <label for="phone">Téléphone <span class="field__required" aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" required aria-required="true">
           </div>
           <div class="field">
-            <label for="message">Message <span class="field__required" aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+            <label for="message">Message <span class="field__optional">(optionnel)</span></label>
+            <textarea id="message" name="message" rows="4"></textarea>
           </div>
           <p class="field__legend">* champs obligatoires</p>
           <button type="submit" class="btn btn--primary btn--wide">Envoyer</button>
