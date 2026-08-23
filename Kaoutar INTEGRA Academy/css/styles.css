@@ -371,6 +371,8 @@ textarea:focus-visible {
   min-height: 100svh;
   display: flex;
   align-items: center;
+  max-width: var(--container);
+  margin: 0 auto;
   padding: calc(8rem + 34px) var(--gutter) 5rem;
   overflow: hidden;
 }
