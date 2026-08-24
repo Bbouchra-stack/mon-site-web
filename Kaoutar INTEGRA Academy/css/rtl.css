@@ -48,7 +48,7 @@ body { line-height: 1.85; }
   left: -10%;
   background:
     linear-gradient(270deg, var(--paper) 0%, var(--paper) 8%, transparent 42%) center / 100% 100% no-repeat,
-    url("../assets/hero-abstract.svg") center / cover no-repeat;
+    url("../assets/hero-abstract-ripples.svg") center / cover no-repeat;
 }
 
 /* Séparateur du formulaire de contact : passe à droite du bloc coordonnées */
