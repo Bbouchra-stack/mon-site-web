@@ -31,6 +31,15 @@ body { line-height: 1.85; }
   letter-spacing: normal;
 }
 
+/* La photo de la fondatrice flotte à droite en RTL, texte qui l'entoure à gauche */
+.founder__portrait {
+  float: right;
+  margin: 0 0 1.5rem 2.75rem;
+}
+@media (max-width: 640px) {
+  .founder__portrait { float: none; margin: 0 0 1.5rem; }
+}
+
 /* Le lien de saut d'accessibilité entre par la droite en RTL */
 .skip-link { left: auto; right: -999px; }
 .skip-link:focus { right: 1rem; left: auto; }
