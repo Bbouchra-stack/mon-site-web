@@ -264,18 +264,18 @@ textarea:focus-visible {
 .nav__links {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0.85rem var(--gutter);
+  padding: 0.45rem var(--gutter);
   border-top: 1px solid var(--line);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  row-gap: 0.5rem;
+  row-gap: 0.35rem;
   gap: 1.2rem;
   font-size: 0.85rem;
   font-weight: 500;
 }
-.nav__links a { padding: 0.4rem 0; position: relative; }
+.nav__links a { padding: 0.22rem 0; position: relative; }
 .nav__links a:not(.nav__cta)::after {
   content: "";
   position: absolute;
@@ -383,7 +383,7 @@ textarea:focus-visible {
   align-items: center;
   max-width: var(--container);
   margin: 0 auto;
-  padding: calc(10rem + 34px) var(--gutter) 5rem;
+  padding: calc(9rem + 34px) var(--gutter) 5rem;
   overflow: hidden;
 }
 .hero__inner {
@@ -443,7 +443,7 @@ section > div {
   margin: 0 auto;
   padding: 6rem var(--gutter);
 }
-#top.intro > div { padding-top: calc(10rem + 34px); }
+#top.intro > div { padding-top: calc(9rem + 34px); }
 
 .intro__grid {
   display: grid;
@@ -1128,6 +1128,7 @@ section > div {
 .footer__links { display: flex; flex-direction: column; align-items: flex-start; gap: 0.8rem; font-size: 0.9rem; }
 .footer__links a { color: rgba(247, 244, 238, 0.75); }
 .footer__links a:hover { color: var(--paper); }
+.footer__links a[href^="mailto:"] { white-space: nowrap; }
 .footer__social { display: flex; gap: 1rem; }
 .footer__social a {
   display: inline-flex;
