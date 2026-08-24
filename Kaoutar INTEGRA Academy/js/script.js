@@ -86,6 +86,13 @@
   // Contact form (front-end only — no backend wired yet)
   var form = document.getElementById("contactForm");
   var status = document.getElementById("formStatus");
+  var consent = document.getElementById("consentCNDP");
+  var submitBtn = document.getElementById("contactSubmit");
+  if (consent && submitBtn) {
+    consent.addEventListener("change", function () {
+      submitBtn.disabled = !consent.checked;
+    });
+  }
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();

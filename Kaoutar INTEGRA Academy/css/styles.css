@@ -222,6 +222,19 @@ textarea:focus-visible {
   align-items: center;
   gap: 1.5rem;
 }
+.nav__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--steel);
+  color: var(--white);
+  flex-shrink: 0;
+  transition: background 0.25s var(--ease);
+}
+.nav__whatsapp:hover { background: var(--steel-light); }
 
 .wordmark {
   display: inline-flex;
@@ -368,7 +381,8 @@ textarea:focus-visible {
 @media (max-width: 900px) {
   .nav__links { display: none; }
   .nav__top-right .nav__langgroup,
-  .nav__top-right .nav__cta { display: none; }
+  .nav__top-right .nav__cta,
+  .nav__top-right .nav__whatsapp { display: none; }
   .nav__toggle { display: flex; }
   .nav.is-open .nav__mobile { display: flex; }
 }
@@ -1098,6 +1112,47 @@ section > div {
   color: var(--steel-light);
   min-height: 1.2em;
 }
+.consent-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: -0.25rem 0 0;
+  cursor: pointer;
+}
+.consent-check input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: var(--steel-light);
+}
+.consent-check span {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: rgba(247, 244, 238, 0.75);
+}
+.contact-form__legal {
+  font-size: 0.68rem;
+  line-height: 1.6;
+  color: rgba(247, 244, 238, 0.5);
+  margin: 0;
+}
+.contact-form__legal a { color: rgba(247, 244, 238, 0.7); text-decoration: underline; text-underline-offset: 2px; }
+.contact-form .btn--primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.contact-form .btn--primary:disabled:hover { background: var(--paper); color: var(--ink); }
+.contact-form__recaptcha {
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: rgba(247, 244, 238, 0.45);
+  margin: -0.5rem 0 0;
+}
+.recaptcha-badge__icon {
+  vertical-align: -3px;
+  margin-inline-end: 0.35rem;
+  color: var(--steel-light);
+}
+.contact-form__recaptcha a { color: rgba(247, 244, 238, 0.65); text-decoration: underline; text-underline-offset: 2px; }
 
 .contact-info {
   display: flex;
