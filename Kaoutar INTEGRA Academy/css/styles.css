@@ -394,10 +394,39 @@ textarea:focus-visible {
 .hero__title {
   font-size: clamp(2.4rem, 6vw, 4.4rem);
   font-weight: 400;
+  position: relative;
+  opacity: 0;
+  transform: translateY(-28px);
+  animation: hero-title-in 0.9s var(--ease) 0.1s forwards;
 }
 .hero__title em {
   font-style: italic;
   color: var(--steel);
+}
+.hero__title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.55) 48%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.55) 52%, transparent 70%);
+  background-size: 250% 100%;
+  background-position: -150% 0;
+  mix-blend-mode: overlay;
+  opacity: 0;
+  pointer-events: none;
+  animation: hero-title-shine 1.8s ease-out 1.05s 1 forwards;
+}
+@keyframes hero-title-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-title-shine {
+  0% { background-position: -150% 0; opacity: 0; }
+  15% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { background-position: 150% 0; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__title { opacity: 1; transform: none; animation: none; }
+  .hero__title::after { animation: none; opacity: 0; }
 }
 .hero__lede {
   margin-top: 1.75rem;
