@@ -501,7 +501,7 @@ section > div {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 3rem;
-  align-items: center;
+  align-items: start;
   margin-top: 1rem;
 }
 .founder__portrait {
