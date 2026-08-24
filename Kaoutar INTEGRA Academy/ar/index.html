@@ -28,8 +28,8 @@
   </div>
 </div>
 
-<header class="nav" id="nav">
-  <div class="nav__inner">
+<header class="nav nav--2row" id="nav">
+  <div class="nav__top">
     <a class="wordmark" href="#top" aria-label="أكاديمية إنتغرا — الصفحة الرئيسية">
       <svg class="wordmark__mark" width="44" height="44" viewBox="0 0 64 64" fill="none" aria-hidden="true">
         <defs>
@@ -51,26 +51,28 @@
       </span>
     </a>
 
-    <nav class="nav__links" aria-label="التنقل الرئيسي">
-      <a href="#academie">الأكاديمية</a>
-      <a href="#fondatrice">المؤسِّسة</a>
-      <a href="#philosophie">فلسفتنا</a>
-      <a href="#programmes">المحاور</a>
-      <a href="formations.html">الدورات التدريبية</a>
-      <a href="#actualites">الأخبار</a>
-      <a href="#methode">منهجيتنا</a>
-      <a href="#faq">الأسئلة الشائعة</a>
+    <div class="nav__top-right">
       <span class="nav__langgroup">
         <a href="../index.html" class="nav__lang" hreflang="fr" lang="fr">FR</a>
         <span class="nav__lang nav__lang--current" aria-current="page" lang="ar">AR</span>
       </span>
       <a href="#contact" class="nav__cta">تواصلوا معنا</a>
-    </nav>
-
-    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="فتح القائمة">
-      <span></span><span></span><span></span>
-    </button>
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="فتح القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
+
+  <nav class="nav__links" aria-label="التنقل الرئيسي">
+    <a href="#academie">الأكاديمية</a>
+    <a href="#fondatrice">المؤسِّسة</a>
+    <a href="#philosophie">فلسفتنا</a>
+    <a href="#programmes">المحاور</a>
+    <a href="formations.html">الدورات التدريبية</a>
+    <a href="#actualites">الأخبار</a>
+    <a href="#methode">منهجيتنا</a>
+    <a href="#faq">الأسئلة الشائعة</a>
+  </nav>
 
   <nav class="nav__mobile" id="navMobile" aria-label="قائمة الهاتف">
     <a href="#academie">الأكاديمية</a>
