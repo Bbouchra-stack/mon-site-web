@@ -356,12 +356,12 @@ textarea:focus-visible {
   border: 1px solid var(--hue-i);
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1800px) {
   .nav__links { gap: 1.35rem; font-size: 0.85rem; }
   .nav__cta { padding: 0.55rem 0.95rem; }
 }
 
-@media (max-width: 1340px) {
+@media (max-width: 1650px) {
   .nav__links { display: none; }
   .nav__toggle { display: flex; }
   .nav.is-open .nav__mobile { display: flex; }
