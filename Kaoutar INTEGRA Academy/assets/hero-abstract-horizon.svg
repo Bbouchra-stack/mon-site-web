@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyH" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F7F4EE"/>
+      <stop offset="55%" stop-color="#F0EBDF"/>
+      <stop offset="100%" stop-color="#E4DCCB"/>
+    </linearGradient>
+    <linearGradient id="glowH" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E3BE73" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#E3BE73" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="400" fill="url(#skyH)"/>
+
+  <!-- soft rising light -->
+  <circle cx="190" cy="270" r="140" fill="url(#glowH)"/>
+
+  <!-- thin ascending arcs, echoing vision / équilibre / croissance -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M40 340 Q190 200 300 90" stroke="#1F3F52" stroke-width="1.4" opacity="0.55"/>
+    <path d="M20 380 Q190 250 300 150" stroke="#235A78" stroke-width="1" opacity="0.4"/>
+    <path d="M60 400 Q190 300 300 220" stroke="#1F6E68" stroke-width="1" opacity="0.35"/>
+  </g>
+
+  <!-- horizon -->
+  <line x1="0" y1="268" x2="300" y2="268" stroke="#6E93A8" stroke-width="0.75" opacity="0.3"/>
+
+  <circle cx="190" cy="270" r="6" fill="#A1801F"/>
+
+  <!-- faint diagonal texture, echoing the site's background pattern -->
+  <g stroke="#1F3F52" stroke-width="0.6" opacity="0.05">
+    <line x1="-20" y1="420" x2="320" y2="80"/>
+    <line x1="0" y1="420" x2="340" y2="80"/>
+    <line x1="20" y1="420" x2="360" y2="80"/>
+  </g>
+</svg>
