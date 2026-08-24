@@ -1104,17 +1104,28 @@ section > div {
 .footer__inner {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 3rem var(--gutter);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  padding: 4rem var(--gutter) 2.5rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 2.5rem;
 }
 .footer .wordmark { color: var(--paper); }
 .footer .wordmark__mark { color: var(--paper); }
 .footer .wordmark__sub { color: rgba(247, 244, 238, 0.65); }
-.footer__links { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.9rem; }
+.footer__tagline {
+  margin: 1.1rem 0 1.5rem;
+  max-width: 30ch;
+  font-size: 0.88rem;
+  color: rgba(247, 244, 238, 0.65);
+}
+.footer__col-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 238, 0.5);
+  margin-bottom: 1.1rem;
+}
+.footer__links { display: flex; flex-direction: column; align-items: flex-start; gap: 0.8rem; font-size: 0.9rem; }
 .footer__links a { color: rgba(247, 244, 238, 0.75); }
 .footer__links a:hover { color: var(--paper); }
 .footer__social { display: flex; gap: 1rem; }
@@ -1130,7 +1141,21 @@ section > div {
   transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 .footer__social a:hover { color: var(--paper); border-color: rgba(247, 244, 238, 0.6); }
-.footer__meta { width: 100%; font-size: 0.8rem; color: rgba(247, 244, 238, 0.45); margin: 0; }
+.footer__bottom {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 1.5rem var(--gutter) 2rem;
+  border-top: 1px solid rgba(247, 244, 238, 0.12);
+}
+.footer__meta { font-size: 0.8rem; color: rgba(247, 244, 238, 0.45); margin: 0; }
+
+@media (max-width: 860px) {
+  .footer__inner { grid-template-columns: 1fr 1fr; }
+  .footer__col--brand { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .footer__inner { grid-template-columns: 1fr; }
+}
 
 /* ==========================================================================
    Contact info — réseaux
