@@ -952,9 +952,9 @@ section > div {
 
 .proof__privacy {
   margin-top: 2rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--ink-soft);
-  max-width: none;
+  max-width: 85ch;
   border-top: 1px solid var(--line);
   padding-top: 1.5rem;
 }
