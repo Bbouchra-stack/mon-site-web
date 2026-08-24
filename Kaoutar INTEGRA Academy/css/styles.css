@@ -894,9 +894,10 @@ section > div {
    Nos références
    ========================================================================== */
 .references__grid {
-  margin-top: 2.5rem;
+  margin: 2.5rem auto 0;
+  max-width: 640px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -948,16 +949,16 @@ section > div {
 .reference--brand:focus-visible .reference__logo {
   filter: grayscale(0) opacity(1);
 }
-.reference--empty { background: var(--paper-alt); }
-.reference__placeholder {
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--silver);
-}
-@media (max-width: 700px) {
-  .references__grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 480px) {
+  .references__grid { grid-template-columns: 1fr; max-width: 320px; }
 }
 
+.proof__asterisk {
+  font-size: 0.55em;
+  vertical-align: super;
+  color: var(--steel);
+  margin-inline-start: 0.15em;
+}
 .proof__privacy {
   margin-top: 2rem;
   font-size: 0.85rem;
