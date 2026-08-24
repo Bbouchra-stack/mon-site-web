@@ -271,8 +271,8 @@ textarea:focus-visible {
   align-items: center;
   justify-content: center;
   row-gap: 0.5rem;
-  gap: 2.4rem;
-  font-size: 0.92rem;
+  gap: 1.2rem;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 .nav__links a { padding: 0.4rem 0; position: relative; }
@@ -962,7 +962,7 @@ section > div {
   margin-top: 2rem;
   font-size: 0.85rem;
   color: var(--ink-soft);
-  max-width: 85ch;
+  max-width: none;
   border-top: 1px solid var(--line);
   padding-top: 1.5rem;
 }
@@ -1147,7 +1147,7 @@ section > div {
    Politique des cookies
    ========================================================================== */
 .cookies-policy { background: var(--paper-alt); border-top: 1px solid var(--line); }
-.cookies-policy__content { max-width: 62ch; margin-top: 1rem; }
+.cookies-policy__content { max-width: none; margin-top: 1rem; }
 .cookies-policy__content p { margin-bottom: 1rem; }
 .cookies-policy__content a { color: var(--steel); text-decoration: underline; text-underline-offset: 2px; }
 
