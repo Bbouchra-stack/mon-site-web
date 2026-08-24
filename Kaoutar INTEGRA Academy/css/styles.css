@@ -441,6 +441,7 @@ section > div {
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
   margin-top: 1rem;
+  align-items: baseline;
 }
 .intro__lead {
   font-family: var(--font-display);
@@ -1068,6 +1069,7 @@ section > div {
 }
 .contact-info__item a,
 .contact-info__item p { font-size: 1.1rem; margin: 0; }
+.contact-info__item a[href^="mailto:"] { white-space: nowrap; }
 .contact-info__label {
   display: block;
   font-size: 0.75rem;
