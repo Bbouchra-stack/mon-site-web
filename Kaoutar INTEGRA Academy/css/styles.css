@@ -1126,13 +1126,13 @@ main section[id] { scroll-margin-top: calc(6.5rem + 34px); }
   accent-color: var(--steel-light);
 }
 .consent-check span {
-  font-size: 0.62rem;
-  line-height: 1.5;
+  font-size: 0.55rem;
+  line-height: 1.45;
   color: rgba(247, 244, 238, 0.75);
 }
 .contact-form__legal {
-  font-size: 0.6rem;
-  line-height: 1.55;
+  font-size: 0.52rem;
+  line-height: 1.5;
   color: rgba(247, 244, 238, 0.5);
   margin: 0;
 }
