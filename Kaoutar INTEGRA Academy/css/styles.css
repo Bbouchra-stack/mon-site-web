@@ -487,7 +487,8 @@ section > div {
   margin: 0 auto;
   padding: 6rem var(--gutter);
 }
-#top.intro > div { padding-top: calc(9rem + 34px); }
+#top.intro > div,
+#top.cookies-policy > div { padding-top: calc(9rem + 34px); }
 
 .intro__grid {
   display: grid;
