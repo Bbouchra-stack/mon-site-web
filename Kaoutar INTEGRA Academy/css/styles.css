@@ -1142,32 +1142,6 @@ main section[id] { scroll-margin-top: calc(6.5rem + 34px); }
   cursor: not-allowed;
 }
 .contact-form .btn--primary:disabled:hover { background: var(--paper); color: var(--ink); }
-.contact-form__bottom {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.contact-form__bottom .btn--wide { flex: 1; }
-.recaptcha-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-  flex-shrink: 0;
-  padding: 0.5rem 0.7rem;
-  border: 1px solid rgba(247, 244, 238, 0.2);
-  border-radius: 4px;
-  color: rgba(247, 244, 238, 0.55);
-}
-.recaptcha-badge span {
-  font-size: 0.55rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-@media (max-width: 480px) {
-  .contact-form__bottom { flex-direction: column-reverse; }
-  .contact-form__bottom .btn--wide { width: 100%; }
-}
 
 .contact-info {
   display: flex;
