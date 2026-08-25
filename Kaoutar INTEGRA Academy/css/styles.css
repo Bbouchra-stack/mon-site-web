@@ -490,6 +490,8 @@ section > div {
 #top.intro > div,
 #top.cookies-policy > div { padding-top: calc(9rem + 34px); }
 
+main section[id] { scroll-margin-top: calc(6.5rem + 34px); }
+
 .intro__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
