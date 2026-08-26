@@ -87,9 +87,8 @@ defineProps({
 .prose {
   max-width: 76ch;
   margin-inline: auto;
-  /* Couleur de base pour tout texte non explicitement redéfini (ex. les
-     cellules <td> du tableau), afin qu'aucun élément n'hérite plus de
-     l'ancienne teinte claire du body. */
+  /* Couleur de base pour tout texte non explicitement redéfini, afin
+     qu'aucun élément n'hérite plus de l'ancienne teinte claire du body. */
   color: var(--bw-text-muted);
 }
 

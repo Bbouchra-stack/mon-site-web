@@ -38,51 +38,6 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
       les données strictement nécessaires au traitement de votre demande.
     </p>
 
-    <div class="tableau-conteneur">
-      <table class="tableau">
-        <thead>
-          <tr>
-            <th>Données</th>
-            <th>Origine</th>
-            <th>Finalité</th>
-            <th>Conservation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Prénom, nom</td>
-            <td>Formulaire de contact</td>
-            <td>Vous identifier et vous répondre personnellement</td>
-            <td>3 ans à compter du dernier contact</td>
-          </tr>
-          <tr>
-            <td>Adresse e-mail</td>
-            <td>Formulaire de contact</td>
-            <td>Vous transmettre notre réponse et votre devis</td>
-            <td>3 ans à compter du dernier contact</td>
-          </tr>
-          <tr>
-            <td>Numéro de téléphone</td>
-            <td>Formulaire de contact, WhatsApp</td>
-            <td>Vous rappeler si vous le souhaitez</td>
-            <td>3 ans à compter du dernier contact</td>
-          </tr>
-          <tr>
-            <td>Description du projet</td>
-            <td>Formulaire de contact</td>
-            <td>Préparer une proposition adaptée à votre besoin</td>
-            <td>3 ans à compter du dernier contact</td>
-          </tr>
-          <tr>
-            <td>Choix de consentement aux cookies</td>
-            <td>Bandeau cookies</td>
-            <td>Mémoriser votre choix et ne plus vous solliciter</td>
-            <td>6 mois</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
     <p>
       Nous ne collectons <strong>aucune donnée sensible</strong> au sens de
       l'article 1er de la loi 09-08. Merci de ne pas faire figurer
@@ -110,14 +65,6 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
       <strong>Vos données ne sont ni vendues, ni louées, ni échangées</strong>
       avec des tiers à des fins commerciales.
     </p>
-    <p>
-      Si un transfert de données vers un pays étranger devait avoir lieu du fait
-      de la localisation de nos prestataires techniques, il serait effectué dans
-      le respect des articles 43 et 44 de la loi 09-08, qui subordonnent un tel
-      transfert à un niveau de protection suffisant et, le cas échéant, à
-      l'autorisation préalable de la CNDP.
-    </p>
-
     <h2>5. Quels sont vos droits&nbsp;?</h2>
     <p>
       Conformément aux articles 7, 8 et 9 de la loi 09-08, vous disposez
