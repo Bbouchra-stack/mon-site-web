@@ -142,3 +142,10 @@ import { coordonnees } from '../composables/coordonnees.js'
     </p>
   </LegalLayout>
 </template>
+
+<style scoped>
+p,
+li {
+  text-align: justify;
+}
+</style>

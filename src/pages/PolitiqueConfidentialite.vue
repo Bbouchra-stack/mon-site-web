@@ -9,15 +9,6 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
     chapeau="Comment BELWEB Studio collecte, utilise et protège vos données personnelles, conformément à la loi n° 09-08 et sous le contrôle de la CNDP."
     mise-a-jour="août 2026"
   >
-    <div class="encadre">
-      <p>
-        <strong>Reste à compléter avant la mise en ligne :</strong> le numéro de
-        déclaration CNDP. Faites ensuite relire cette page par un juriste. Toute
-        modification du formulaire ou ajout d'un outil de mesure d'audience doit
-        être reportée ici.
-      </p>
-    </div>
-
     <h2>1. Qui est responsable du traitement&nbsp;?</h2>
     <p>
       Le responsable du traitement des données collectées sur ce site est
@@ -29,7 +20,7 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
       <li><strong>Téléphone&nbsp;:</strong> {{ coordonnees.telephoneAffiche }}</li>
       <li>
         <strong>Déclaration CNDP&nbsp;:</strong>
-        <span class="a-completer">n° de récépissé</span>
+        <span class="a-completer">sera communiqué dès réception</span>
       </li>
     </ul>
     <p>
@@ -224,3 +215,10 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
     </p>
   </LegalLayout>
 </template>
+
+<style scoped>
+p,
+li {
+  text-align: justify;
+}
+</style>
