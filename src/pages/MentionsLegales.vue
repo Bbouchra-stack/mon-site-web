@@ -120,8 +120,8 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
     <p>
       Pour toute question relative aux présentes mentions légales&nbsp;:
       <a :href="`mailto:${coordonnees.email}`">{{ coordonnees.email }}</a> —
-      {{ coordonnees.telephoneAffiche }} — {{ coordonnees.adresseLigne1 }},
-      {{ coordonnees.adresseLigne2 }}.
+      <span class="tel-entier">{{ coordonnees.telephoneAffiche }}</span> —
+      {{ coordonnees.adresseLigne1 }}, {{ coordonnees.adresseLigne2 }}.
     </p>
   </LegalLayout>
 </template>
@@ -130,5 +130,9 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
 p,
 li {
   text-align: justify;
+}
+
+.tel-entier {
+  white-space: nowrap;
 }
 </style>

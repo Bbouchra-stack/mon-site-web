@@ -158,7 +158,7 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
     <p>
       Pour toute question relative à vos données personnelles&nbsp;:
       <a :href="`mailto:${coordonnees.email}`">{{ coordonnees.email }}</a> —
-      {{ coordonnees.telephoneAffiche }}.
+      <span class="tel-entier">{{ coordonnees.telephoneAffiche }}</span>.
     </p>
   </LegalLayout>
 </template>
@@ -167,5 +167,9 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
 p,
 li {
   text-align: justify;
+}
+
+.tel-entier {
+  white-space: nowrap;
 }
 </style>
