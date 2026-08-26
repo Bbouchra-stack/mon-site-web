@@ -15,10 +15,6 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
       <li><strong>Dénomination sociale&nbsp;:</strong> {{ coordonnees.nom }}</li>
       <li><strong>Forme juridique&nbsp;:</strong> {{ coordonnees.formeJuridique }}</li>
       <li>
-        <strong>Siège social&nbsp;:</strong> {{ coordonnees.adresseLigne1 }},
-        {{ coordonnees.adresseLigne2 }}, Maroc
-      </li>
-      <li>
         <strong>Identifiant Commun de l'Entreprise (ICE)&nbsp;:</strong>
         n° {{ coordonnees.ice }}
       </li>
@@ -120,8 +116,7 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
     <p>
       Pour toute question relative aux présentes mentions légales&nbsp;:
       <a :href="`mailto:${coordonnees.email}`">{{ coordonnees.email }}</a> —
-      <span class="tel-entier">{{ coordonnees.telephoneAffiche }}</span> —
-      {{ coordonnees.adresseLigne1 }}, {{ coordonnees.adresseLigne2 }}.
+      <span class="tel-entier">{{ coordonnees.telephoneAffiche }}</span>.
     </p>
   </LegalLayout>
 </template>
