@@ -31,10 +31,10 @@ const telephoneCaracteres = coordonnees.telephoneAffiche.split('')
 
         <p class="bw-hero__sous-titre" v-reveal="340">
           Sites web sur mesure et automatisation par l'IA&nbsp;: BELWEB
-          Studio aide les professionnels et entreprises de Casablanca à se
-          faire trouver en ligne et à simplifier leur quotidien. Des
-          solutions rapides, élégantes et efficaces, pensées pour vous faire
-          gagner du temps et développer votre activité.
+          Studio aide les professionnels et entreprises de Casablanca à
+          renforcer leur visibilité en ligne et à simplifier leur quotidien.
+          Des solutions rapides, élégantes et efficaces, pensées pour vous
+          faire gagner du temps et développer votre activité.
         </p>
 
         <div class="bw-hero__actions" v-reveal="440">
