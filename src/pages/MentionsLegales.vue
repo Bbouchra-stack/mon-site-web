@@ -9,14 +9,6 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
     chapeau="Informations légales relatives au site belwebstudio.ma, conformément à la législation marocaine en vigueur."
     mise-a-jour="août 2026"
   >
-    <div class="encadre">
-      <p>
-        <strong>Reste à compléter avant la mise en ligne :</strong> le numéro de
-        récépissé de déclaration à la CNDP (section 4). Nous vous recommandons
-        également de faire relire ces pages par un juriste avant publication.
-      </p>
-    </div>
-
     <h2>1. Éditeur du site</h2>
     <p>Le présent site est édité par&nbsp;:</p>
     <ul>
@@ -81,7 +73,7 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
     <ul>
       <li>
         <strong>Déclaration CNDP&nbsp;:</strong>
-        <span class="a-completer">n° de récépissé de déclaration</span>
+        <span class="a-completer">sera communiqué dès réception</span>
       </li>
     </ul>
     <p>
@@ -144,3 +136,10 @@ import { coordonnees, hebergeur } from '../composables/coordonnees.js'
     </p>
   </LegalLayout>
 </template>
+
+<style scoped>
+p,
+li {
+  text-align: justify;
+}
+</style>
