@@ -46,10 +46,9 @@ import { coordonnees } from '../composables/coordonnees.js'
 
     <h2>3. Prix et paiement</h2>
     <p>
-      Les prix sont exprimés en dirhams marocains et nets de taxe, le Studio
-      relevant du régime de l'auto-entrepreneur. Sauf mention contraire au
-      devis, un acompte de 30&nbsp;% est versé à la commande et le solde est
-      réglé avant la mise en ligne ou la remise des livrables finaux. Les
+      Les prix sont exprimés en dirhams marocains, un acompte de 30&nbsp;% est
+      versé à la commande et le solde est réglé avant la mise en ligne ou la
+      remise des livrables finaux. Les
       prestations récurrentes (hébergement, maintenance) sont facturées selon
       une périodicité annuelle ou mensuelle précisée au devis. Tout retard de
       paiement peut entraîner la suspension de la prestation jusqu'à
