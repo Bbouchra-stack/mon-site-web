@@ -12,8 +12,7 @@ import { coordonnees } from '../composables/coordonnees.js'
     <p>
       {{ coordonnees.nom }} («&nbsp;le Studio&nbsp;») est une entreprise
       individuelle relevant du régime de l'auto-entrepreneur, Identifiant
-      Commun de l'Entreprise (ICE) n° {{ coordonnees.ice }}, dont le siège est
-      situé {{ coordonnees.adresseLigne1 }}, {{ coordonnees.adresseLigne2 }}.
+      Commun de l'Entreprise (ICE) n° {{ coordonnees.ice }}.
       Les présentes conditions générales de vente («&nbsp;CGV&nbsp;»)
       régissent les relations entre le Studio et toute personne physique ou
       morale lui passant commande («&nbsp;le Client&nbsp;»). Toute commande
@@ -136,8 +135,7 @@ import { coordonnees } from '../composables/coordonnees.js'
       Pour toute question relative aux présentes conditions générales de
       vente&nbsp;:
       <a :href="`mailto:${coordonnees.email}`">{{ coordonnees.email }}</a> —
-      <span class="tel-entier">{{ coordonnees.telephoneAffiche }}</span> —
-      {{ coordonnees.adresseLigne1 }}, {{ coordonnees.adresseLigne2 }}.
+      <span class="tel-entier">{{ coordonnees.telephoneAffiche }}</span>.
     </p>
   </LegalLayout>
 </template>
