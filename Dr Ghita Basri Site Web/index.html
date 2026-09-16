@@ -147,8 +147,8 @@ nav.main-nav a:hover span::after{width:100%;}
 .head-tel{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.92rem;color:var(--charcoal);white-space:nowrap;}
 header:not(.scrolled) .head-tel{color:#fff;}
 .head-tel svg{width:16px;height:16px;flex-shrink:0;}
-.wa-chip{width:30px;height:30px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.wa-chip svg{width:16px;height:16px;fill:#fff;}
+.wa-chip{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold-deep),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.wa-chip svg{width:16px;height:16px;fill:#2A2410;}
 .burger{display:none;width:26px;height:18px;position:relative;flex-shrink:0;}
 .burger span{position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:2px;transition:all .3s var(--ease);}
 .burger span:nth-child(1){top:0;} .burger span:nth-child(2){top:8px;} .burger span:nth-child(3){top:16px;}
@@ -165,22 +165,20 @@ header:not(.scrolled) .burger{color:#fff;}
 }
 
 /* ================= HERO ================= */
-.hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:flex-end;overflow:hidden;color:#fff;padding-bottom:110px;}
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-start;overflow:hidden;color:#fff;padding-top:158px;padding-bottom:120px;}
 .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease;}
 .hero-slide.active{opacity:1;}
-.hero-slide .ph{position:absolute;inset:0;background-size:cover;background-position:center;animation:kenburns 9s ease-in-out infinite alternate;}
+.hero-slide .ph{position:absolute;inset:0;background:#e9dcb6;overflow:hidden;animation:kenburns 9s ease-in-out infinite alternate;}
+.hero-slide .ph svg{position:absolute;inset:0;width:100%;height:100%;}
 .hero-slide.active .ph{animation-play-state:running;}
 @keyframes kenburns{from{transform:scale(1);}to{transform:scale(1.09);}}
 .hero-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(24,20,14,.82) 0%,rgba(24,20,14,.55) 42%,rgba(24,20,14,.28) 100%);}
-.hero-slide:nth-child(1) .ph{background-image:linear-gradient(135deg,#4a3c22,#8a6a34 55%,#c9a24b);}
-.hero-slide:nth-child(2) .ph{background-image:linear-gradient(135deg,#3c3222,#7c6533 55%,#d9a93b);}
-.hero-slide:nth-child(3) .ph{background-image:linear-gradient(135deg,#332a1c,#6b5528 55%,#e4c778);}
 .hero-illus{position:absolute;inset:0;opacity:.5;mix-blend-mode:soft-light;}
 .hero-dots{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);display:flex;gap:10px;z-index:3;}
 .hero-dots button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .35s var(--ease);}
 .hero-dots button.active{background:var(--gold-light);width:26px;border-radius:5px;}
-.hero-content{position:relative;z-index:2;max-width:640px;padding-top:170px;}
-@media(max-width:900px){.hero{padding-bottom:80px;} .hero-content{padding-top:130px;}}
+.hero-content{position:relative;z-index:2;max-width:640px;}
+@media(max-width:900px){.hero{padding-top:128px;padding-bottom:90px;}}
 .hero-content .eyebrow{color:var(--gold-light);}
 .hero-content .eyebrow::before{background:var(--gold-light);}
 .hero-lines{font-family:var(--serif);font-size:clamp(2.4rem,5.4vw,4.1rem);line-height:1.12;font-weight:600;margin:1.2rem 0 1.5rem;}
@@ -206,6 +204,11 @@ header:not(.scrolled) .burger{color:#fff;}
 .feature-band{display:grid;grid-template-columns:repeat(3,1fr);}
 .feature-band .cell{padding:44px 40px;color:#fff;transition:transform .4s var(--ease);}
 .feature-band .cell:hover{transform:translateY(-6px);}
+.feature-band.rv-stagger > .cell{transform:translateY(56px) scale(.9);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+.feature-band.rv-stagger.in > .cell:hover{transform:translateY(-6px) scale(1);}
+.feature-band.rv-stagger.in > .cell{transform:translateY(0) scale(1);}
+.feature-band .cell svg{transform:scale(.4) rotate(-25deg);opacity:0;transition:transform .6s var(--ease) .25s, opacity .6s var(--ease) .25s;}
+.feature-band.rv-stagger.in > .cell svg{transform:scale(1) rotate(0deg);opacity:1;}
 .feature-band .cell:nth-child(1){background:linear-gradient(135deg,var(--bronze),var(--gold-deep));}
 .feature-band .cell:nth-child(2){background:linear-gradient(135deg,var(--gold-deep),var(--gold));}
 .feature-band .cell:nth-child(3){background:linear-gradient(135deg,var(--amber),var(--gold-light));color:#3a2c0d;}
@@ -265,11 +268,9 @@ header:not(.scrolled) .burger{color:#fff;}
 .gal-grid{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:18px;height:560px;}
 .gal-item{position:relative;border-radius:4px;overflow:hidden;}
 .gal-item:nth-child(1){grid-row:1/3;}
-.gal-item .ph{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s var(--ease);}
+.gal-item .ph{position:absolute;inset:0;background:#e9dcb6;overflow:hidden;transition:transform .7s var(--ease);}
+.gal-item .ph svg{position:absolute;inset:0;width:100%;height:100%;}
 .gal-item:hover .ph{transform:scale(1.07);}
-.gal-item:nth-child(1) .ph{background-image:linear-gradient(150deg,#efe4c7,#d8c290 60%,#b99a55);}
-.gal-item:nth-child(2) .ph{background-image:linear-gradient(150deg,#f2ead6,#dcc998 60%,#c2a361);}
-.gal-item:nth-child(3) .ph{background-image:linear-gradient(150deg,#eee2c2,#d4bd88 60%,#b79a52);}
 .gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(24,20,14,.55),transparent 55%);}
 .gal-cap{position:absolute;left:20px;bottom:16px;color:#fff;font-size:.82rem;font-weight:500;letter-spacing:.03em;z-index:2;}
 @media(max-width:760px){.gal-grid{grid-template-columns:1fr;grid-template-rows:auto;height:auto;}.gal-item{height:220px;}.gal-item:nth-child(1){grid-row:auto;height:260px;}}
@@ -299,9 +300,9 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
 
 /* ================= WHATSAPP FLOAT ================= */
 .wa-float{position:fixed;right:26px;bottom:26px;z-index:180;width:58px;height:58px;border-radius:50%;
-  background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(0,0,0,.28);}
-.wa-float svg{width:28px;height:28px;fill:#fff;}
-.wa-float .pulse-ring{border-color:rgba(37,211,102,.55);border-radius:50%;}
+  background:linear-gradient(135deg,var(--gold-deep),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(42,36,29,.35);}
+.wa-float svg{width:28px;height:28px;fill:#2A2410;}
+.wa-float .pulse-ring{border-color:rgba(228,199,120,.6);border-radius:50%;}
 </style>
 </head>
 <body>
@@ -319,6 +320,90 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
     <path d="M50 6 C68 6 82 22 82 42 C82 58 71 68 58 74 L58 88 C58 92 55 94 51 94 C47 94 44 92 44 88 L44 74 C31 68 20 58 20 42 C20 22 34 6 50 6 Z" fill="none" stroke="url(#gGold)" stroke-width="2.5"/>
     <path d="M38 30 C38 46 38 58 50 70 C62 58 62 46 62 30" fill="none" stroke="url(#gGold)" stroke-width="2.2"/>
     <circle cx="50" cy="40" r="4.5" fill="url(#gGold)"/>
+  </svg>
+</template>
+
+<!-- ============ CABINET ILLUSTRATION TEMPLATES ============ -->
+<!-- Illustrations vectorielles inspirées des photos réelles du cabinet (murs à moulures,
+     fauteuils beiges, comptoir marbré, plantes) — à remplacer par les vraies photos dès réception. -->
+<template id="illusWaiting">
+  <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="300" fill="#F3EDE0"/>
+    <rect x="0" y="0" width="400" height="150" fill="#EFE6D2"/>
+    <g stroke="#D8C99A" stroke-width="1.5" fill="none">
+      <rect x="18" y="26" width="58" height="88" rx="3"/>
+      <rect x="90" y="26" width="58" height="88" rx="3"/>
+      <rect x="162" y="26" width="58" height="88" rx="3"/>
+    </g>
+    <rect x="300" y="8" width="88" height="150" fill="#EFDFAA" opacity=".55"/>
+    <rect x="0" y="228" width="400" height="72" fill="#E6D8B5"/>
+    <g>
+      <g transform="translate(28,186)">
+        <rect x="-4" y="0" width="58" height="24" rx="9" fill="#C6A052"/>
+        <rect x="0" y="20" width="50" height="34" rx="7" fill="#DBBD7E"/>
+        <rect x="4" y="54" width="6" height="14" fill="#7C5E28"/>
+        <rect x="40" y="54" width="6" height="14" fill="#7C5E28"/>
+      </g>
+      <g transform="translate(108,186)">
+        <rect x="-4" y="0" width="58" height="24" rx="9" fill="#C6A052"/>
+        <rect x="0" y="20" width="50" height="34" rx="7" fill="#DBBD7E"/>
+        <rect x="4" y="54" width="6" height="14" fill="#7C5E28"/>
+        <rect x="40" y="54" width="6" height="14" fill="#7C5E28"/>
+      </g>
+      <g transform="translate(188,186)">
+        <rect x="-4" y="0" width="58" height="24" rx="9" fill="#C6A052"/>
+        <rect x="0" y="20" width="50" height="34" rx="7" fill="#DBBD7E"/>
+        <rect x="4" y="54" width="6" height="14" fill="#7C5E28"/>
+        <rect x="40" y="54" width="6" height="14" fill="#7C5E28"/>
+      </g>
+    </g>
+    <g transform="translate(316,146)">
+      <rect x="8" y="72" width="32" height="26" rx="3" fill="#EDEAE0"/>
+      <path d="M24 72 C8 42 6 10 24 0 C42 10 42 42 24 72Z" fill="#93A67E"/>
+      <path d="M24 72 C40 46 46 20 30 4" fill="none" stroke="#748660" stroke-width="2"/>
+    </g>
+  </svg>
+</template>
+<template id="illusReception">
+  <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="300" fill="#F4EEE0"/>
+    <rect x="0" y="0" width="400" height="150" fill="#EFE6D0"/>
+    <g stroke="#D8C99A" stroke-width="1.5" fill="none">
+      <rect x="26" y="18" width="66" height="86" rx="3"/>
+      <rect x="112" y="18" width="66" height="86" rx="3"/>
+    </g>
+    <circle cx="332" cy="38" r="13" fill="none" stroke="#C6A052" stroke-width="2"/>
+    <line x1="332" y1="0" x2="332" y2="25" stroke="#C6A052" stroke-width="2"/>
+    <path d="M0 188 L400 188 L400 300 L0 300 Z" fill="#EDE3CC"/>
+    <path d="M0 188 L190 188 L222 300 L0 300 Z" fill="#DBCB9F"/>
+    <path d="M18 198 L178 193 L206 288 L12 291 Z" fill="#E9DFC2" opacity=".55"/>
+    <rect x="0" y="183" width="222" height="7" fill="#7C5E28"/>
+    <g transform="translate(252,118)">
+      <rect x="8" y="72" width="30" height="26" rx="3" fill="#EDEAE0"/>
+      <path d="M23 72 C8 44 6 12 23 0 C40 12 40 44 23 72Z" fill="#93A67E"/>
+    </g>
+  </svg>
+</template>
+<template id="illusTreatment">
+  <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="300" fill="#F3EDE0"/>
+    <rect x="0" y="0" width="400" height="28" fill="#EFE6D0"/>
+    <circle cx="330" cy="42" r="28" fill="#E9F1FA" opacity=".85"/>
+    <g transform="translate(66,148)">
+      <rect x="0" y="40" width="152" height="18" rx="8" fill="#DBBD7E"/>
+      <rect x="0" y="0" width="42" height="60" rx="11" fill="#C6A052"/>
+      <rect x="122" y="58" width="18" height="50" fill="#7C5E28"/>
+      <rect x="10" y="58" width="18" height="50" fill="#7C5E28"/>
+    </g>
+    <g transform="translate(262,168)">
+      <rect x="0" y="0" width="62" height="72" rx="4" fill="#EDE5D2" stroke="#D8C99A"/>
+      <line x1="0" y1="24" x2="62" y2="24" stroke="#D8C99A"/>
+      <line x1="0" y1="48" x2="62" y2="48" stroke="#D8C99A"/>
+    </g>
+    <g transform="translate(26,108)">
+      <rect x="8" y="72" width="28" height="22" rx="3" fill="#EDEAE0"/>
+      <path d="M22 72 C8 46 6 20 22 5 C36 20 36 46 22 72Z" fill="#93A67E"/>
+    </g>
   </svg>
 </template>
 
@@ -374,9 +459,9 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="accueil">
-  <div class="hero-slide active"><div class="ph"></div></div>
-  <div class="hero-slide"><div class="ph"></div></div>
-  <div class="hero-slide"><div class="ph"></div></div>
+  <div class="hero-slide active"><div class="ph" data-illus="illusWaiting"></div></div>
+  <div class="hero-slide"><div class="ph" data-illus="illusReception"></div></div>
+  <div class="hero-slide"><div class="ph" data-illus="illusTreatment"></div></div>
 
   <div class="wrap hero-content">
     <p class="eyebrow">Aïn Chock · Casablanca</p>
@@ -403,7 +488,7 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
 </section>
 
 <!-- ============ FEATURE BAND ============ -->
-<div class="feature-band">
+<div class="feature-band rv-stagger">
   <div class="cell">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12h6M9 16h6M9 8h3M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/></svg>
     <p>Consultation dermatologie médicale &amp; esthétique</p>
@@ -545,9 +630,9 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
       <p class="lede">Emplacements réservés aux photographies réelles du cabinet — à intégrer dès réception des fichiers image.</p>
     </div>
     <div class="gal-grid rv-stagger">
-      <div class="gal-item"><div class="ph"></div><span class="gal-cap">Salle d'attente</span></div>
-      <div class="gal-item"><div class="ph"></div><span class="gal-cap">Accueil</span></div>
-      <div class="gal-item"><div class="ph"></div><span class="gal-cap">Salle de soins</span></div>
+      <div class="gal-item"><div class="ph" data-illus="illusWaiting"></div><span class="gal-cap">Salle d'attente</span></div>
+      <div class="gal-item"><div class="ph" data-illus="illusReception"></div><span class="gal-cap">Accueil</span></div>
+      <div class="gal-item"><div class="ph" data-illus="illusTreatment"></div><span class="gal-cap">Salle de soins</span></div>
     </div>
   </div>
 </section>
@@ -616,6 +701,12 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
   ['brandMarkSlot','brandMarkSlot2','brandMarkSlot3'].forEach(function(id){
     var slot = document.getElementById(id);
     if(slot) slot.appendChild(tpl.content.cloneNode(true));
+  });
+
+  // clone cabinet illustrations into hero slides + gallery
+  document.querySelectorAll('.ph[data-illus]').forEach(function(ph){
+    var t = document.getElementById(ph.dataset.illus);
+    if(t) ph.appendChild(t.content.cloneNode(true));
   });
 
   // header scroll state
