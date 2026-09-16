@@ -13,9 +13,9 @@ Clinique Grimaldi (palette or/bronze sur fond ivoire, typographie serif
   des fichiers image (upload en pièce jointe, pas collés dans le chat), à
   intégrer en `assets/` et référencer dans le CSS/HTML à la place des
   `.ph` en dégradé.
-- **Coordonnées** : adresse exacte, téléphone fixe et WhatsApp sont en
-  placeholder (`05 22 XX XX XX`, `wa.me/212600000000`) — à remplacer par
-  les vraies informations.
+- **Coordonnées** : téléphone fixe confirmé (`05 21 32 33 79`). Adresse
+  exacte et WhatsApp restent en placeholder (`wa.me/212600000000`) — à
+  remplacer par les vraies informations.
 - **Horaires** : placeholder non vérifié.
 - **Liste des soins** (dermatologie médicale / médecine esthétique /
   pédiatrique) : établie à partir des spécialités et diplômes communiqués,

@@ -144,7 +144,9 @@ nav.main-nav a span::after{content:"";position:absolute;left:0;bottom:-6px;width
 header:not(.scrolled) nav.main-nav a span::after{background:var(--gold-light);}
 nav.main-nav a:hover span::after{width:100%;}
 .head-right{display:flex;align-items:center;gap:22px;}
-.head-tel{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.92rem;color:var(--charcoal);white-space:nowrap;}
+.head-tel{display:flex;align-items:center;gap:9px;font-weight:700;font-size:1.08rem;letter-spacing:.01em;color:var(--charcoal);white-space:nowrap;}
+.head-tel span{color:var(--gold-deep);}
+header:not(.scrolled) .head-tel span{color:var(--gold-light);}
 header:not(.scrolled) .head-tel{color:#fff;}
 .head-tel svg{width:16px;height:16px;flex-shrink:0;}
 .wa-chip{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold-deep),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -520,9 +522,9 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
       <a href="#contact"><span>Contact</span></a>
     </nav>
     <div class="head-right">
-      <a class="head-tel" href="tel:+212522000000">
+      <a class="head-tel" href="tel:+212521323379">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7.9 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.3Z"/></svg>
-        <span class="tbd">05 22 XX XX XX</span>
+        <span>05 21 32 33 79</span>
       </a>
       <a class="wa-chip" href="https://wa.me/212600000000" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg viewBox="0 0 32 32"><path d="M16 2.7A13.2 13.2 0 0 0 4.6 21.9L3 29l7.3-1.9A13.2 13.2 0 1 0 16 2.7Zm7.7 18.6c-.3.9-1.8 1.7-2.6 1.8-.7.1-1.5.2-4.9-1a15 15 0 0 1-6.3-5.5c-1.3-1.8-1.9-3.3-1.9-4.5 0-1.2.6-1.8.8-2.1.2-.2.5-.3.8-.3h.6c.2 0 .5 0 .7.6.3.6.9 2.1 1 2.3.1.2.2.4 0 .6-.1.2-.2.4-.4.6l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.6 2.2 2.6 1.5 1.3 2.7 1.7 3.1 1.9.4.2.6.1.8-.1l1-1.1c.2-.3.5-.2.8-.1.3.1 2 1 2.4 1.1.4.2.6.3.7.4.1.2.1 1-.2 1.9Z"/></svg>
@@ -540,7 +542,6 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
   <div class="hero-slide"><div class="ph" data-illus="illusDesk"></div></div>
 
   <div class="wrap hero-content">
-    <p class="eyebrow">Aïn Chock · Casablanca</p>
     <h1 class="hero-lines">
       <span class="ln"><span>Dr Ghita Basri</span></span>
       <span class="ln"><span>Dermatologie &amp; Médecine</span></span>
@@ -730,7 +731,7 @@ footer{background:#17130D;color:#B9AD92;padding:52px 0 28px;font-size:.82rem;}
         </div>
         <div class="contact-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7.9 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.3Z"/></svg>
-          <div><b>Téléphone</b><span class="tbd">05 22 XX XX XX — à confirmer</span></div>
+          <div><b>Téléphone</b><span><a href="tel:+212521323379" style="color:inherit;font-weight:700;">05 21 32 33 79</a></span></div>
         </div>
         <div class="contact-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
